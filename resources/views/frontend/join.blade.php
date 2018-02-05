@@ -9,9 +9,11 @@
                 <h2>Join us now</h2>
             </div>
             <div class="col-md-8 col-md-offset-2">
-                
+
                 <div class="default-form-area">
                     <form action="{{ url( '/register' ) }}" class="col-md-10 col-md-offset-1 default-form" method="post">
+
+                        {!! csrf_field() !!}
 
                         <div class="row clearfix">
                             <div class="col-md-6 col-sm-6 col-xs-12">             

@@ -79,12 +79,17 @@
 		    	</div>
 		        
 		    </div>
+
 		</div>
 
 
+	    <div class="container">
+			<div class="row">
+				@include('flash::message')
+			</div>
+	    </div>
+
 		@yield('content')
-
-
 
 
 		<!-- Scroll Top Button -->
@@ -126,6 +131,15 @@
 	<script src="{{ asset( 'js/bootstrap-select.min.js' ) }}"></script>
 
 	<script src="{{ asset( 'js/custom.js' ) }}"></script>
+
+    <script>
+        $('#flash-overlay-modal').modal();
+
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+
+    </script>
+
+
 
 	@yield('js')
 	

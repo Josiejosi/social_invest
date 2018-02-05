@@ -12,9 +12,15 @@
 */
 
 Route::get('/', "FrontController@index");
+
 Route::get('join', "FrontController@join");
+Route::post('register', "FrontController@register");
+
 Route::get('calculator', "FrontController@calculator");
+
 Route::get('login', "FrontController@login");
+Route::post('login', "FrontController@login_post");
+
 Route::get('faq', "FrontController@faq");
 Route::get('logout', "FrontController@logout");
 Route::get('forgot_password', "FrontController@forgot_password");

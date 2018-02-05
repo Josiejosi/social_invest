@@ -15,6 +15,12 @@ class FrontController extends Controller
     public function join() {
     	return view( "frontend.join", Helper::PageBuilder( "Join now" ) ) ;
     }
+
+    public function register( Request $request ) {
+    	flash('Please wait as we await our domain to be verified')->warning() ;
+    	return redirect()->back() ;
+    }
+
     public function calculator() {
     	$crypto_rate = Helper::getCryptoData() ;
     	return view( "frontend.calculator", Helper::PageBuilder( 
@@ -25,6 +31,14 @@ class FrontController extends Controller
     public function login() {
     	return view( "frontend.login", Helper::PageBuilder( "Login to the platform" ) ) ;
     }
+
+
+
+    public function login_post( Request $request ) {
+    	flash('Please wait as we await our domain to be verified')->warning() ;
+    	return redirect()->back() ;
+    }
+
     public function faq() {
     	return view( "frontend.faq", Helper::PageBuilder( "FAQ" ) ) ;
     }

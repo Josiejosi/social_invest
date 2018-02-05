@@ -10,11 +10,9 @@
             <div class="col-md-8 col-md-offset-2">
                 
                 <div class="default-form-area">
-                    <form  class="col-md-10 col-md-offset-1 default-form">
+                    <form  class="col-md-10 col-md-offset-1 default-form" action="{{ url( '/login' ) }}" method="post">
 
-                        <div id="display_investment">
-                            
-                        </div>
+                    	{!! csrf_field() !!}
 
                         <div class="row clearfix">
                             <div class="col-md-6 col-sm-6 col-xs-12">             
