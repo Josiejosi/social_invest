@@ -192,6 +192,12 @@
                 <div class="content-i">
                     <div class="content-box">
 
+                        <div class="row">
+                            <div class="container">
+                                @include('flash::message')
+                            </div>
+                        </div>
+
                         @yield('content')
                         
                     </div>
@@ -215,6 +221,9 @@
     <script src="{{ asset( 'js/dataTables.bootstrap.min.js' ) }}"></script>
 
     <script src="{{ asset( 'js/dashboard.js' ) }}"></script>
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
 
     @yield('js')
 

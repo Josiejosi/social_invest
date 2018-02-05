@@ -12,6 +12,13 @@
 */
 
 Route::get('/', "FrontController@index");
+Route::get('join', "FrontController@join");
+Route::get('calculator', "FrontController@calculator");
+Route::get('login', "FrontController@login");
+Route::get('faq', "FrontController@faq");
+Route::get('logout', "FrontController@logout");
+Route::get('forgot_password', "FrontController@forgot_password");
+
 Route::get('home', "HomeController@index");
 Route::get('profile', "ProfileController@index");
 Route::get('messages', "MessageController@index");

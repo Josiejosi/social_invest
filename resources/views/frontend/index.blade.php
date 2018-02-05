@@ -12,8 +12,8 @@
                       <span class="fa fa-usd"></span>
                     </div>
                     <div class="ask-info">
-                      <h3 class="text-white">BITCOIN PRICE</h3>
-                      <p class="text-white">USD 117291,56</p>
+                      <h3 class="text-white">BITCOIN LAST TRADE</h3>
+                      <p class="text-white">ZAR {{ $data["crypto_rate"] }}</p>
                     </div>
                  </div>
                </div>
@@ -40,8 +40,8 @@
                       <span class="fa fa-usd"></span>
                     </div>
                     <div class="ask-info">
-                      <h3 class="text-white">ETHEREUM PRICE</h3>
-                      <p class="text-white">USD 12490,23</p>
+                      <h3 class="text-white">ETHEREUM LAST TRADE</h3>
+                      <p class="text-white">ZAR {{ $data["crypto_rate"] }}</p>
                     </div>
                  </div>
                </div>

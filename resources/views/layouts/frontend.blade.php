@@ -51,19 +51,19 @@
 				            <div class="navbar-collapse collapse clearfix">
 				                <ul class="navigation clearfix">
 
-				                    <li class="current"><a href="#">home</a></li>                 
-				                    <li><a href="#">Calculator</a></li>
-				                    <li><a href="#">FAQ</a></li>
-				                    <li><a href="#">Join Now</a></li>
+				                    <li class="current"><a href="{{ url( '/' ) }}">Home</a></li>                 
+				                    <li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
+				                    <li><a href="{{ url( '/faq' ) }}">FAQ</a></li>
+				                    <li><a href="{{ url( '/join' ) }}">Join Now</a></li>
 
 				                </ul>
 
 				                <ul class="mobile-menu clearfix">
 
-				                    <li class="current"><a href="#">home</a></li>                 
-				                    <li><a href="#">Calculator</a></li>
-				                    <li><a href="#">FAQ</a></li>
-				                    <li><a href="#">Join Now</a></li>
+				                    <li class="current"><a href="{{ url( '/' ) }}">Home</a></li>                 
+				                    <li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
+				                    <li><a href="{{ url( '/faq' ) }}">FAQ</a></li>
+				                    <li><a href="{{ url( '/join' ) }}">Join Now</a></li>
 
 				                </ul>
 				            </div>
@@ -72,7 +72,7 @@
 					<div class="col-md-2">
 						<div class="right-area">
 						   <div class="link_btn float_right">
-							   <a href="#" class="thm-btn">Sign In</a>
+							   <a href="{{ url( '/login' ) }}" class="thm-btn">Sign In</a>
 						   </div>
 						</div>	
 					</div>
@@ -126,6 +126,8 @@
 	<script src="{{ asset( 'js/bootstrap-select.min.js' ) }}"></script>
 
 	<script src="{{ asset( 'js/custom.js' ) }}"></script>
+
+	@yield('js')
 	
 </body>
 

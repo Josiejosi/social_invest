@@ -56,4 +56,27 @@ class Helper {
 		] ;
 
 	}
+
+	/**
+	 * 
+	 * 
+	 * 
+	 */
+    public static function getCryptoData() {
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 1,
+		    CURLOPT_URL => 'https://api.mybitx.com/api/1/ticker?pair=XBTZAR'
+		));
+
+		$responce = curl_exec($curl);
+
+		curl_close($curl);
+
+		$data = json_decode( $responce )  ;
+
+		return $data->last_trade ;
+    }
 }
