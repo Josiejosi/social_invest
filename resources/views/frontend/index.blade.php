@@ -26,7 +26,7 @@
 						<div class="content-box">
 							<h3>75% monthly compounded growth</h3>
 							<p></p>
-							<a href="#" class="thm-btn">Join Us Now</a>
+							<a href="{{ url( '/join' ) }}" class="thm-btn">Join Us Now</a>
 						</div>
 					</div>
 				</div>

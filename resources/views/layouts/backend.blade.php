@@ -223,6 +223,7 @@
     <script src="{{ asset( 'js/dashboard.js' ) }}"></script>
     <script>
         $('#flash-overlay-modal').modal();
+        $('div.alert').not('.alert-important').delay(6000).fadeOut(350);
     </script>
 
     @yield('js')
