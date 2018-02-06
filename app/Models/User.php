@@ -22,6 +22,7 @@ class User extends Authenticatable
         'country', 
         'is_verified', 
         'verification_code', 
+        'cell_phone_number', 
         'referral_code', 
         'is_avtive', 
         'avatar', 
@@ -36,4 +37,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function account()
+    {
+        return $this->hasMany( Account::class ) ;
+    }
+
+    public function crpyto()
+    {
+        return $this->hasMany( Crpyto::class ) ;
+    }
 }

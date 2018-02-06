@@ -25,6 +25,10 @@ Route::get('faq', "FrontController@faq");
 Route::get('logout', "FrontController@logout");
 Route::get('forgot_password', "FrontController@forgot_password");
 
+Route::get('verification', "FrontController@verification");
+Route::post('verification', "FrontController@post_verification");
+Route::get('resend_verification_code', "FrontController@resend_verification_code");
+
 Route::get('home', "HomeController@index");
 Route::get('profile', "ProfileController@index");
 Route::get('messages', "MessageController@index");

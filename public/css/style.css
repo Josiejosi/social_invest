@@ -45,28 +45,11 @@
 
 @import url(bootstrap.min.css);
 @import url(bootstrap-select.min.css);
-@import url(jquery.bootstrap-touchspin.css);
 
 @import url(font-awesome.css);
 @import url(flaticon.css);
 
-
-@import url(../assets/revolution/css/settings.css);
-@import url(../assets/revolution/css/layers.css);
-@import url(../assets/revolution/css/navigation.css);
-
-@import url(owl.carousel.css);
-@import url(jquery.bxslider.css);
-@import url(flexslider.css);
-
-@import url(jquery-ui.css);
-@import url(jquery.fancybox.css);
-@import url(polyglot-language-switcher.css);
-
 @import url(animate.min.css);
-@import url(nouislider.css);
-@import url(nouislider.pips.css);
-@import url(magnific-popup.css);
 @import url(hover.css);
 
 /* 
@@ -5882,6 +5865,15 @@ input,textarea {display: block; font-size: 16px; line-height: 28px; outline: non
 
 .mainmenu-area .navigation > li.current > a {
     color: #3b75e3;
+}
+
+
+.help-block {
+    display: block;
+    padding: 0px ;
+    margin: 0px;
+    color: #a01a1a;
+    font-size: 12px;
 }
 
 .mobile-menu > li > a, .mobile-menu > li > ul > li > a, .mobile-menu > li > ul > li > ul > li > a {

@@ -2,16 +2,15 @@
 
 @section('content')
 
-
-@extends('layouts.frontend')
-
-@section('content')
-
     <section class="contact_us">
+
         <div class="container">   
+
             <div class="sec-title text-center">
-                <h3>Reset My Password</h3>
+                <h3>Account Blocked by Admin.</h3>
+                <p>If you like us to re-activate you account, please send use you details.</p>
             </div>
+            
             <div class="col-md-8 col-md-offset-2">
                 
                 <div class="default-form-area">
@@ -20,13 +19,17 @@
                         <div class="row clearfix">
                                         
                             <div class="form-group  style-two">
-                                <input type="email" name="email" class="form-control textarea" value="" placeholder="Email Address">
+                                <textarea 
+                                    name="user_details" 
+                                    class="form-control textarea" 
+                                    value="" 
+                                    placeholder="Login Details, and summary of why you would like to re-activate account."></textarea>
                             </div>
                             
                         </div>
                         <div class="contact-section-btn text-center">
                             <div class="form-group style-two">
-                                <button class="thm-btn thm-color" type="submit" data-loading-text="Please wait...">Send Link</button>
+                                <button class="thm-btn thm-color" type="submit" data-loading-text="Please wait...">Send Email</button>
                             </div>
                         </div> 
                     </form>
@@ -35,8 +38,5 @@
             </div>         
         </div>
     </section>
-
-@endsection
-
 
 @endsection

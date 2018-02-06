@@ -11,7 +11,7 @@
 
 	                <div class="up-main-info">
 	                    <h2 class="up-header">{{ $name }}</h2>
-	                    <h6 class="up-sub-header">{{ $level }}</h6></div>
+	                    <h6 class="up-sub-header">LEVEL {{ $level }}</h6></div>
 	                <svg class="decor" width="842px" height="219px" viewBox="0 0 842 219" preserveAspectRatio="xMaxYMax meet" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	                    <g transform="translate(-381.000000, -362.000000)" fill="#FFFFFF">
 	                        <path class="decor-path" d="M1223,362 L1223,581 L381,581 C868.912802,575.666667 1149.57947,502.666667 1223,362 Z"></path>
@@ -24,13 +24,13 @@
 	                    <div class="row m-b">
 	                        <div class="col-sm-6 b-r b-b">
 	                            <div class="el-tablo centered padded-v">
-	                                <div class="value">25</div>
+	                                <div class="value">0</div>
 	                                <div class="label">Referral Points</div>
 	                            </div>
 	                        </div>
 	                        <div class="col-sm-6 b-b">
 	                            <div class="el-tablo centered padded-v">
-	                                <div class="value">315</div>
+	                                <div class="value">0</div>
 	                                <div class="label">Donations</div>
 	                            </div>
 	                        </div>

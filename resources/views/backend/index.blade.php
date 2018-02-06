@@ -148,37 +148,39 @@
     <div class="row">
         <div class="col-sm-12">
 			<div class="element-wrapper">
-			    <h6 class="element-header">Recent Transactions</h6>
+			    <h6 class="element-header">Dream's Status</h6>
 			    <div class="element-box-tp">
 
 			        <div class="table-responsive">
 			            <table class="table table-bordered table-lg table-v2 table-striped">
 			                <thead>
 			                    <tr>
-			                        <th class="text-center">
-			                            <input class="form-control" type="checkbox">
-			                        </th>
-			                        <th>Customer Name</th>
-			                        <th>Country</th>
-			                        <th>Order Total</th>
-			                        <th>Referral</th>
+			                        <th>Dream Name</th>
+			                        <th>Dream Amount</th>
+			                        <th>Maturity Amount</th>
+			                        <th>Maturity Month(s)</th>
+			                        <th>Pay Date</th>
+			                        <th>Allocated Member</th>
 			                        <th>Status</th>
 			                        <th>Actions</th>
 			                    </tr>
 			                </thead>
 			                <tbody>
 			                    <tr>
+			                        <td class="text-center">Demo Dream</td>
+			                        <td class="text-right">0.00 ZAR</td>
+			                        <td class="text-right">0.00 ZAR</td>
+			                        <td>0 Month</td>
+			                        <td>00-00-0000</td>
+			                        <td>Unknown</td>
 			                        <td class="text-center">
-			                            <input class="form-control" type="checkbox">
+			                            <div class="status-pill green" data-title="Complete" data-toggle="tooltip" data-original-title="" title=""></div> Active
 			                        </td>
-			                        <td>John Mayers</td>
-			                        <td><img alt="" src="img/flags-icons/us.png" width="25px"></td>
-			                        <td class="text-right">$245</td>
-			                        <td>Organic</td>
-			                        <td class="text-center">
-			                            <div class="status-pill green" data-title="Complete" data-toggle="tooltip" data-original-title="" title=""></div>
+			                        <td class="row-actions">
+			                        	<a href="#">
+			                        		<i class="os-icon os-icon-ui-49"></i> Withdraw
+			                        	</a>
 			                        </td>
-			                        <td class="row-actions"><a href="#"><i class="os-icon os-icon-ui-49"></i></a><a href="#"><i class="os-icon os-icon-grid-10"></i></a><a class="danger" href="#"><i class="os-icon os-icon-ui-15"></i></a></td>
 			                    </tr>
 
 			                </tbody>

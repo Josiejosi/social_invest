@@ -3,14 +3,14 @@
 
 <head>
 
-    <title>My Crypto Seed | {{ $title }}</title>
+    <title>BITEZIX | {{ $title }}</title>
 
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
 
-    <meta content="My Crypto Seed" name="keywords">
-    <meta content="My Crypto Seed" name="author">
-    <meta content="My Crypto Seed, Peer to Peer Donations" name="description">
+    <meta content="BITEZIX" name="keywords">
+    <meta content="BITEZIX" name="author">
+    <meta content="BITEZIX, Peer to Peer Donations" name="description">
 
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
@@ -43,7 +43,7 @@
 
             <div class="menu-mobile menu-activated-on-click color-scheme-dark">
                 <div class="mm-logo-buttons-w">
-                    <a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="CRYPTO SEED"></a>
+                    <a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="BITEZIX"></a>
                     <div class="mm-buttons">
                         <div class="mobile-menu-trigger">
                             <div class="os-icon os-icon-hamburger-menu-1"></div>
@@ -98,6 +98,16 @@
                                 <span>Profile</span>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="{{ url('/logout') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-signs-11"></div>
+                                </div>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+
                     </ul>
 
                 </div>
@@ -107,7 +117,7 @@
                 <div class="logo-w">
                     <a class="logo" href="index.html">
                         <img src="{{ asset( 'images/favicon/favicon-32x32.png' ) }}">
-                        <div class="logo-label">My Crypto Seed</div>
+                        <div class="logo-label">ITEZIX</div>
                     </a>
                 </div>
                 <div class="menu-and-user">
@@ -172,6 +182,15 @@
                                 <span>Profile</span>
                             </a>
 
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/logout') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-signs-11"></div>
+                                </div>
+                                <span>Logout</span>
+                            </a>
                         </li>
 
                     </ul>

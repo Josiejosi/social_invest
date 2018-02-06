@@ -17,7 +17,7 @@
                         <div class="row clearfix">
                             <div class="col-md-6 col-sm-6 col-xs-12">             
                                 <div class="form-group">
-                                    <input type="text" name="username" class="form-control" value="" placeholder="Email Address">
+                                    <input type="email" name="email" class="form-control" value="" placeholder="Email Address">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">             
@@ -28,7 +28,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">             
 							  <div class="checkbox">
 							    <label>
-							      <input type="checkbox"> Remeber me
+							      <input type="checkbox" name="remember_me"> Remember me
 							    </label>
 							  </div>
                             </div>

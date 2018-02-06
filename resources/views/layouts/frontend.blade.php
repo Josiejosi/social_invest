@@ -6,11 +6,11 @@
 <head>
 	<meta charset="UTF-8">
 	
-	<title>My Crypto Seed | {{ $title }}</title> 
+	<title>BITEZIX | {{ $title }}</title> 
 
-    <meta content="My Crypto Seed" name="keywords">
-    <meta content="My Crypto Seed" name="author">
-    <meta content="My Crypto Seed, Peer to Peer Donations" name="description">
+    <meta content="BITEZIX name="keywords">
+    <meta content="BITEZIX" name="author">
+    <meta content="BITEZIX, Peer to Peer Donations" name="description">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,7 +35,7 @@
 		    	<div class="row">
 		    		<div class="col-md-5">
 						<div class="main-logo">
-							<a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="CRYPTO SEED"></a>
+							<a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="BITEZIX"></a>
 						</div>
 					</div>
 					<div class="col-md-5 menu-column">
@@ -119,7 +119,7 @@
 	    </footer>
 	    <div class="footer-bottom text-center">
 	        <div class="container">
-	            <div class="copyright">Copyright © <?=date('Y')?> <a href="#">MY CRYPTO SEED.</a> All rights reserved.</div>
+	            <div class="copyright">Copyright © <?=date('Y')?> <a href="{{ url( '/' ) }}">BITEZIX.</a> All rights reserved.</div>
 	        </div>
 	    </div>
 
