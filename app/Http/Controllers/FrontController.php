@@ -23,8 +23,14 @@ use App\Jobs\ResendVerificationCodeJob;
 class FrontController extends Controller
 {
     public function index() {
-    	$crypto_rate = Helper::getCryptoData() ;
-    	return view( "frontend.index", Helper::PageBuilder( "Home", ["crypto_rate"=>$crypto_rate] ) ) ;
+
+        $data                       = [
+            "btc_rate"              => Helper::getCryptoData(),
+    	    "eth_rate"              => Helper::getETHData(),
+
+        ] ;
+
+    	return view( "frontend.index", Helper::PageBuilder( "Home", $data ) ) ;
     }
     public function join() {
         return view( "frontend.join", Helper::PageBuilder( "Join" ) ) ;
@@ -128,11 +134,20 @@ class FrontController extends Controller
     }
 
     public function calculator() {
-    	$crypto_rate = Helper::getCryptoData() ;
+
+        $data                       = [
+            
+            "btc_rate"              => Helper::getCryptoData(),
+            "eth_rate"              => Helper::getETHData(),
+
+        ] ;
+
     	return view( "frontend.calculator", Helper::PageBuilder( 
-    			"Get an accurate figure for your investment", ["crypto_rate"=>$crypto_rate] 
+    			"Get an accurate figure for your investment", 
+                $data
     		) 
     	) ;
+
     }
     public function login() {
     	return view( "frontend.login", Helper::PageBuilder( "Login to the platform" ) ) ;

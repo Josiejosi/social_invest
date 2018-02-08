@@ -78,16 +78,39 @@
 
 			curl_setopt_array($curl, array(
 			    CURLOPT_RETURNTRANSFER => 1,
-			    CURLOPT_URL => 'https://api.mybitx.com/api/1/ticker?pair=XBTZAR'
+			    CURLOPT_URL => 'https://api.bitfinex.com/v1/ticker/btcusd'
 			));
 
 			$responce = curl_exec($curl);
 
 			curl_close($curl);
 
-			$data = json_decode( $responce )  ;
+			$data = json_decode( $responce, true )  ;
 
-			return $data->last_trade ;
+			return $data["last_price"] ;
+	    }
+
+		/**
+		 * 
+		 * 
+		 * 
+		 */
+	    public static function getETHData() {
+
+			$curl = curl_init();
+
+			curl_setopt_array($curl, array(
+			    CURLOPT_RETURNTRANSFER => 1,
+			    CURLOPT_URL => 'https://api.bitfinex.com/v1/ticker/ethusd'
+			));
+
+			$responce = curl_exec($curl);
+
+			curl_close($curl);
+
+			$data = json_decode( $responce, true )  ;
+
+			return $data["last_price"] ;
 	    }
 
 	    /**

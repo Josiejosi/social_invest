@@ -1,5 +1,5 @@
-	var bitcoin_value 			= crypto_rate ;
-	var ethuruem_value 			= crypto_rate ;
+	var bitcoin_value 			= btc_rate ;
+	var ethuruem_value 			= eth_rate ;
 
 	var total_cash_amount 		= 0 ;
 	var total_bitcoin_amount 	= 0 ;
@@ -26,9 +26,9 @@ $("#btnCalculate").on('click', function(e){
 	total_cash_amount 			= Math.round( compond_growth, 10 ) ;
 
 	total_bitcoin_amount 		= total_cash_amount / bitcoin_value ;
-	//total_bitcoin_amount 		= Math.round( total_bitcoin_amount, 8 ) ;
+
 	total_ethuruem_amount 		= total_cash_amount / ethuruem_value ;
-	//total_ethuruem_amount 		= Math.round( total_ethuruem_amount, 8 ) ;
+	
 
 	$("#display_investment").show() ;
 	$("#cash_span").html( "$ " + total_cash_amount + " USD" )

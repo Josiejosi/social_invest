@@ -25,7 +25,7 @@
 			            <div class="col-sm-4">
 			                <a class="element-box el-tablo" href="#">
 			                    <div class="label">Funds Received</div>
-			                    <div class="value">ZAR {{ round( (float) $funds_received, 2 ) }}</div>
+			                    <div class="value">$ {{ round( (float) $funds_received, 2 ) }} USD</div>
 			                </a>
 			            </div>
 			        </div>

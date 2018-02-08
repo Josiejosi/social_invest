@@ -57,7 +57,8 @@
 
 @section('js')
     <script>
-        var crypto_rate = {{ $data["crypto_rate"] }} ;
+        var btc_rate = {{ $data["btc_rate"] }} ;
+        var eth_rate = {{ $data["eth_rate"] }} ;
     </script>
     <script src="{{ asset( 'js/calculator.js' ) }}"></script>
 @endsection
