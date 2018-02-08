@@ -234,6 +234,25 @@
 
         <div class="display-type"></div>
 
+        <div class="modal" id="funds_withdrawal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Funds Withdrawal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Funds can only be withdrawn once, an of your created dreams have matured.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
 
     <script src="{{ asset( 'js/jquery.js' ) }}"></script>

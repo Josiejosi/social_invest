@@ -11,6 +11,7 @@ use App\Models\Role ;
 use App\Models\Level ;
 use App\Models\Crpyto ;
 use App\Models\Account ;
+use App\Models\Referral ;
 use App\Models\RoleUser ;
 use App\Models\LevelUser ;
 
@@ -26,7 +27,16 @@ class FrontController extends Controller
     	return view( "frontend.index", Helper::PageBuilder( "Home", ["crypto_rate"=>$crypto_rate] ) ) ;
     }
     public function join() {
-    	return view( "frontend.join", Helper::PageBuilder( "Join now" ) ) ;
+        return view( "frontend.join", Helper::PageBuilder( "Join" ) ) ;
+    }
+
+    public function join_by_referral( $referral_code ) {
+
+        $referral_code              = [
+            'referral_code'         => $referral_code,
+        ] ;
+
+    	return view( "frontend.join", Helper::PageBuilder( "Join", $referral_code ) ) ;
     }
 
     public function register( Request $request ) {
@@ -114,6 +124,19 @@ class FrontController extends Controller
             'role_id'                   => $role->id, 
 
         ]) ;
+
+        if ( isset( $request->referral_code ) ) {
+
+            $refera                     = User::whereReferralCode( $request->referral_code )->first() ;
+
+            Referral::create([
+
+                'referral_by'           => $refera->id, 
+                'referral_to'           => $user->id, 
+                'is_referred'           => true, 
+
+            ]) ;
+        }
 
 	    WelcomeEmailJob::dispatch( $user )->onQueue('WelcomeEmail') ;
 

@@ -218,14 +218,34 @@
 			    <div class="element-content">
 
 					<div class="alert alert-info borderless">
+
 					    <p>Withdraw Funds</p>
-					    <div class="alert-btn"><a class="btn btn-white-gold btn-block" href="#">Withdraw</a></div>
+
+					    <div class="alert-btn">
+					    	<a 
+					    		class="btn btn-white-gold btn-block" 
+								data-target="#funds_withdrawal"
+								 data-toggle="modal" 
+					    		href="#">
+
+					    		Withdraw
+
+					    	</a>
+
+					    </div>
+
 					</div>
 
 					<div class="alert alert-info borderless">
 					    <h5 class="alert-heading">Refer Friends. Get Rewarded</h5>
-					    <p>You can earn: 15,000 Membership Rewards points for each approved referral – up to 55,000 Membership Rewards points per calendar year.</p>
-					    <div class="alert-btn"><a class="btn btn-white-gold" href="#"><i class="os-icon os-icon-ui-92"></i><span>Send Referral</span></a></div>
+					    <p>
+					    	Each Friend you receive you get 10 ZAR.
+					    	<br />
+					    	<a href="{{ url( '/join' ) }}/{{ auth()->user()->referral_code }}">
+					    		<strong>{{ url( '/join' ) }}/{{ auth()->user()->referral_code }}</strong>
+					    	</a>
+					    </p>
+
 					</div>
 
 			    </div>
@@ -323,7 +343,7 @@
 
 					                        </td>
 					                        <td class="row-actions">
-					                        	<a href="#">
+					                        	<a href="#" data-toggle="modal" data-target="#funds_withdrawal">
 					                        		<i class="os-icon os-icon-ui-49"></i> Withdraw
 					                        	</a>
 					                        </td>

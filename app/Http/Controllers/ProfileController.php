@@ -17,8 +17,13 @@ class ProfileController extends Controller
 	
     public function index() {
 
+    	$referral_points 			= [
 
-    	return view( "backend.profile", Helper::PageBuilder( "Profile" ) ) ;
+    		"referral_points" 		=> Helper::getReferralPoints( auth()->user()->id ),
+    		
+    	] ;
+
+    	return view( "backend.profile", Helper::PageBuilder( "Profile", $referral_points ) ) ;
 
     }
 

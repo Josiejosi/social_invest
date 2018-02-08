@@ -24,14 +24,14 @@
 	                    <div class="row m-b">
 	                        <div class="col-sm-6 b-r b-b">
 	                            <div class="el-tablo centered padded-v">
-	                                <div class="value">0</div>
+	                                <div class="value">{{ $data["referral_points"] }}</div>
 	                                <div class="label">Referral Points</div>
 	                            </div>
 	                        </div>
 	                        <div class="col-sm-6 b-b">
 	                            <div class="el-tablo centered padded-v">
 	                                <div class="value">0</div>
-	                                <div class="label">Donations</div>
+	                                <div class="label">HELP Provided</div>
 	                            </div>
 	                        </div>
 	                    </div>

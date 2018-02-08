@@ -182,7 +182,25 @@
                                     @if ($errors->has('ethereum_address'))
                                     <span class="help-block has-error">{{ $errors->first('ethereum_address') }}</span>
                                     @endif
-                            </div>                                             
+                            </div>
+
+                            @if ( isset( $data["referral_code"] ) ) 
+                            <div class="form-group style-two">
+
+                                <input type="text" 
+                                        name="referral_code" 
+                                        class="form-control textarea"
+                                        readonly="true" 
+                                        value="{{ $data["referral_code"] }}"
+                                        placeholder="Referral Code">
+
+
+                                
+                                <span class="help-block has-info">Referral Code</span>
+                                
+                            </div>
+
+                            @endif                                             
                         </div>
                         <div class="contact-section-btn text-center">
                             <div class="form-group style-two">

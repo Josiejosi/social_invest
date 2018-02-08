@@ -1,6 +1,7 @@
 <?php namespace App\Helpers;
 
 	use App\Models\LevelUser ;
+	use App\Models\Referral ;
 	use App\Models\Level ;
 
 	class Helper {
@@ -45,7 +46,9 @@
 			}
 
 			$level						= 1 ;
-			
+
+			if ( auth()->check() )
+				$level 					= self::getUserLevel( auth()->user()->id ) ;
 
 			$build_data 				= [
 				'title'					=> $title,
@@ -99,6 +102,18 @@
 	    	$level 		= ( Level::find( $user_level->level_id ) )->level ;
 
 	    	return $level ;
+
+	    }
+
+	    /**
+	     * 
+	     * 
+	     * 
+	     */
+
+	    public static function getReferralPoints( $user_id ) {
+
+	    	return Referral::whereReferralBy( $user_id )->count() ;
 
 	    }
 	}

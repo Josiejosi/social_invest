@@ -3,6 +3,7 @@
 	Route::get('/', 							"FrontController@index")->name('index') ;
 
 	Route::get('join', 							"FrontController@join")->name('join') ;
+	Route::get('join/{referral_code}', 			"FrontController@join_by_referral")->name('join_by_referral') ;
 	Route::post('register', 					"FrontController@register") ;
 
 	Route::get('calculator', 					"FrontController@calculator")->name('calculator')  ;
