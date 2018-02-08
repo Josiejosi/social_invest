@@ -6,14 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateTransactionsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     * 
-     * reference_code, account_id, dream_id, donar
-     * 
-     */
+
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
@@ -21,23 +14,15 @@ class CreateTransactionsTable extends Migration
             $table->string('transaction_reference_code');
             $table->float('amount');
             $table->integer('level');
-            $table->integer('status');
-            $table->integer('account_id')->unsigned()->nullable();
+            $table->integer('status'); //0 - Un allocated, 1- allocated, 2 - paid. in dream 3 matured.
             $table->integer('dream_id')->unsigned();
-            $table->integer('donar_id')->unsigned() ;
-            $table->timestamps();
+            $table->integer('donar_id')->unsigned()->nullable() ;
 
-            $table->foreign('donar_id')->references('id')->on('users');
+            $table->timestamps();
             $table->foreign('dream_id')->references('id')->on('dreams');
-            $table->foreign('account_id')->references('id')->on('accounts');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('transactions');

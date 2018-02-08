@@ -3,10 +3,10 @@
 
 ## Registered Details.
 
-** Name: ** {{ $user->name }} {{ $user->surname }}
-** Cell: ** {{ $user->cell_phone_number }}
-** Email: ** {{ $user->email }}
-** Password: **  *********
+** Name: ** {{ $user->name }} {{ $user->surname }}.
+** Cell: ** {{ $user->cell_phone_number }}.
+** Email: ** {{ $user->email }}.
+** Password: **  *********.
 
 ** VERIFICATION CODE: **  {{ $user->verification_code }}
 

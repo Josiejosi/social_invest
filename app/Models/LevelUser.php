@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class LevelUser extends Model
 {
+	
+	protected $table = 'level_user' ;
 
     protected $fillable = [
-        'bank_name', 
-        'account_number', 
-        'branch_code', 
-        'is_active', 
+
         'user_id', 
+        'level_id', 
+
     ] ;
 
 }

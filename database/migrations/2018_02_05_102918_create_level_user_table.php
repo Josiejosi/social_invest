@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateLevelUserTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('level_user', function (Blueprint $table) {
@@ -24,13 +20,9 @@ class CreateLevelUserTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('level_user');
     }
+    
 }

@@ -47,4 +47,25 @@ class User extends Authenticatable
     {
         return $this->hasMany( Crpyto::class ) ;
     }
+
+    public function dream()
+    {
+        return $this->hasMany( Dream::class ) ;
+    }
+
+    public function role()
+    {
+        return $this->hasOne( Role::class ) ;
+    }
+
+    public function level()
+    {
+        return $this->hasOne( Level::class ) ;
+    }
+
+    public function messages()
+    {
+        return $this->hasMany( Message::class ) ;
+    }
+
 }

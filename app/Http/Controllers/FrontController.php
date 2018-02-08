@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 use App\Helpers\Helper ;
 
 use App\Models\User ;
+use App\Models\Role ;
+use App\Models\Level ;
 use App\Models\Crpyto ;
 use App\Models\Account ;
+use App\Models\RoleUser ;
+use App\Models\LevelUser ;
 
 use App\Jobs\WelcomeEmailJob;
 use App\Jobs\ResetPasswordJob;
@@ -92,6 +96,24 @@ class FrontController extends Controller
 
 	    	$is_ethereum_set = true ;
 	    }
+
+        $level                          = Level::whereLevel(1)->first() ;
+
+        $role                           = Role::whereName("member")->first() ;
+
+        LevelUser::create([
+
+            'user_id'                   => $user->id, 
+            'level_id'                  => $level->id, 
+
+        ]) ;
+
+        RoleUser::create([
+
+            'user_id'                   => $user->id, 
+            'role_id'                   => $role->id, 
+
+        ]) ;
 
 	    WelcomeEmailJob::dispatch( $user )->onQueue('WelcomeEmail') ;
 

@@ -13,40 +13,118 @@
 
 	                <div class="row">
 	                    <div class="col-sm-12">
-	                        <table id="transactions" width="100%" class="table table-striped table-lightfont dataTable" role="grid" aria-describedby="dataTable1_info" style="width: 100%;">
-	                            <thead>
-	                                <tr>
-	                                    <th rowspan="1" colspan="1">Reference Code</th>
-	                                    <th rowspan="1" colspan="1">Sender</th>
-	                                    <th rowspan="1" colspan="1">Receiver</th>
-	                                    <th rowspan="1" colspan="1">Account</th>
-	                                    <th rowspan="1" colspan="1">Date</th>
-	                                    <th rowspan="1" colspan="1">Amount</th>
-	                                </tr>
-	                            </thead>
+					        <div class="table-responsive">
+					            <table class="table table-bordered table-lg table-v2 table-striped">
+					                <thead>
+					                    <tr>
+					                        <th>Ref Code</th>
+					                        <th>Amount</th>
+					                        <th>Created Date</th>
+					                        <th>Member</th>
+					                        <th>Status</th>
+					                        <th>Actions</th>
+					                    </tr>
+					                </thead>
+					                <tbody>
 
-	                            <tbody>
-	                                <tr role="row">
-	                                    <td">No new transactions</td>
-	                                    <td></td>
-	                                    <td></td>
-	                                    <td></td>
-	                                    <td></td>
-	                                    <td></td>
-	                                    <td></td>
-	                                </tr>
-	                            </tbody>
-	                            <tfoot>
-	                                <tr>
-	                                    <th rowspan="1" colspan="1">Reference Code</th>
-	                                    <th rowspan="1" colspan="1">Sender</th>
-	                                    <th rowspan="1" colspan="1">Receiver</th>
-	                                    <th rowspan="1" colspan="1">Account</th>
-	                                    <th rowspan="1" colspan="1">Date</th>
-	                                    <th rowspan="1" colspan="1">Amount</th>
-	                                </tr>
-	                            </tfoot>
-	                        </table>
+				                	@if ( count( $data ) > 0 )
+
+					                	@foreach( $data as $transaction )
+
+					                    <tr>
+					                        <td class="text-center">
+					                        	{{ $transaction->transaction_reference_code }}
+					                        </td>
+					                        <td class="text-right">
+					                        	{{ $transaction->amount }} ZAR
+					                        </td>
+					                        <td class="text-right">
+					                        	{{ $transaction->created_at->diffForHumans() }}
+					                        </td>
+					                        <td>
+					                        	
+												@if ( $transaction->donar_id === 0 )
+
+													Unallocated
+													
+												@else
+													<?php 
+
+														$user = \App\Models\User::find( $transaction->donar_id ) ;
+
+														echo $user->name . " " . $user->surname ;
+
+													?>
+												@endif					                    
+
+					                        </td>
+					                        <td class="text-center">
+		
+												@if ( $transaction->status === 0 )
+
+					                            <div 
+					                            	class="status-pill red" 
+					                            	data-title="Complete" 
+					                            	data-toggle="tooltip" 
+					                            	data-original-title="" 
+					                            	title=""></div> Awaiting allocation
+
+					                            @elseif ( $transaction->status === 1 )
+
+					                            <div 
+					                            	class="status-pill yellow" 
+					                            	data-title="Complete" 
+					                            	data-toggle="tooltip" 
+					                            	data-original-title="" 
+					                            	title=""></div> Member allocated
+
+					                            @elseif ( $transaction->status === 2 )
+
+					                            <div 
+					                            	class="status-pill yellow" 
+					                            	data-title="Complete" 
+					                            	data-toggle="tooltip" 
+					                            	data-original-title="" 
+					                            	title=""></div> Awaiting Approval
+
+					                            @elseif ( $transaction->status === 3 )
+
+					                            <div 
+					                            	class="status-pill green" 
+					                            	data-title="Complete" 
+					                            	data-toggle="tooltip" 
+					                            	data-original-title="" 
+					                            	title=""></div> Complete					                   
+
+												@endif
+
+					                        </td>
+					                        <td class="row-actions">
+					                        	<a href="#">
+					                        		<i class="os-icon os-icon-ui-49"></i> PDF
+					                        	</a>
+					                        </td>
+					                    </tr>
+
+				                    @endforeach
+
+								@else
+
+					                    <tr>
+					                        <td class="text-center">You have no transactions.</td>
+					                        <td></td>
+					                        <td></td>
+					                        <td></td>
+					                        <td></td>
+					                        <td></td>
+					                    </tr>
+
+								@endif					                    					        
+
+					                </tbody>
+
+					            </table>
+					        </div>
 	                    </div>
 	                </div>
 	            </div>

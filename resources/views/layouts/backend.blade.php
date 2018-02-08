@@ -30,6 +30,10 @@
             padding: 6px;
         }
 
+        .yellow {
+            background: #FFFF00 ;
+        }
+
     </style>
 
 </head>

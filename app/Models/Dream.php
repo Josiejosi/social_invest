@@ -15,4 +15,9 @@ class Dream extends Model
         'deposit_type', 
         'user_id', 
     ];
+
+    public function transaction()
+    {
+        return $this->hasOne( Transaction::class ) ;
+    }
 }
