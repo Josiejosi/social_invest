@@ -8,7 +8,7 @@
 
             <div class="sec-title text-center">
                 <h3>Account Blocked by Admin.</h3>
-                <p>If you like us to re-activate you account, please send use you details.</p>
+                <p>If you like us to re-activate you account, please send us you details.</p>
             </div>
             
             <div class="col-md-8 col-md-offset-2">

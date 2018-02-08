@@ -10,12 +10,14 @@
     <section class="contact_us">
         <div class="container">   
             <div class="sec-title text-center">
-                <h3>Reset My Password</h3>
+                <h3>Password Reset</h3>
             </div>
             <div class="col-md-8 col-md-offset-2">
                 
                 <div class="default-form-area">
-                    <form  class="col-md-10 col-md-offset-1 default-form">
+                    <form  class="col-md-10 col-md-offset-1 default-form" method="post" action="{{ url( '/forgot_password' ) }}">
+
+                        {!! csrf_field() !!}
 
                         <div class="row clearfix">
                                         

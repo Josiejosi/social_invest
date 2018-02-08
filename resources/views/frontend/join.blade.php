@@ -30,7 +30,7 @@
                                        name="name" 
                                        class="form-control" 
                                        value="{{ old('name') }}" 
-                                       placeholder="Name">
+                                       placeholder="First Name">
 
                                 @if ($errors->has('name'))
                                 <span class="help-block has-error">{{ $errors->first('name') }}</span>
@@ -43,7 +43,7 @@
                                        name="surname" 
                                        class="form-control textarea" 
                                        value="{{ old('surname') }}" 
-                                       placeholder="Surname">
+                                       placeholder="Last Name">
 
                             </div>
 
@@ -103,7 +103,7 @@
                             </div>
                          
                         <div class="sec-title text-center">
-                            <h4>Banking Details</h4> 
+                            <h4>Payment Details</h4> 
                             <p>Please feel free to leave any field that does not apply to you</p>
                         </div>
 

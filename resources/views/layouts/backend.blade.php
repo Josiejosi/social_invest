@@ -3,14 +3,14 @@
 
 <head>
 
-    <title>BITEZIX | {{ $title }}</title>
+    <title>BITROSEED | {{ $title }}</title>
 
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
 
-    <meta content="BITEZIX" name="keywords">
-    <meta content="BITEZIX" name="author">
-    <meta content="BITEZIX, Peer to Peer Donations" name="description">
+    <meta content="BITROSEED" name="keywords">
+    <meta content="BITROSEED" name="author">
+    <meta content="BITROSEED, Peer to Peer Donations" name="description">
 
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
@@ -43,7 +43,7 @@
 
             <div class="menu-mobile menu-activated-on-click color-scheme-dark">
                 <div class="mm-logo-buttons-w">
-                    <a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="BITEZIX"></a>
+                    <a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="BITROSEED"></a>
                     <div class="mm-buttons">
                         <div class="mobile-menu-trigger">
                             <div class="os-icon os-icon-hamburger-menu-1"></div>
@@ -117,7 +117,7 @@
                 <div class="logo-w">
                     <a class="logo" href="index.html">
                         <img src="{{ asset( 'images/favicon/favicon-32x32.png' ) }}">
-                        <div class="logo-label">ITEZIX</div>
+                        <div class="logo-label">ITROSEED</div>
                     </a>
                 </div>
                 <div class="menu-and-user">

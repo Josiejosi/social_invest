@@ -11,6 +11,8 @@ use App\Models\Crpyto ;
 use App\Models\Account ;
 
 use App\Jobs\WelcomeEmailJob;
+use App\Jobs\ResetPasswordJob;
+use App\Jobs\ResendVerificationCodeJob;
 
 
 class FrontController extends Controller
@@ -31,35 +33,9 @@ class FrontController extends Controller
             'cell_phone_number' 	=> 'required|unique:users|numeric',
             'name' 					=> 'required',
             'account_number'  		=> 'unique:accounts',
-            'password'  			=> 'required:confirmed',
+            'password'  			=> 'required:confirmed|min:6|max:12',
 
 	    ]);
-
-/*	    $validated->after(function ($validated) {
-
-	        if ( isset( $request->bitcoin_address ) ) {
-
-	        	if ( Crpyto::whereAddress( $request->bitcoin_address )->count() ) {
-
-	            	$validated->errors()->add('bitcoin_address', 'Sorry, this bitcoin address is already taken.') ;
-	            	
-	        	}
-
-	        }
-
-	        if ( isset( $request->ethereum_address ) ) {
-
-	        	if ( Crpyto::whereAddress( $request->ethereum_address )->count() ) {
-
-	            	$validated->errors()->add('ethereum_address', 'Sorry, this ethereum address is already taken.') ;
-
-	        	}
-
-	        }
-
-	    });*/
-
-	    //$remember 						= $request->name ;
 
 
 	    $user 							= User::create([
@@ -117,7 +93,7 @@ class FrontController extends Controller
 	    	$is_ethereum_set = true ;
 	    }
 
-	    WelcomeEmailJob::dispatch( $user )->onQueue('WelcomeEmail');
+	    WelcomeEmailJob::dispatch( $user )->onQueue('WelcomeEmail') ;
 
 	    if ( auth()->attempt( ['email' => $request->email, 'password' => $request->password] ) ) {
     		flash('Your account was successfully created, an email was send to you with a verification code.')->success() ;
@@ -167,7 +143,53 @@ class FrontController extends Controller
     }
 
     public function forgot_password() {
-    	return view( "frontend.forgot_password", Helper::PageBuilder( "Forgot Password" ) ) ;
+        return view( "frontend.forgot_password", Helper::PageBuilder( "Forgot Password" ) ) ;
+    }
+
+    public function post_forgot_password( Request $request ) {
+
+        
+        if ( User::whereEmail($request->email)->count() == 1 ) {
+
+           $user = User::whereEmail($request->email)->first() ; 
+
+            ResetPasswordJob::dispatch( $user )->onQueue('ResetPassword');
+            
+            flash( 'An email with your verification code was successfully send to you.' )->info() ;
+
+            return redirect()->back() ;
+
+        } else {
+            flash( 'Sorry your email address does not match any of our records.' )->warning() ;
+            return redirect()->back() ;
+        }
+        
+
+
+    }
+
+    public function reset_password() {
+        return view( "frontend.reset_password", Helper::PageBuilder( "Forgot Password" ) ) ;
+    }
+
+    public function post_reset_password( Request $request ) {
+
+        if ( User::whereEmail($request->email)->count() == 1 ) {
+
+            if ($request->password == $request->password ) {
+                User::whereEmail($request->email)->update(['password' => bcrypt($request->password)]) ; 
+                flash( 'You password was successfully reset.' )->info() ;     
+            } else {
+                flash( 'Please confirm password.' )->warning() ;
+            }
+
+        } else {
+            flash( 'Sorry your email address does not match any of our records.' )->warning() ;
+            
+        }
+
+        return redirect()->back() ;
+
     }
 
     public function verification() {
@@ -185,6 +207,19 @@ class FrontController extends Controller
 	    	return redirect()->back() ;    		
     	}
 
+    }
+
+    public function blocked() {
+    	return view( "frontend.blocked", Helper::PageBuilder( "Blocked Account" ) ) ;
+    }
+
+    public function resend_verification_code() {
+
+        ResendVerificationCodeJob::dispatch( auth()->user() )->onQueue('ResendVerificationCodeEmail');
+        
+        flash( 'An email with your verification code was successfully send to you.' )->info() ;
+
+        return redirect()->back() ;
     }
 
     public function logout() {

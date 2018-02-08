@@ -6,11 +6,11 @@
 <head>
 	<meta charset="UTF-8">
 	
-	<title>BITEZIX | {{ $title }}</title> 
+	<title>BITROSEED | {{ $title }}</title> 
 
-    <meta content="BITEZIX name="keywords">
-    <meta content="BITEZIX" name="author">
-    <meta content="BITEZIX, Peer to Peer Donations" name="description">
+    <meta content="BITROSEED name="keywords">
+    <meta content="BITROSEED" name="author">
+    <meta content="BITROSEED, Peer to Peer Donations" name="description">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,7 +35,7 @@
 		    	<div class="row">
 		    		<div class="col-md-5">
 						<div class="main-logo">
-							<a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="BITEZIX"></a>
+							<a href="#"><img src="{{ asset( 'images/logo/logo.png' ) }}" alt="BITROSEED"></a>
 						</div>
 					</div>
 					<div class="col-md-5 menu-column">
@@ -50,20 +50,58 @@
 				            </div>
 				            <div class="navbar-collapse collapse clearfix">
 				                <ul class="navigation clearfix">
+				                	
+									@if ( Route::currentRouteName() === "index" )
+				                    	<li class="current"><a href="{{ url( '/' ) }}">Home</a></li> 
+				                    @else
+				                    	<li><a href="{{ url( '/' ) }}">Home</a></li>
+									@endif
 
-				                    <li class="current"><a href="{{ url( '/' ) }}">Home</a></li>                 
-				                    <li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
-				                    <li><a href="{{ url( '/faq' ) }}">FAQ</a></li>
-				                    <li><a href="{{ url( '/join' ) }}">Join Now</a></li>
+									@if ( Route::currentRouteName() === "calculator" )
+				                    	<li class="current"><a href="{{ url( '/calculator' ) }}">Calculator</a></li> 
+				                    @else
+				                    	<li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
+									@endif
+
+									@if ( Route::currentRouteName() === "faq" )
+				                    	<li class="current"><a href="{{ url( '/faq' ) }}">FAQ</a></li> 
+				                    @else
+				                    	<li><a href="{{ url( '/faq' ) }}">FAQ</a></li>
+									@endif									
+				                    
+									@if ( Route::currentRouteName() === "join" )
+				                    	<li class="current"><a href="{{ url( '/join' ) }}">Join Now</a></li>
+				                    @else
+				                    	<li><a href="{{ url( '/join' ) }}">Join Now</a></li>
+									@endif
 
 				                </ul>
 
 				                <ul class="mobile-menu clearfix">
 
-				                    <li class="current"><a href="{{ url( '/' ) }}">Home</a></li>                 
-				                    <li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
-				                    <li><a href="{{ url( '/faq' ) }}">FAQ</a></li>
-				                    <li><a href="{{ url( '/join' ) }}">Join Now</a></li>
+									@if ( Route::currentRouteName() === "index" )
+				                    	<li class="current"><a href="{{ url( '/' ) }}">Home</a></li> 
+				                    @else
+				                    	<li><a href="{{ url( '/' ) }}">Home</a></li>
+									@endif
+
+									@if ( Route::currentRouteName() === "calculator" )
+				                    	<li class="current"><a href="{{ url( '/calculator' ) }}">Calculator</a></li> 
+				                    @else
+				                    	<li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
+									@endif
+
+									@if ( Route::currentRouteName() === "faq" )
+				                    	<li class="current"><a href="{{ url( '/faq' ) }}">FAQ</a></li> 
+				                    @else
+				                    	<li><a href="{{ url( '/faq' ) }}">FAQ</a></li>
+									@endif									
+				                    
+									@if ( Route::currentRouteName() === "join" )
+				                    	<li class="current"><a href="{{ url( '/join' ) }}">Join Now</a></li>
+				                    @else
+				                    	<li><a href="{{ url( '/join' ) }}">Join Now</a></li>
+									@endif
 
 				                </ul>
 				            </div>
@@ -119,7 +157,7 @@
 	    </footer>
 	    <div class="footer-bottom text-center">
 	        <div class="container">
-	            <div class="copyright">Copyright © <?=date('Y')?> <a href="{{ url( '/' ) }}">BITEZIX.</a> All rights reserved.</div>
+	            <div class="copyright">Copyright © <?=date('Y')?> <a href="{{ url( '/' ) }}">BITROSEED.</a> All rights reserved.</div>
 	        </div>
 	    </div>
 

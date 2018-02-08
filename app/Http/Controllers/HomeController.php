@@ -6,18 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Helpers\Helper ;
 
+use App\Models\Dream ;
+
 class HomeController extends Controller
 {
+    public function __construct() { $this->middleware('auth') ; }
+
     public function index() {
-
-        if ( auth()->user()->is_verified == 0 ) {
-            return redirect('/verification') ;
-        }
-
-        if ( auth()->user()->is_avtive == 1 ) {
-            return redirect('/blocked') ;
-        }
     	
     	return view( "backend.index", Helper::PageBuilder( "Home" ) ) ;
+    }
+
+    public function create_a_dream( Request $request ) {
+
+
     }
 }

@@ -1,35 +1,36 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+	Route::get('/', 							"FrontController@index")->name('index') ;
 
-Route::get('/', "FrontController@index");
+	Route::get('join', 							"FrontController@join")->name('join') ;
+	Route::post('register', 					"FrontController@register") ;
 
-Route::get('join', "FrontController@join");
-Route::post('register', "FrontController@register");
+	Route::get('calculator', 					"FrontController@calculator")->name('calculator')  ;
 
-Route::get('calculator', "FrontController@calculator");
+	Route::get('blocked', 						"FrontController@blocked")->name('blocked') ;
 
-Route::get('login', "FrontController@login");
-Route::post('login', "FrontController@login_post");
+	Route::get('login', 						"FrontController@login")->name('login') ;
+	Route::post('login', 						"FrontController@login_post") ;
 
-Route::get('faq', "FrontController@faq");
-Route::get('logout', "FrontController@logout");
-Route::get('forgot_password', "FrontController@forgot_password");
+	Route::get('faq', 							"FrontController@faq")->name('faq') ;
+	Route::get('logout', 						"FrontController@logout")->name('logout') ;
+	Route::get('forgot_password', 				"FrontController@forgot_password")->name('forgot_password') ;
+	Route::post('forgot_password', 				"FrontController@post_forgot_password") ;
 
-Route::get('verification', "FrontController@verification");
-Route::post('verification', "FrontController@post_verification");
-Route::get('resend_verification_code', "FrontController@resend_verification_code");
+	Route::get('reset_password', 				"FrontController@reset_password")->name('reset_password') ;
+	Route::post('reset_password', 				"FrontController@post_reset_password") ;
 
-Route::get('home', "HomeController@index");
-Route::get('profile', "ProfileController@index");
-Route::get('messages', "MessageController@index");
-Route::get('transactions', "TransactionController@index");
+	Route::get('verification', 					"FrontController@verification")->name('verification') ;
+	Route::post('verification', 				"FrontController@post_verification") ;
+	Route::get('resend_verification_code', 		"FrontController@resend_verification_code") ;
+
+	Route::get('home', 							"HomeController@index")->name('home') ;
+	Route::post('create_a_dream', 				"HomeController@create_a_dream") ;
+
+	Route::get('profile', 						"ProfileController@index")->name('profile') ;
+	Route::post('update_display_name', 			"ProfileController@update_display_name") ;
+	Route::post('update_password', 				"ProfileController@update_password") ;
+	Route::post('update_payment_details', 		"ProfileController@update_payment_details") ;
+
+	Route::get('messages', 						"MessageController@index")->name('messages') ;
+	Route::get('transactions', 					"TransactionController@index")->name('transactions') ;

@@ -6,14 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateDreamsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     * 
-     * name, amount, level, growth_amount, payday, member, member_assigned
-     * 
-     */
+
     public function up()
     {
         Schema::create('dreams', function (Blueprint $table) {
@@ -23,6 +16,7 @@ class CreateDreamsTable extends Migration
             $table->float('growth_amount');
             $table->date('payday');
             $table->integer('level');
+            $table->string('deposit_type');
             $table->integer('user_id')->unsigned() ;
 
             $table->timestamps();
@@ -31,11 +25,6 @@ class CreateDreamsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('dreams');

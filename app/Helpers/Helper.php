@@ -9,18 +9,20 @@ class Helper {
 	
 	public static function PageBuilder( $title="", $data=[], $page_name="", $page_description=""  ) {
 
+
 		if ( $title === "" ) 
 			$title 					= "Home" ;
 
-		$name 						= "" ;
+		$name 						= "Unknown" ;
 
-		if ( $name === "" ) 
-			$name 					= "Unknown" ;
+		if ( auth()->check() )
+			$name 					= auth()->user()->name . " " . auth()->user()->surname ;
 
-		$avatar 					= "" ;
+		$avatar 					= "images/avatar.jpg" ;
 
-		if ( $avatar === "" ) 
-			$avatar 				= "images/avatar.jpg" ;
+		if ( auth()->check() ) 
+			if ( auth()->user()->avatar !== "None" ) 
+				$avatar 				= "images/avatar/" . auth()->user()->avatar ;
 
 		if ( $page_name === "" ) 
 			$page_name 				= "Home" ;
@@ -42,7 +44,7 @@ class Helper {
 		$level						= 1 ;
 		
 
-		return [
+		$build_data 				= [
 			'title'					=> $title,
 			'data' 					=> $data,
 			'name' 					=> $name,
@@ -54,6 +56,8 @@ class Helper {
 			'withdrawn_funds' 		=> $withdrawn_funds,
 			'funds_received' 		=> $funds_received,
 		] ;
+
+		return $build_data ;
 
 	}
 

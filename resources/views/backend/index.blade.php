@@ -40,14 +40,14 @@
         	
 			<div class="element-wrapper">
 			    <div class="element-box">
-			        <form>
+			        <form method="post" action="{{ url( '/create_a_dream' ) }}">
 			            <h5 class="element-box-header">Create a dream</h5>
 			            <div class="row">
 			                <div class="col-sm-5">
 			                    <div class="form-group">
 			                        <label class="lighter" for="">Select Amount</label>
 			                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-				                        <select class="form-control">
+				                        <select class="form-control" name="amount">
 				                        	<!-- LEVEL 1 -->
 				                            <option value="200">200</option>
 				                            <option value="500">500</option>
@@ -73,12 +73,17 @@
 				                        </select>
 			                            <div class="input-group-addon">ZAR</div>
 			                        </div>
+			                        @if ( $errors->has('amount') )
+			                        <div class="help-block form-text text-muted text-danger form-control-feedback">
+			                        	{{ $errors->first('amount') }}
+			                        </div>
+			                        @endif
 			                    </div>
 			                </div>
 			                <div class="col-sm-7">
 			                    <div class="form-group">
-			                        <label class="lighter" for="">Currency</label>
-			                        <select class="form-control">
+			                        <label class="lighter" for="deposit_type">Deposit Type ( Bank, BTC, or ETH)</label>
+			                        <select class="form-control" name="deposit_type">
 			                            <option value="Bank Deposit">Bank Deposit</option>
 			                            <option value="Bitcoin">Bitcoin</option>
 			                            <option value="Ethereum">Ethereum</option>
