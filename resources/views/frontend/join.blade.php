@@ -102,74 +102,7 @@
 
                             </div>
                          
-                        <div class="sec-title text-center">
-                            <h4>Payment Details</h4> 
-                            <p>Please feel free to leave any field that does not apply to you</p>
-                        </div>
-
-                                     
-                            <div class="form-group style-two">
-                                <select name="bank_name" class="form-control textarea" value="" placeholder="Bank Name">
-                                    <option disabled="true">Please select</option>
-
-                                    <option value="ABSA Bank" {{ ( old('bank_name') == 'ABSA Bank' )? 'selected': ''  }}>
-                                        ABSA Bank
-                                    </option>
-
-                                    <option value="African Bank" {{ ( old('bank_name') == 'African Bank' )? 'selected': ''  }}>
-                                        African Bank
-                                    </option>
-
-                                    <option value="Capitec Bank" {{ ( old('bank_name') == 'Capitec Bank' )? 'selected': ''  }}>
-                                        Capitec Bank
-                                    </option>
-
-                                    <option value="FirstRand Bank" {{ ( old('bank_name') == 'FirstRand Bank' )? 'selected': ''  }}>
-                                        FirstRand Bank
-                                    </option>
-
-                                    <option value="FNB" {{ ( old('bank_name') == 'FNB' )? 'selected': ''  }}>
-                                        FNB
-                                    </option>
-
-                                    <option value="NedBank" {{ ( old('bank_name') == 'NedBank' )? 'selected': ''  }}>
-                                        NedBank 
-                                    </option>
-
-                                    <option value="Standard Bank" {{ ( old('bank_name') == 'Standard Bank' )? 'selected': ''  }}>
-                                        Standard Bank
-                                    </option>
-
-                                    <option value="U Bank" {{ ( old('bank_name') == 'U Bank' )? 'selected': ''  }}>
-                                        U Bank
-                                    </option>
-                                    
-                                </select>
-                                @if ($errors->has('bank_name'))
-                                <span class="help-block has-error">{{ $errors->first('bank_name') }}</span>
-                                @endif
-                            </div>
-                        
-                                    
-                            <div class="form-group style-two">
-                                <input type="text" name="account_number" class="form-control textarea" value="" placeholder="Account Number">
-                                @if ($errors->has('account_number'))
-                                <span class="help-block has-error">{{ $errors->first('account_number') }}</span>
-                                @endif
-                            </div>
-                        
-                            <div class="form-group style-two">
-                                <input type="text" name="branch_name" class="form-control textarea" value="" placeholder="Branch Name">
-                            </div>
-                        
-                            <div class="form-group style-two">
-                                <input type="text" name="branch_code" class="form-control textarea" value="" placeholder="Branch Code">
-                                @if ($errors->has('branch_code'))
-                                <span class="help-block has-error">{{ $errors->first('branch_code') }}</span>
-                                @endif
-                            </div>
-                              
-
+                            
 
                             <div class="form-group style-two">
                                 <input type="text" name="bitcoin_address" class="form-control textarea" placeholder="BITCOIN Address">

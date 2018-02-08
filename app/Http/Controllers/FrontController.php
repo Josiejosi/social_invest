@@ -67,22 +67,6 @@ class FrontController extends Controller
 	        'is_online'					=> 0, 
 	    ]) ;
 
-	    $is_bank_account_set = false ;
-
-	    if ( isset( $request->bank_name ) && isset( $request->account_number ) && isset( $request->branch_code ) ) {
-	    	Account::create([
-		        'bank_name'				=> $request->bank_name, 
-		        'account_number'		=> $request->account_number, 
-		        'branch_code'			=> $request->branch_code, 
-		        'is_active'				=> 1, 
-		        'user_id'				=> $user->id, 
-	    	]) ;
-
-	    	$is_bank_account_set = true ;
-	    }
-
-	    $is_bitcoin_set = false ;
-
 	    if ( isset( $request->bitcoin_address ) ) {
 	    	Crpyto::create([
 		        'name'					=> "BITCOIN", 
@@ -90,11 +74,7 @@ class FrontController extends Controller
 		        'is_active'				=> 1, 
 		        'user_id'				=> $user->id, 
 	    	]) ;
-
-	    	$is_bitcoin_set = true ;
 	    }
-
-	    $is_ethereum_set = false ;
 
 	    if ( isset( $request->ethereum_address ) ) {
 	    	Crpyto::create([
@@ -103,8 +83,6 @@ class FrontController extends Controller
 		        'is_active'				=> 1, 
 		        'user_id'				=> $user->id, 
 	    	]) ;
-
-	    	$is_ethereum_set = true ;
 	    }
 
         $level                          = Level::whereLevel(1)->first() ;

@@ -13,19 +13,15 @@
                     </div>
                     <div class="ask-info">
                       <h3 class="text-white">BITCOIN LAST TRADE</h3>
-                      <p class="text-white">ZAR {{ $data["crypto_rate"] }}</p>
+                      <p class="text-white">USD {{ $data["crypto_rate"] }}</p>
                     </div>
                  </div>
                </div>
 
        			<div class="col-md-6 col-xs-12">
 					<div class="item clearfix">
-						<div class="sec-title">
-							<h2 class="left">Start Now</h2>
-						</div>
 						<div class="content-box">
-							<h3>75% monthly compounded growth</h3>
-							<p></p>
+
 							<a href="{{ url( '/join' ) }}" class="thm-btn">Join Us Now</a>
 						</div>
 					</div>
@@ -41,7 +37,7 @@
                     </div>
                     <div class="ask-info">
                       <h3 class="text-white">ETHEREUM LAST TRADE</h3>
-                      <p class="text-white">ZAR {{ $data["crypto_rate"] }}</p>
+                      <p class="text-white">USD {{ $data["crypto_rate"] }}</p>
                     </div>
                  </div>
                </div>
