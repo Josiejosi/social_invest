@@ -15,8 +15,8 @@ class CreateReferralsTable extends Migration
     {
         Schema::create('referrals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('referral_by');
-            $table->integer('referral_to');
+            $table->integer('referral_by')->unsigned() ;
+            $table->integer('referral_to')->unsigned() ;
             $table->boolean('is_referred');
             $table->timestamps();
 
