@@ -154,7 +154,7 @@
 	                            <div class="footer-logo">
 	                                <a href="#"></a>
 	                            </div>
-	                            <div class="text"><p>We are a peer-to-peer Donation Platform, our system supports Bitcoin & Ethurium.</p></div>
+	                            <div class="text"><p>We are a peer-to-peer Exchange Platform, our system supports Bitcoin & Ethurium.</p></div>
 	                            
 	                        </div>
 	                    </div>
