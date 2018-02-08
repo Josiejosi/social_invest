@@ -18,7 +18,7 @@ $("#btnCalculate").on('click', function(e){
 	amount 						= parseFloat(amount) ;
 
 	months 						= parseInt(months) ;
-	var perc 					= ( months * 75 ) / 100 ;
+	var perc 					= ( months * 30 ) / 100 ;
 	perc 						= parseFloat(perc) ;
 
 	var compond_growth 			= ( amount * perc ) + amount ;
@@ -31,7 +31,7 @@ $("#btnCalculate").on('click', function(e){
 	//total_ethuruem_amount 		= Math.round( total_ethuruem_amount, 8 ) ;
 
 	$("#display_investment").show() ;
-	$("#cash_span").html( total_cash_amount + " ZAR" )
+	$("#cash_span").html( "$ " + total_cash_amount + " USD" )
 	$("#bitcoin_span").html( total_bitcoin_amount )
 	$("#ethereum_span").html( total_ethuruem_amount )
 }) ;
