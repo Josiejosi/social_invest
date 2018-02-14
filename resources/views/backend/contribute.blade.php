@@ -17,8 +17,8 @@
 
         $cryptos = $user->crpyto()->get() ;
 
-        $bitcoin = [] ;
-        $eth = [] ;
+        $bitcoin = "" ;
+        $eth = "" ;
 
         if ( count($cryptos) > 0 ) {
             foreach ( $cryptos as $crypto ) {

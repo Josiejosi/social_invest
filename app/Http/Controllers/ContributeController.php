@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Helpers\Helper ;
 
+use App\Models\User ;
 use App\Models\Transaction ;
 
 use App\Jobs\CompleteTransactionJob ;

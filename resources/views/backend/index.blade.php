@@ -121,25 +121,6 @@
 			    <div class="element-content">
 
 					<div class="alert alert-info borderless alert-important">
-
-					    <h5 class="alert-heading">Withdraw Funds</h5>
-
-					    <div class="alert-btn">
-					    	<a 
-					    		class="btn btn-white-gold btn-block" 
-								data-target="#funds_withdrawal"
-								 data-toggle="modal" 
-					    		href="#">
-
-					    		Withdraw
-
-					    	</a>
-
-					    </div>
-
-					</div>
-
-					<div class="alert alert-info borderless alert-important">
 					    <h5 class="alert-heading">Refer Friends. Get Rewarded</h5>
 					    <p>
 					    	Each Friend you successfully recruit, you get $ 1.50 USD.
