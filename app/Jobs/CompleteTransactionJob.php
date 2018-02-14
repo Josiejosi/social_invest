@@ -12,7 +12,6 @@ use App\Mail\CompleteTransaction ;
 
 use Illuminate\Support\Facades\Mail;
 
-use App\Models\Transaction ;
 use App\Models\User ;
 
 class CompleteTransactionJob implements ShouldQueue
@@ -22,7 +21,7 @@ class CompleteTransactionJob implements ShouldQueue
     protected $user;
     protected $transaction;
 
-    public function __construct( User $user, Transaction $transaction )
+    public function __construct( User $user, $transaction )
     {
         $this->user = $user ;
         $this->transaction = $transaction ;

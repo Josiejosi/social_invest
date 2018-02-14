@@ -17,7 +17,7 @@ class CompleteTransaction extends Mailable
     public $transaction ;
     public $user ;
 
-    public function __construct( User $user, Transaction $transaction )
+    public function __construct( User $user, $transaction )
     {
         $this->transaction         = $transaction ;
         $this->user                = $user ;
