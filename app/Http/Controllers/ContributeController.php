@@ -36,7 +36,7 @@ class ContributeController extends Controller
     		"donar_id" 						=> auth()->user()->id,
     	]) ;
 
-        CompleteTransactionJob::dispatch( User::find($transaction->donar_id), $transaction_url )->onQueue('CompleteTransaction');
+        CompleteTransactionJob::dispatch( User::find($transaction->donee_id), $transaction_url )->onQueue('CompleteTransaction');
 
 		flash('Your have successfully confirmed to have made a transaction, once a the party confirms you will be schedule for a donation in the next 7 days, if the party fails to confirm in the next 24 hours the entry will return to the list.')->info() ;
 		return redirect('/home') ;
