@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('country');
-            $table->string('cell_phone_number');
             $table->boolean('is_verified');
             $table->string('verification_code');
             $table->string('referral_code');

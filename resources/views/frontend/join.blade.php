@@ -63,19 +63,6 @@
                         
                             <div class="form-group style-two">
 
-                                <input type="text" 
-                                       name="cell_phone_number" 
-                                       class="form-control textarea" 
-                                       value="{{ old('cell_phone_number') }}" 
-                                       placeholder="Phone">
-
-                                @if ($errors->has('cell_phone_number'))
-                                <span class="help-block has-error">{{ $errors->first('cell_phone_number') }}</span>
-                                @endif
-                            </div>
-                        
-                            <div class="form-group style-two">
-
                                 <input type="password" 
                                        name="password" 
                                        class="form-control textarea" 
@@ -105,13 +92,21 @@
                             
 
                             <div class="form-group style-two">
-                                <input type="text" name="bitcoin_address" class="form-control textarea" placeholder="BITCOIN Address">
+                                <input type="text" 
+                                        name="bitcoin_address" 
+                                        class="form-control textarea" 
+                                        value="{{ old('bitcoin_address') }}"
+                                        placeholder="BITCOIN Address">
                                     @if ($errors->has('bitcoin_address'))
                                     <span class="help-block has-error">{{ $errors->first('bitcoin_address') }}</span>
                                     @endif
                             </div>
                             <div class="form-group style-two">
-                                <input type="text" name="ethereum_address" class="form-control textarea" placeholder="ETHEREUM Address">
+                                <input type="text" 
+                                       name="ethereum_address" 
+                                       class="form-control textarea" 
+                                       value="{{ old('ethereum_address') }}"
+                                       placeholder="ETHEREUM Address">
                                     @if ($errors->has('ethereum_address'))
                                     <span class="help-block has-error">{{ $errors->first('ethereum_address') }}</span>
                                     @endif
@@ -137,8 +132,7 @@
                         </div>
                         <div class="contact-section-btn text-center">
                             <div class="form-group style-two">
-                                <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-                                <button class="thm-btn thm-color" type="submit" data-loading-text="Please wait...">Create Account</button>
+                                <button class="thm-btn thm-color" type="submit">Create Account</button>
                             </div>
                         </div> 
                     </form>

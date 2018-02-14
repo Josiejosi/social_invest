@@ -43,14 +43,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 
-@import url(bootstrap.min.css);
+/* @import url(bootstrap.min.css);
 @import url(bootstrap-select.min.css);
 
 @import url(font-awesome.css);
 @import url(flaticon.css);
 
 @import url(animate.min.css);
-@import url(hover.css);
+@import url(hover.css); */
 
 /* 
 ============================================
@@ -5883,3 +5883,7 @@ input,textarea {display: block; font-size: 16px; line-height: 28px; outline: non
 .main-menu .navbar-toggle .icon-bar {
     background: #3b75e3;
 }
+
+  div.alert {
+    margin-top: 10px ;
+  }

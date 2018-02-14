@@ -13,13 +13,13 @@
 			            <div class="col-sm-4">
 			                <a class="element-box el-tablo" href="#">
 			                    <div class="label">Available Funds</div>
-			                    <div class="value">ZAR {{ round( (float) $available_funds, 2 ) }}</div>
+			                    <div class="value">$ {{ round( (float) $available_funds, 2 ) }} USD</div>
 			                </a>
 			            </div>
 			            <div class="col-sm-4">
 			                <a class="element-box el-tablo" href="#">
 			                    <div class="label">Withdrawn Funds</div>
-			                    <div class="value">ZAR {{ round( (float) $withdrawn_funds, 2 ) }}</div>
+			                    <div class="value">$ {{ round( (float) $withdrawn_funds, 2 ) }} USD</div>
 			                </a>
 			            </div>
 			            <div class="col-sm-4">
@@ -39,176 +39,79 @@
         <div class="col-sm-8">
         	
 			<div class="element-wrapper">
+
 			    <div class="element-box">
-			        <form method="post" action="{{ url( '/create_a_dream' ) }}">
 
-						{!! csrf_field() !!}
+			    <h6 class="element-header">Contribution List</h6>
+			    <div class="element-box-tp">
 
-			            <h5 class="element-box-header">Create a new dream</h5>
+			        <div class="table-responsive">
+			            <table class="table table-bordered table-lg table-v2 table-striped">
+			                <thead>
+			                    <tr>
+			                        <th>Name</th>
+			                        <th>Amount</th>
+			                        <th>Contribution Type</th>
+			                        <th>Actions</th>
+			                    </tr>
+			                </thead>
+			                <tbody>
+			                	@if ( count( $data ) > 0 )
 
-			            <div class="row">
-			            	<div class="col-sm-12">
-			                    <div class="form-group">
+				                	@foreach( $data as $transaction )
 
-			                        <label class="lighter" for="name">Dream name</label>
-			                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-			                            <input 
-			                            	class="form-control" 
-			                            	placeholder="EG: School Fees, or Invest for a new car." 
-			                            	type="text" 
-			                            	name="name"
-			                            	value="{{ old( 'name' ) }}">
-			                        </div>
-			                        @if ( $errors->has('dream_name') )
-				                        <div class="help-block form-text text-muted text-danger form-control-feedback">
-				                        	{{ $errors->first('dream_name') }}
-				                        </div>
-			                        @endif
+				                		@if ( $transaction->status === 0 )
 
-			                    </div>
-			                </div>
-			            </div>
+					                    <tr>
+					                        <td class="text-left">
+												<?php 
 
-			            <div class="row">
-			                <div class="col-sm-5">
-			                    <div class="form-group">
-			                        <label class="lighter" for="">Select Amount</label>
-			                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-				                        <select class="form-control" name="amount">
-				                        	<!-- LEVEL 1 -->
-				                            <option value="200" {{ ( old( 'amount' ) == "200" ) ? 'selected': '' }}>
-				                            	200
-				                            </option>
+													$user = \App\Models\User::find( $transaction->donee_id )
 
-				                            <option value="500" {{ ( old( 'amount' ) == "500" ) ? 'selected': '' }}>
-				                            	500
-				                            </option>
+												?>
+												{{ $user->name }} {{ $user->surname }}
+					                        </td>
+					                        <td class="text-right">$ {{ $transaction->growth_amount }} USD</td>
+					                        <td  class="text-center">
+												
+												@if ( $transaction->deposit_type === "Both" )
 
-				                            <option value="1000" {{ ( old( 'amount' ) == "1000" ) ? 'selected': '' }}>
-				                            	1000
-				                            </option>
+													<i class="fab fa-ethereum"></i> OR <i class="fab fa-btc"></i>
 
-				                            <option value="1500" {{ ( old( 'amount' ) == "1500" ) ? 'selected': '' }}>
-				                            	1500
-				                            </option>
+												@elseif ( $transaction->deposit_type === "BTC" )
 
-				                            <option value="2000" {{ ( old( 'amount' ) == "2000" ) ? 'selected': '' }}>
-				                            	2000
-				                            </option>
+													<i class="fab fa-btc"></i>
 
-				                        	<!-- LEVEL 2 -->
-				                        	@if( $level === 2 )
-				                            <option value="5000" {{ ( old( 'amount' ) == "5000" ) ? 'selected': '' }}>
-				                            	5000
-				                            </option>
+												@elseif ( $transaction->deposit_type === "ETH" )
 
-				                            <option value="8000" {{ ( old( 'amount' ) == "8000" ) ? 'selected': '' }}>
-				                            	8000
-				                            </option>
+													<i class="fab fa-ethereum"></i>
 
-				                            <option value="10000" {{ ( old( 'amount' ) == "10000" ) ? 'selected': '' }}>
-				                            	10000
-				                            </option>
+												@endif
+					                        </td>
+					                        <td class="row-actions">
+					                        	<a href="{{ url( '/contribute' ) }}/{{ $transaction->id }}" 
+					                        	   class="btn btn-success btn-sm">
+					                        		<i class="os-icon os-icon-ui-49"></i> Contribute
+					                        	</a>
+					                        </td>
+					                    </tr>
 
-				                            <option value="12000" {{ ( old( 'amount' ) == "12000" ) ? 'selected': '' }}>
-				                            	12000
-				                            </option>
+					                    @endif
 
-				                            <option value="15000" {{ ( old( 'amount' ) == "15000" ) ? 'selected': '' }}>
-				                            	15000
-				                            </option>
+				                    @endforeach
 
-				                            @endif
-				                        	<!-- LEVEL 3 -->
-				                        	@if( $level === 3 )
-				                            <option value="18000" {{ ( old( 'amount' ) == "18000" ) ? 'selected': '' }}>
-				                            	18000
-				                            </option>
-
-				                            <option value="20000" {{ ( old( 'amount' ) == "20000" ) ? 'selected': '' }}>
-				                            	20000
-				                            </option>
-
-				                            <option value="22000" {{ ( old( 'amount' ) == "22000" ) ? 'selected': '' }}>
-				                            	22000
-				                            </option>
-
-				                            <option value="25000" {{ ( old( 'amount' ) == "25000" ) ? 'selected': '' }}>
-				                            	25000
-				                            </option>
-
-				                            <option value="50000" {{ ( old( 'amount' ) == "50000" ) ? 'selected': '' }}>
-				                            	50000
-				                            </option>
-
-				                            @endif
-				                        </select>
-			                            <div class="input-group-addon">ZAR</div>
-			                        </div>
-			                        @if ( $errors->has('amount') )
-				                        <div class="help-block form-text text-muted text-danger form-control-feedback">
-				                        	{{ $errors->first('amount') }}
-				                        </div>
-			                        @endif
-			                    </div>
-			                </div>
-			                <div class="col-sm-7">
-			                    <div class="form-group">
-			                        <label class="lighter" for="deposit_type">Deposit Type ( Bank, BTC, or ETH)</label>
-			                        <select class="form-control" name="deposit_type">
-
-			                            <option value="Bank Deposit" {{ ( old( 'deposit_type' ) == "Bank Deposit" ) ? 'selected' : '' }}>
-			                            	Bank Deposit
-			                            </option>
-
-			                            <option value="Bitcoin" {{ ( old( 'deposit_type' ) == "Bitcoin" ) ?  'selected' :  '' }}>
-			                            	Bitcoin
-			                            </option>
-
-			                            <option value="Ethereum" {{ ( old( 'deposit_type' ) == "Ethereum" ) ? 'selected' : '' }}>
-			                            	Ethereum
-			                            </option>
-
-			                        </select>
-			                        @if ( $errors->has('deposit_type') )
-				                        <div class="help-block form-text text-muted text-danger form-control-feedback">
-				                        	{{ $errors->first('deposit_type') }}
-				                        </div>
-			                        @endif
-
-			                    </div>
-			                </div>
-			            </div>
-
-			            <div class="row">
-			            	<div class="col-sm-12">
-			                    <div class="form-group">
-			                        <label class="lighter" for="">Maturity Month(s)</label>
-			                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-				                        <select class="form-control" name="months">
-				                            <option>Please select</option>
-				                            <option value="1" {{ ( old( 'months' ) == "1" ) ? 'selected': '' }}>1 Month</option>
-				                            <option value="2" {{ ( old( 'months' ) == "2" ) ? 'selected': '' }}>2 Months</option>
-				                            <option value="3" {{ ( old( 'months' ) == "3" ) ? 'selected': '' }}>3 Months</option>
-				                            <option value="4" {{ ( old( 'months' ) == "4" ) ? 'selected': '' }}>4 Months</option>
-				                            <option value="5" {{ ( old( 'months' ) == "5" ) ? 'selected': '' }}>5 Months</option>
-				                            <option value="6" {{ ( old( 'months' ) == "6" ) ? 'selected': '' }}>6 Months</option>
-				                        </select>
-			                        </div>
-			                        @if ( $errors->has('dream_name') )
-				                        <div class="help-block form-text text-muted text-danger form-control-feedback">
-				                        	{{ $errors->first('dream_name') }}
-				                        </div>
-			                        @endif
-
-			                    </div>
-			                </div>
-			            </div>
-			            <div class="form-buttons-w text-right compact">
-			            	<button class="btn btn-primary">Create</button>
-			            </div>
-			        </form>
+								@else
+				                    <tr>
+				                        <td class="text-center" colspan="4">No Contribution found..</td>
+				                    </tr>
+								@endif
+			                </tbody>
+			            </table>
+			        </div>
 			    </div>
+
+			    </div>
+
 			</div>
 
         </div>
@@ -217,9 +120,9 @@
 			<div class="element-wrapper">
 			    <div class="element-content">
 
-					<div class="alert alert-info borderless">
+					<div class="alert alert-info borderless alert-important">
 
-					    <p>Withdraw Funds</p>
+					    <h5 class="alert-heading">Withdraw Funds</h5>
 
 					    <div class="alert-btn">
 					    	<a 
@@ -236,10 +139,10 @@
 
 					</div>
 
-					<div class="alert alert-info borderless">
+					<div class="alert alert-info borderless alert-important">
 					    <h5 class="alert-heading">Refer Friends. Get Rewarded</h5>
 					    <p>
-					    	Each Friend you receive you get 10 ZAR.
+					    	Each Friend you successfully recruit, you get $ 1.50 USD.
 					    	<br />
 					    	<a href="{{ url( '/join' ) }}/{{ auth()->user()->referral_code }}">
 					    		<strong>{{ url( '/join' ) }}/{{ auth()->user()->referral_code }}</strong>
@@ -257,114 +160,102 @@
     <div class="row">
         <div class="col-sm-12">
 			<div class="element-wrapper">
-			    <h6 class="element-header">Dream's Status</h6>
+			    <h6 class="element-header">Recent Contribution</h6>
 			    <div class="element-box-tp">
 
 			        <div class="table-responsive">
 			            <table class="table table-bordered table-lg table-v2 table-striped">
 			                <thead>
 			                    <tr>
-			                        <th>Dream Name</th>
-			                        <th>Dream Amount</th>
-			                        <th>Maturity Amount</th>
-			                        <th>Pay Date</th>
-			                        <th>Allocated Member</th>
+			                        <th>Ref Code</th>
+			                        <th>Amount</th>
+			                        <th>Created Date</th>
+			                        <th>Member</th>
 			                        <th>Status</th>
-			                        <th>Actions</th>
 			                    </tr>
 			                </thead>
 			                <tbody>
-			                	@if ( count( $data ) > 0 )
 
-				                	@foreach( $data as $dream )
+		                	@if ( count( $data ) > 0 )
 
-					                    <tr>
-					                        <td class="text-center">{{ $dream->name }}</td>
-					                        <td class="text-right">{{ $dream->amount }} ZAR</td>
-					                        <td class="text-right">{{ $dream->growth_amount }} ZAR</td>
-					                        <td>{{ $dream->payday }}</td>
-					                        <td>
-	
-												@if ( $dream->transaction->donar_id === 0 )
+			                	@foreach( $data as $transaction )
 
-													Unallocated
+			                    <tr>
+			                        <td class="text-center">
+			                        	{{ $transaction->transaction_reference_code }}
+			                        </td>
+			                        <td class="text-right">
+			                        	{{ $transaction->growth_amount }} USD
+			                        </td>
+			                        <td class="text-right">
+			                        	{{ $transaction->created_at->diffForHumans() }}
+			                        </td>
+			                        <td>
+			                        	
+										@if ( $transaction->donar_id === 0 )
 
-												@else
-													<?php 
+											Unallocated
+											
+										@else
+											<?php 
 
-														$user = \App\Models\User::find( $dream->transaction->donar_id ) ;
+												$user = \App\Models\User::find( $transaction->donar_id ) ;
 
-														echo $user->name . " " . $user->surname ;
+												echo $user->name . " " . $user->surname ;
 
-													?>
-												@endif
-												
-					                        </td>
-					                        <td class="text-center">
-			
-												@if ( $dream->transaction->status === 0 )
+											?>
+										@endif					                    
 
-					                            <div 
-					                            	class="status-pill red" 
-					                            	data-title="Complete" 
-					                            	data-toggle="tooltip" 
-					                            	data-original-title="" 
-					                            	title=""></div> Awaiting allocation
+			                        </td>
+			                        <td class="text-center">
 
-					                            @elseif ( $dream->transaction->status === 1 )
+										@if ( $transaction->status === 0 )
 
-					                            <div 
-					                            	class="status-pill yellow" 
-					                            	data-title="Complete" 
-					                            	data-toggle="tooltip" 
-					                            	data-original-title="" 
-					                            	title=""></div> Member allocated
+			                            <div 
+			                            	class="status-pill red" 
+			                            	data-title="Complete" 
+			                            	data-toggle="tooltip" 
+			                            	data-original-title="" 
+			                            	title=""></div> Awaiting allocation
 
-					                            @elseif ( $dream->transaction->status === 2 )
+			                            @elseif ( $transaction->status === 1 )
 
-					                            <div 
-					                            	class="status-pill yellow" 
-					                            	data-title="Complete" 
-					                            	data-toggle="tooltip" 
-					                            	data-original-title="" 
-					                            	title=""></div> Awaiting Approval
+			                            <div 
+			                            	class="status-pill yellow" 
+			                            	data-title="Complete" 
+			                            	data-toggle="tooltip" 
+			                            	data-original-title="" 
+			                            	title=""></div> Member allocated
 
-					                            @elseif ( $dream->transaction->status === 3 )
+			                            @elseif ( $transaction->status === 2 )
 
-					                            <div 
-					                            	class="status-pill green" 
-					                            	data-title="Complete" 
-					                            	data-toggle="tooltip" 
-					                            	data-original-title="" 
-					                            	title=""></div> Ready					                   
+			                            <div 
+			                            	class="status-pill green" 
+			                            	data-title="Complete" 
+			                            	data-toggle="tooltip" 
+			                            	data-original-title="" 
+			                            	title=""></div> Complete					                   
 
-												@endif
+										@endif
 
+			                        </td>
+			                    </tr>
 
-					                        </td>
-					                        <td class="row-actions">
-					                        	<a href="#" data-toggle="modal" data-target="#funds_withdrawal">
-					                        		<i class="os-icon os-icon-ui-49"></i> Withdraw
-					                        	</a>
-					                        </td>
-					                    </tr>
+		                    @endforeach
 
-				                    @endforeach
+						@else
 
-								@else
-				                    <tr>
-				                        <td class="text-center">You haven't created any dreams.</td>
-				                        <td></td>
-				                        <td></td>
-				                        <td></td>
-				                        <td></td>
-				                        <td></td>
-				                        <td></td>
-				                    </tr>
-								@endif
+			                    <tr>
+			                        <td class="text-center" colspan="6">You have no transactions.</td>
+			                    </tr>
+
+						@endif					                    					        
+
 			                </tbody>
+
 			            </table>
 			        </div>
+
 			    </div>
 			</div>        	
 

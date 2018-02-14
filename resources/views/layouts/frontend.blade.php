@@ -8,34 +8,28 @@
 	
 	<title>BITROSEED | {{ $title }}</title> 
 
-    <meta content="BITROSEED name="keywords">
+    <meta content="BITROSEED" name="keywords">
     <meta content="BITROSEED" name="author">
     <meta content="BITROSEED, Peer to Peer Donations" name="description">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="stylesheet" href="{{ asset( 'css/style.css' ) }}">
-	<link rel="stylesheet" href="{{ asset( 'css/responsive.css' ) }}">
-	<link rel="stylesheet" href="{{ asset( 'fonts/flaticon.css' ) }}" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<link rel="stylesheet" href="{{ asset( 'css/frontend.css' ) }}">
+
+	<!-- <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script> -->
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset( 'images/favicon/apple-touch-icon.png' ) }}">
 	<link rel="icon" type="image/png" href="{{ asset( 'images/favicon/favicon-32x32.png' ) }}" sizes="32x32">
 	<link rel="icon" type="image/png" href="{{ asset( 'images/favicon/favicon-16x16.png' ) }}" sizes="16x16">
 
-	<style type="text/css">
-		
-		div.alert {
-			margin-top: 10px ;
-		}
-
-	</style>
-
 </head>
 
 <body>
 
-	<div class="boxed_wrapper">
+	<div class="boxed_wrapper" id="app">
 
 
 		<div class="mainmenu-area stricky">
@@ -154,7 +148,15 @@
 	                            <div class="footer-logo">
 	                                <a href="#"></a>
 	                            </div>
-	                            <div class="text"><p>We are a peer-to-peer Exchange Platform, our system supports Bitcoin & Ethurium.</p></div>
+	                            <div class="text">
+
+	                            	<p>
+
+	                            		We are a peer-to-peer Exchange Platform, our system supports Bitcoin & Ethurium.
+
+	                            	</p>
+
+	                            </div>
 	                            
 	                        </div>
 	                    </div>
@@ -172,20 +174,7 @@
 
 	</div>
 
-	<script src="{{ asset( 'js/jquery.js' ) }}"></script>
-	<script src="{{ asset( 'js/bootstrap.min.js' ) }}"></script>
-	<script src="{{ asset( 'js/bootstrap-select.min.js' ) }}"></script>
-
-	<script src="{{ asset( 'js/custom.js' ) }}"></script>
-
-    <script>
-        $('#flash-overlay-modal').modal();
-
-        $('div.alert').not('.alert-important').delay(6000).fadeOut(350);
-
-    </script>
-
-
+	<script src="{{ asset( 'js/frontend.js' ) }}"></script>
 
 	@yield('js')
 	

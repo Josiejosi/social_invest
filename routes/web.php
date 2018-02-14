@@ -35,3 +35,18 @@
 
 	Route::get('messages', 						"MessageController@index")->name('messages') ;
 	Route::get('transactions', 					"TransactionController@index")->name('transactions') ;
+	Route::get('contribute/{id}', 				"ContributeController@index")->name('contribute') ;
+	Route::get('confirm_contribution/{id}', 	"ContributeController@confirm_contribution")->name('confirm_contribution') ;
+	Route::get('complete_contribution/{id}', 	"ContributeController@complete_contribution")->name('complete_contribution') ;
+
+	Route::get('settings', 						"SettingsController@index")->name('settings') ;
+	Route::post('settings', 					"SettingsController@settings") ;
+
+	Route::get('block', 						"AdminController@block")->name('block') ;
+	Route::get('block_user/{id}', 				"AdminController@block_user")->name('block_user') ;
+
+	Route::get('donation', 						"AdminController@donation")->name('donation') ;
+	Route::post('donation', 					"AdminController@post_donation") ;
+
+	Route::get('member', 						"AdminController@member")->name('member') ;
+	Route::post('admin_member', 				"AdminController@admin_member") ;

@@ -65,39 +65,6 @@ class ProfileController extends Controller
 
     public function update_payment_details( Request $request ) {
 
-    	if ( Account::whereUserId( auth()->user()->id )->count() == 0 ) {
-		    $validated 					= $request->validate([
-
-	            'account_number'  		=> 'unique:accounts',
-
-		    ]);
-		}
-
-	    if ( isset( $request->bank_name ) && isset( $request->account_number ) && isset( $request->branch_code ) ) {
-
-	    	if ( Account::whereUserId( auth()->user()->id )->count() == 1 ) {
-		    	Account::whereUserId( auth()->user()->id )->update([
-
-			        'bank_name'			=> $request->bank_name, 
-			        'account_number'	=> $request->account_number, 
-			        'branch_code'		=> $request->account_number, 
-
-		    	]) ;
-		    	flash( "Bank account was successfully updated." )->success() ;
-	    	} else {
-		    	Account::create([
-
-			        'bank_name'			=> $request->bank_name, 
-			        'account_number'	=> $request->account_number, 
-			        'branch_code'		=> $request->account_number, 
-			        'user_id'			=> auth()->user()->id,
-			        'is_active'			=> 1,
-
-		    	]) ;
-		    	flash( "Bank account was successfully added to profile." )->success() ;	    		
-	    	}
-	    }
-
 	    if ( isset( $request->bitcoin_address ) ) {
 
 	    	if ( Crpyto::whereUserId( auth()->user()->id )->whereName( "BITCOIN" )->count() == 1 ) {

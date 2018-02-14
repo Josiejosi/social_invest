@@ -111,12 +111,7 @@
 								@else
 
 					                    <tr>
-					                        <td class="text-center">You have no transactions.</td>
-					                        <td></td>
-					                        <td></td>
-					                        <td></td>
-					                        <td></td>
-					                        <td></td>
+					                        <td class="text-center" colspan="6">You have no transactions.</td>
 					                    </tr>
 
 								@endif					                    					        

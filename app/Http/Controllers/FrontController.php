@@ -50,7 +50,6 @@ class FrontController extends Controller
 	    $validated 					= $request->validate([
 
             'email' 				=> 'required|unique:users|email',
-            'cell_phone_number' 	=> 'required|unique:users|numeric',
             'name' 					=> 'required',
             'account_number'  		=> 'unique:accounts',
             'password'  			=> 'required:confirmed|min:6|max:12',
@@ -62,13 +61,12 @@ class FrontController extends Controller
 	        'name'						=> $request->name, 
 	        'email'						=> $request->email, 
 	        'password'					=> bcrypt( $request->password ), 
-	        'surname'					=> $request->surname, 
-	        'cell_phone_number'			=> $request->cell_phone_number, 
-	        'country'					=> "RSA", 
+	        'surname'					=> $request->surname,  
+	        'country'					=> "RSA ( ZAR )", 
 	        'is_verified'				=> 0, 
 	        'verification_code'			=> rand( 111111, 999999 ), 
 	        'referral_code'				=> rand( 111111, 999999 ), 
-	        'is_avtive'					=> 0, 
+	        'is_avtive'					=> 1, 
 	        'avatar'					=> 'None', 
 	        'is_online'					=> 0, 
 	    ]) ;
@@ -238,7 +236,7 @@ class FrontController extends Controller
     	
     	if ( auth()->user()->verification_code == $request->verification_code ) {
     		User::find( auth()->user()->id )->update( ['is_verified' => 1 ] ) ;
-    		flash( 'Your account verification was successfully, You can now create a Dream' )->info() ;
+    		flash( 'Your account verification was successfully, You can now invest in CryptoCurrency' )->info() ;
     		return redirect('/home') ;
     	} else {
 	    	flash( 'Wrong Verification Code, Please provide a valid code.' )->warning() ;

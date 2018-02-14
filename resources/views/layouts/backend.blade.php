@@ -14,34 +14,30 @@
 
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset( 'images/favicon/apple-touch-icon.png' ) }}">
     <link rel="icon" type="image/png" href="{{ asset( 'images/favicon/favicon-32x32.png' ) }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ asset( 'images/favicon/favicon-16x16.png' ) }}" sizes="16x16">
+
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     
-    <link href="{{ asset( 'css/select2.min.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( 'css/dataTables.bootstrap.min.css' ) }}" rel="stylesheet">
-    <link href="{{ asset( 'css/perfect-scrollbar.min.css' ) }}" rel="stylesheet">
     <link href="{{ asset( 'css/backend.css' ) }}" rel="stylesheet">
 
     <style type="text/css">
         
-
-        select.form-control:not([size]):not([multiple]) {
-            padding: 6px;
+        .alert {
+            color: #fff;
         }
-
-        .yellow {
-            background: #FFFF00 ;
-        }
-
     </style>
+
 
 </head>
 
 <body>
 
 
-    <div class="all-wrapper menu-side with-side-panel">
+    <div class="all-wrapper menu-side with-side-panel" id="app">
 
         <div class="layout-w">
 
@@ -59,7 +55,7 @@
                         <div class="avatar-w"><img alt="" src="{{ asset( $avatar ) }}"></div>
                         <div class="logged-user-info-w">
                             <div class="logged-user-name">{{ $name }}</div>
-                            <div class="logged-user-role">{{ $level }}</div>
+                            <div class="logged-user-role">LEVEL {{ $level }}</div>
                         </div>
                     </div>
 
@@ -102,6 +98,50 @@
                                 <span>Profile</span>
                             </a>
                         </li>
+
+                        <!-- Start of admin -->
+
+                        @if ( $role === 2 || $role === 3 )
+
+                        <li>
+                            <a href="{{ url('/block') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>Block</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/member') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>New Member</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/donation') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-hierarchy-structure-2"></div>
+                                </div>
+                                <span>Admin Donations</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/settings') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-ui-46"></div>
+                                </div>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+
+                        @endif
+
+                        <!-- end of admin -->
 
                         <li>
                             <a href="{{ url('/logout') }}">
@@ -188,6 +228,52 @@
 
                         </li>
 
+
+                        <!-- Start of admin -->
+
+                        @if ( $role === 2 || $role === 3 )
+
+                        <li>
+                            <a href="{{ url('/block') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>Block</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/member') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>New Member</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/donation') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-hierarchy-structure-2"></div>
+                                </div>
+                                <span>Admin Donations</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/settings') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-ui-46"></div>
+                                </div>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+
+                        @endif
+                        
+                        <!-- end of admin -->
+
+
                         <li>
                             <a href="{{ url('/logout') }}">
                                 <div class="icon-w">
@@ -244,7 +330,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <p>Funds can only be withdrawn once, an of your created dreams have matured.</p>
+                <p>Funds can only be withdrawn once, any of your contributions have matured.</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -255,18 +341,7 @@
 
     </div>
 
-    <script src="{{ asset( 'js/jquery.js' ) }}"></script>
-    <script src="{{ asset( 'js/select2.full.min.js' ) }}"></script>
-    <script src="{{ asset( 'js/daterangepicker.js' ) }}"></script>
-    <script src="{{ asset( 'js/perfect-scrollbar.jquery.min.js' ) }}"></script>
-    <script src="{{ asset( 'js/jquery.dataTables.min.js' ) }}"></script>
-    <script src="{{ asset( 'js/dataTables.bootstrap.min.js' ) }}"></script>
-
-    <script src="{{ asset( 'js/dashboard.js' ) }}"></script>
-    <script>
-        $('#flash-overlay-modal').modal();
-        $('div.alert').not('.alert-important').delay(6000).fadeOut(350);
-    </script>
+    <script src="{{ asset( 'js/backend.js' ) }}"></script>
 
     @yield('js')
 

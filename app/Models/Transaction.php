@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+    
     protected $fillable = [
         'transaction_reference_code', 
         'amount', 
+        'growth_amount', 
+        'payday', 
+        'deposit_type', 
         'level', 
         'status',  
-        'dream_id', 
         'donar_id', 
+        'donee_id', 
     ];
 
     public function dream()
