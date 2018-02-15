@@ -33,7 +33,7 @@
 	Route::post('update_password', 				"ProfileController@update_password") ;
 	Route::post('update_payment_details', 		"ProfileController@update_payment_details") ;
 
-	Route::get('messages', 						"MessageController@index")->name('messages') ;
+	
 	Route::get('transactions', 					"TransactionController@index")->name('transactions') ;
 	Route::get('contribute/{id}', 				"ContributeController@index")->name('contribute') ;
 	Route::get('confirm_contribution/{id}', 	"ContributeController@confirm_contribution")->name('confirm_contribution') ;
@@ -50,3 +50,10 @@
 
 	Route::get('member', 						"AdminController@member")->name('member') ;
 	Route::post('admin_member', 				"AdminController@admin_member") ;
+
+	Route::get('support', 						"SupportController@index")->name('support') ;
+
+	Route::get('messages', 						"MessageController@index")->name('messages') ;
+	Route::get('send_message/{msg}/{receiver}', "MessageController@send_message")->name('send_message') ;
+	Route::get('get_message/{receiver}', 		"MessageController@get_message")->name('get_message') ;
+	Route::get('load_chat_users', 				"MessageController@load_chat_users")->name('load_chat_users') ;

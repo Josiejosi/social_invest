@@ -17,19 +17,13 @@ class TransactionController extends Controller
 
     public function index() {
 
-    	$user_id 							= auth()->user()->id ;
-
-    	$dreams 							= Dream::select('id')->whereUserId( $user_id )->get() ;
-
-    	$dream_transaction 					= Transaction::whereIn( 'dream_id', $dreams )->get() ;
-    	$donar_transaction 					= Transaction::whereDonarId( $user_id )->get() ;
-
-    	$transactions 						= $dream_transaction->merge( $donar_transaction ) ;
+    	$transactions 						= Transaction::whereDonarId( auth()->user()->id )
+    													 ->whereDoneeId( auth()->user()->id )
+    													 ->get() ;
 
     	return view( "backend.transactions", Helper::PageBuilder( "Transactions", $transactions ) ) ;
 
     }
-
 
     
 }

@@ -22,7 +22,6 @@ class User extends Authenticatable
         'country', 
         'is_verified', 
         'verification_code', 
-        'cell_phone_number', 
         'referral_code', 
         'is_avtive', 
         'avatar', 

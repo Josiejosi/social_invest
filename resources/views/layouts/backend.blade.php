@@ -36,8 +36,8 @@
 
 <body>
 
-
-    <div class="all-wrapper menu-side with-side-panel" id="app">
+    <div id="app"></div>
+    <div class="all-wrapper menu-side with-side-panel">
 
         <div class="layout-w">
 
@@ -70,6 +70,8 @@
 
                         </li>
 
+                        @if ( \App\Helpers\Helper::isSupport() === false )
+
                         <li>
                             <a href="{{ url('/messages') }}">
                                 <div class="icon-w">
@@ -79,6 +81,8 @@
                             </a>
 
                         </li>
+
+                        @endif
 
                         <li>
                             <a href="{{ url('/transactions') }}">
@@ -143,6 +147,20 @@
 
                         <!-- end of admin -->
 
+                        @if ( \App\Helpers\Helper::isSupport() === true )
+
+                        <li>
+                            <a href="{{ url('/support') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>Support</span>
+                            </a>
+                        </li>
+
+                        @endif
+
+
                         <li>
                             <a href="{{ url('/logout') }}">
                                 <div class="icon-w">
@@ -198,6 +216,8 @@
 
                         </li>
 
+                        
+
                         <li>
                             <a href="{{ url('/messages') }}">
                                 <div class="icon-w">
@@ -207,6 +227,8 @@
                             </a>
 
                         </li>
+
+                        
 
                         <li>
                             <a href="{{ url('/transactions') }}">
@@ -266,6 +288,21 @@
                                     <div class="os-icon os-icon-ui-46"></div>
                                 </div>
                                 <span>Settings</span>
+                            </a>
+                        </li>
+
+                        @endif                        
+
+                        <!-- Start of admin -->
+
+                        @if ( \App\Helpers\Helper::isSupport() === true )
+
+                        <li>
+                            <a href="{{ url('/support') }}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>Support</span>
                             </a>
                         </li>
 

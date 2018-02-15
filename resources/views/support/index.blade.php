@@ -10,18 +10,6 @@
 
                 <div class="user-list" id="recent_users">
 
-                    <div 
-                        class="user-w"
-                        onclick="activate_window('{{\App\Helpers\Helper::getSupportUserID()}}')">
-                        <!-- Repeat me to create a chat users-->
-                        <div class="avatar with-status status-green"><img alt="" src="{{ asset( $support_avatar ) }}"></div>
-                        <div class="user-info">
-                            <div class="user-date">{{ \Carbon\Carbon::now()->diffForHumans() }}</div>
-                            <div class="user-name">Support</div>
-                        </div>
-                    </div>
-
-                    <!-- Repeat me to create a chat-->
 
                 </div>
             </div>
@@ -60,5 +48,5 @@
     <script>
         var active_user = {{\App\Helpers\Helper::getSupportUserID()}} ;
     </script>
-    <script src="{{  asset( '/js/message.js' ) }}"></script>
+    <script src="{{  asset( '/js/support.js' ) }}"></script>
 @endsection

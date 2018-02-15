@@ -6,12 +6,12 @@
 	use App\Models\Setting ;
 	use App\Models\Level ;
 	use App\Models\Role ;
+	use App\Models\User ;
 	
 	class Helper {
 
 		/**
 		 * Helps with building the page meta data, or core data.
-		 * 
 		 */
 		
 		public static function PageBuilder( $title="", $data=[], $page_name="", $page_description=""  ) {
@@ -42,6 +42,8 @@
 			$avatar 					= "images/avatar.jpg" ;
 			$name 						= "Unknown" ;
 
+			$support_avatar 			= "" ;
+
 			if ( auth()->check() ) {
 
 				$user_id 				= auth()->user()->id ;
@@ -49,9 +51,13 @@
 				$role 					= self::getUserRole( $user_id ) ;
 
 				if ( auth()->user()->avatar !== "None" ) 
-					$avatar 			= "images/avatar/" . auth()->user()->avatar ;
+					$avatar 			= auth()->user()->avatar ;
 
 				$name 					= auth()->user()->name . " " . auth()->user()->surname ;
+
+				$support_user 			= User::find( self::getSupportUserID() ) ;
+
+				$support_avatar 		= $support_user->avatar ;
 
 			}
 
@@ -63,6 +69,7 @@
 				'level' 				=> $level,
 				'role' 					=> $role,
 				'page_name' 			=> $page_name,
+				'support_avatar' 		=> $support_avatar,
 				'page_description' 		=> $page_description,
 				'available_funds' 		=> $available_funds,
 				'withdrawn_funds' 		=> $withdrawn_funds,
@@ -74,9 +81,7 @@
 		}
 
 		/**
-		 * 
 		 * getCryptoData
-		 * 
 		 */
 	    public static function getCryptoData() {
 
@@ -101,9 +106,7 @@
 	    }
 
 		/**
-		 * 
 		 * getETHData
-		 * 
 		 */
 	    public static function getETHData() {
 
@@ -128,9 +131,7 @@
 	    }
 
 	    /**
-	     * 
 	     * getUserLevel
-	     * 
 	     */
 	    public static function getUserLevel( $user_id ) {
 
@@ -148,9 +149,7 @@
 	    }
 
 	    /**
-	     * 
-	     * 
-	     * 
+	     * getUserRole
 	     */
 
 	    public static function getUserRole( $user_id ) {
@@ -167,9 +166,7 @@
 	    }
 
 	    /**
-	     * 
 	     * getReferralPoints
-	     * 
 	     */
 
 	    public static function getReferralPoints( $user_id ) {
@@ -179,9 +176,7 @@
 	    }
 
 	    /**
-	     * 
 	     * getMaxDailyDsers
-	     * 
 	     */
 
 	    public static function getMaxDailyUsers() {
@@ -190,9 +185,7 @@
 	    }
 
 	    /**
-	     * 
 	     * getMaxDailyDonations
-	     * 
 	     */
 
 	    public static function getMaxDailyDonations() {
@@ -201,9 +194,7 @@
 	    }
 
 	    /**
-	     * 
 	     * getUselessUserDays
-	     * 
 	     */
 
 	    public static function getUselessUserDays() {
@@ -212,9 +203,7 @@
 	    }
 
 	    /**
-	     * 
 	     * getMaxPaymentDays
-	     * 
 	     */
 
 	    public static function getMaxPaymentDays() {
@@ -223,9 +212,7 @@
 	    }
 
 	    /**
-	     * 
 	     * getMaxConfirmedDonations
-	     * 
 	     */
 
 	    public static function getMaxConfirmedDonations() {
@@ -234,13 +221,102 @@
 	    }
 
 	    /**
-	     * 
 	     * getMaxConfirmedDonations
-	     * 
 	     */
 
 	    public static function getGrowthPercentage() {
 
 	    	return ( Setting::first() )->growth_percentage ;
+	    }
+
+	    /**
+	     * NEW SETTINGS OPTIONS.
+	     * =========================
+	     * 
+	     * getDonationListActive
+	     */
+
+	    public static function getDonationListActive() {
+
+	    	return ( Setting::first() )->donation_list_active ;
+	    }
+
+	    /**
+	     * NEW SETTINGS OPTIONS.
+	     * =========================
+	     * 
+	     * getSupportActive
+	     */
+
+	    public static function getSupportActive() {
+
+	    	return ( Setting::first() )->support_active ;
+	    }
+
+	    /**
+	     * getSupportActive
+	     */
+
+	    public static function getShowUpdateUsers() {
+
+	    	return ( Setting::first() )->show_update_users ;
+	    }
+
+	    /**
+	     * getSupportActive
+	     */
+
+	    public static function getRealtimeDelay() {
+
+	    	return ( Setting::first() )->realtime_delay ;
+	    }
+
+	    /**
+	     * getSupportUserID
+	     */
+
+	    public static function getSupportUserID() {
+
+	    	return ( User::whereEmail( 'support@bitroseed.com' )->first() )->id ;
+	    }
+
+	    /**
+	     * getSupportUserID
+	     */
+
+	    public static function getTeamUserID() {
+
+	    	return ( User::whereEmail( 'team@bitroseed.com' )->first() )->id ;
+	    }
+
+	    /**
+	     * getSupportRole
+	     */
+
+	    public static function getSupportRole() {
+
+	    	$support_user_id 				= self::getSupportUserID() ;
+
+	    	return self::getUserRole( $support_user_id ) ;
+
+	    }
+
+	    /**
+	     * getSupportRole
+	     */
+
+	    public static function isSupport() {
+
+	    	$is_support 					= false ;
+
+	    	if ( auth()->check() ) {
+
+		    	if ( auth()->user()->email == "support@bitroseed.com" ) 
+		    		$is_support 			= true ;
+
+	    	}
+
+	    	return $is_support ;
+
 	    }
 	}
