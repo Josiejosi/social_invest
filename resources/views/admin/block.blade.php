@@ -31,10 +31,10 @@
 
 					                    <tr>
 					                        <td class="text-center">
-					                        	{{ $user->name }} {{ $user->surname }}
+					                        	{{ ( isset( $user->name ) ? $user->name : '' }} {{ isset( $user->surname ) ? $user->surname : '' }}
 					                        </td>
 					                        <td class="text-center">
-					                        	{{ $user->created_at->diffForHumans() }}
+					                        	{{ ( isset( $user->created_at ) ? $user->created_at->diffForHumans() : '' }}
 					                        </td>
 					                        <td class="text-center">
 					                        	0
