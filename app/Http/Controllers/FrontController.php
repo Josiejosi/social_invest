@@ -161,7 +161,7 @@ class FrontController extends Controller
 	            return redirect('/verification') ;
 	        }
 
-	        if ( auth()->user()->is_avtive == 1 ) {
+	        if ( auth()->user()->is_avtive == 0 ) {
 	            return redirect('/blocked') ;
 	        }
 
