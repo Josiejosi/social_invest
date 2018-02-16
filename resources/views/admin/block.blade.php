@@ -34,7 +34,7 @@
 					                        	{{ $user->name }} {{ $user->surname }}
 					                        </td>
 					                        <td class="text-center">
-					                        	{{ ( isset( $user->created_at ) ? $user->created_at->diffForHumans() : '' }}
+					                        	{{ $user->created_at }}
 					                        </td>
 					                        <td class="text-center">
 					                        	0
