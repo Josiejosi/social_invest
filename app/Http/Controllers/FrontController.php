@@ -28,9 +28,9 @@ class FrontController extends Controller
     public function index() {
 
         $data                       = [
-            
-            "btc_rate"              => ( Btc::latest()->first() )->btc,
-    	    "eth_rate"              => ( Eth::latest()->first() )->eth,
+
+            "btc_rate"              => isset ( ( Btc::latest()->first() )->btc ) ? ( Btc::latest()->first() )->btc : 0 ,
+            "eth_rate"              => isset ( ( Eth::latest()->first() )->eth ) ? ( Eth::latest()->first() )->eth : 0,
 
         ] ;
 
@@ -139,8 +139,8 @@ class FrontController extends Controller
 
         $data                       = [
             
-            "btc_rate"              => ( Btc::latest()->first() )->btc,
-            "eth_rate"              => ( Eth::latest()->first() )->eth,
+            "btc_rate"              => isset ( ( Btc::latest()->first() )->btc ) ? ( Btc::latest()->first() )->btc : 0 ,
+            "eth_rate"              => isset ( ( Eth::latest()->first() )->eth ) ? ( Eth::latest()->first() )->eth : 0,
 
         ] ;
 

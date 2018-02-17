@@ -99,3 +99,34 @@ Event: App\Events\TestingBroadCasting
 CHANNEL test-channel
 [5:07:01 PM] - Pa_l2DqvdUvFiLBzAAAI left channel: test-channel (transport close)
 [5:07:02 PM] - DctOwZCdkc0a74nJAAAJ joined channel: test-channel
+Channel: lastest-crypto
+Event: App\Events\LatestCryptoPrices
+CHANNEL lastest-crypto
+[5:12:37 PM] - DctOwZCdkc0a74nJAAAJ left channel: test-channel (transport close)
+[5:12:38 PM] - OT8XSUjCScvNsUX0AAAK joined channel: lastest-crypto
+Channel: lastest-crypto
+Event: App\Events\LatestCryptoPrices
+CHANNEL lastest-crypto
+Channel: lastest-crypto
+Event: App\Events\LatestCryptoPrices
+CHANNEL lastest-crypto
+Channel: lastest-crypto
+Event: App\Events\LatestCryptoPrices
+CHANNEL lastest-crypto
+Channel: lastest-crypto
+Event: App\Events\LatestCryptoPrices
+CHANNEL lastest-crypto
+Channel: lastest-crypto
+Event: App\Events\LatestCryptoPrices
+CHANNEL lastest-crypto
+Channel: lastest-crypto
+Event: App\Events\LatestCryptoPrices
+CHANNEL lastest-crypto
+[5:18:10 PM] - OT8XSUjCScvNsUX0AAAK left channel: lastest-crypto (transport close)
+[5:18:12 PM] - 9d8k7roY63f5w14JAAAL joined channel: lastest-crypto
+[5:21:15 PM] - 9d8k7roY63f5w14JAAAL left channel: lastest-crypto (transport close)
+[5:21:17 PM] - _yIM7-dcPRjW9zTDAAAM joined channel: lastest-crypto
+[5:21:25 PM] - _yIM7-dcPRjW9zTDAAAM left channel: lastest-crypto (transport close)
+[5:21:26 PM] - 0xi_07nOQKb_xnYTAAAN joined channel: lastest-crypto
+[5:22:15 PM] - 0xi_07nOQKb_xnYTAAAN left channel: lastest-crypto (transport close)
+[5:22:16 PM] - nJr23uwyjiakSTCzAAAO joined channel: lastest-crypto
