@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
 
             event( new \App\Events\LatestCryptoPrices( [ 'btc' => $btc, 'eth' => $eth ] ) ) ;
 
-        })->everyMinute() ;
+        })->everyFiveMinutes() ;
     }
 
     protected function commands()
