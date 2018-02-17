@@ -1,0 +1,101 @@
+
+L A R A V E L  E C H O  S E R V E R
+
+version 1.3.6
+
+⚠ Starting server in DEV mode...
+
+✔  Running at localhost on port 6001
+✔  Channels are ready.
+✔  Listening for http events...
+✔  Listening for redis events...
+
+Server ready!
+
+1518876404817 - info: blockchain.info wallet service v0.26.0 running on http://127.0.0.1:3000
+[4:12:21 PM] - xvVTHnubhEAzARMcAAAE joined channel: orders
+[4:22:08 PM] - xvVTHnubhEAzARMcAAAE left channel: orders (transport close)
+[4:22:09 PM] - yyOkN7ZaoZ33P78zAAAF joined channel: test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+[4:25:02 PM] - yyOkN7ZaoZ33P78zAAAF left channel: test-channel (transport close)
+[4:25:04 PM] - TSu25YczdzxL9BkYAAAG joined channel: test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+[4:36:30 PM] - TSu25YczdzxL9BkYAAAG left channel: test-channel (transport close)
+[4:36:32 PM] - OC7BkU_rZO1EonVOAAAH joined channel: test-channel
+[4:37:52 PM] - OC7BkU_rZO1EonVOAAAH left channel: test-channel (transport close)
+[4:37:54 PM] - Pa_l2DqvdUvFiLBzAAAI joined channel: test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+Channel: test-channel
+Event: App\Events\TestingBroadCasting
+CHANNEL test-channel
+[5:07:01 PM] - Pa_l2DqvdUvFiLBzAAAI left channel: test-channel (transport close)
+[5:07:02 PM] - DctOwZCdkc0a74nJAAAJ joined channel: test-channel

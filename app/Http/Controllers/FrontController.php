@@ -19,14 +19,18 @@ use App\Jobs\WelcomeEmailJob;
 use App\Jobs\ResetPasswordJob;
 use App\Jobs\ResendVerificationCodeJob;
 
+use App\Models\Btc ;
+use App\Models\Eth ;
+
 
 class FrontController extends Controller
 {
     public function index() {
 
         $data                       = [
-            "btc_rate"              => Helper::getCryptoData(),
-    	    "eth_rate"              => Helper::getETHData(),
+            
+            "btc_rate"              => ( Btc::latest()->first() )->btc,
+    	    "eth_rate"              => ( Eth::latest()->first() )->eth,
 
         ] ;
 
@@ -135,8 +139,8 @@ class FrontController extends Controller
 
         $data                       = [
             
-            "btc_rate"              => Helper::getCryptoData(),
-            "eth_rate"              => Helper::getETHData(),
+            "btc_rate"              => ( Btc::latest()->first() )->btc,
+            "eth_rate"              => ( Eth::latest()->first() )->eth,
 
         ] ;
 

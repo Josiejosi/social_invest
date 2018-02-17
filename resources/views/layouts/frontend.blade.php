@@ -19,7 +19,7 @@
 
 	<link rel="stylesheet" href="{{ asset( 'css/frontend.css' ) }}">
 
-	<!-- <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script> -->
+	<script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset( 'images/favicon/apple-touch-icon.png' ) }}">
 	<link rel="icon" type="image/png" href="{{ asset( 'images/favicon/favicon-32x32.png' ) }}" sizes="32x32">

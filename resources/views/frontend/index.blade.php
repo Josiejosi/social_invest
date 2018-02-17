@@ -13,7 +13,7 @@
                     </div>
                     <div class="ask-info">
                       <h3 class="text-white">BITCOIN PRICE</h3>
-                      <p class="text-white">{{ $data["btc_rate"] }} USD</p>
+                      <p class="text-white"><span id="btc_rate">{{ $data["btc_rate"] }}</span> USD</p>
                     </div>
                  </div>
                </div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="ask-info">
                       <h3 class="text-white">ETHEREUM PRICE</h3>
-                      <p class="text-white">{{ $data["eth_rate"] }} USD</p>
+                      <p class="text-white"><span id="eth_rate">{{ $data["eth_rate"] }}</span> USD</p>
                     </div>
                  </div>
                </div>
