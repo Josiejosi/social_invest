@@ -15,6 +15,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ \App\Helpers\Helper::getSupportUserID() }}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset( 'images/favicon/apple-touch-icon.png' ) }}">
     <link rel="icon" type="image/png" href="{{ asset( 'images/favicon/favicon-32x32.png' ) }}" sizes="32x32">
@@ -29,15 +30,22 @@
         .alert {
             color: #fff;
         }
+
+        .table .row-actions a {
+            color: #f7f9fa;
+        }
+
     </style>
+
+    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
 
 
 </head>
 
 <body>
 
-    <div id="app"></div>
-    <div class="all-wrapper menu-side with-side-panel">
+    <div ></div>
+    <div class="all-wrapper menu-side with-side-panel" id="app">
 
         <div class="layout-w">
 
@@ -377,8 +385,6 @@
         </div>
 
     </div>
-
-    <script src="{{ asset( 'js/backend.js' ) }}"></script>
 
     @yield('js')
 

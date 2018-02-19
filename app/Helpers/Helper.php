@@ -1,5 +1,6 @@
 <?php namespace App\Helpers;
 
+	use App\Models\Transaction ;
 	use App\Models\LevelUser ;
 	use App\Models\RoleUser ;
 	use App\Models\Referral ;
@@ -7,6 +8,8 @@
 	use App\Models\Level ;
 	use App\Models\Role ;
 	use App\Models\User ;
+
+	use Carbon\Carbon ;
 	
 	class Helper {
 
@@ -128,6 +131,45 @@
 				return $data["last_price"] ;
 
 			return 1 ;
+	    }
+
+	    /**
+	     * getLatestDonations
+	     */
+	    public static function getLatestDonations() {
+
+	    	$transactions 	  					= Transaction::where( 'donee_id', '<>' ,auth()->user()->id )
+	    					  							 ->where( 'status', '<>', 3 )
+	    					  							 ->get() ;
+
+
+	    	$now 								= Carbon::now() ;
+
+	    	$build_transactions 			= [] ;
+
+	    	if ( count( $transactions ) > 0 ) {
+
+	    		foreach ( $transactions as $transaction ) {
+
+	    			if ( ( $transaction->payday )->diffInDays( $now ) >= 7 ) {
+
+		    			$build_transactions[]	=  [
+
+		    				'name'				=> $transaction->donee->name . " " . $transaction->donee->surname ,
+		    				'status'			=> $transaction->status,
+		    				'deposit_type'		=> $transaction->deposit_type,
+		    				'growth_amount'		=> $transaction->growth_amount,
+		    				'url'				=> url( "/" . "contribute" . "/" . $transaction->id ),
+
+		    			] ;
+
+	    			}
+
+	    		}
+	    	}
+
+	    	return $build_transactions ;
+
 	    }
 
 	    /**

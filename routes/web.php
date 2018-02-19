@@ -35,9 +35,11 @@
 
 	
 	Route::get('transactions', 					"TransactionController@index")->name('transactions') ;
+	Route::get('list_transactions', 			"TransactionController@list_transactions")->name('list_transactions') ;
 	Route::get('contribute/{id}', 				"ContributeController@index")->name('contribute') ;
 	Route::get('confirm_contribution/{id}', 	"ContributeController@confirm_contribution")->name('confirm_contribution') ;
 	Route::get('complete_contribution/{id}', 	"ContributeController@complete_contribution")->name('complete_contribution') ;
+	Route::get('just_view_contribution/{id}', 	"ContributeController@just_view_contribution")->name('just_view_contribution') ;
 
 	Route::get('settings', 						"SettingsController@index")->name('settings') ;
 	Route::post('settings', 					"SettingsController@settings") ;

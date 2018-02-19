@@ -1,0 +1,296 @@
+
+L A R A V E L  E C H O  S E R V E R
+
+version 1.3.6
+
+⚠ Starting server in DEV mode...
+
+✔  Running at localhost on port 6001
+✔  Channels are ready.
+✔  Listening for http events...
+✔  Listening for redis events...
+
+Server ready!
+
+[9:11:55 AM] - HRCgStxo8kl4rv3LAAAB joined channel: lastest-crypto
+[9:12:09 AM] - HRCgStxo8kl4rv3LAAAB left channel: lastest-crypto (transport close)
+[9:32:47 AM] - xkflIIWyLnl5foXbAAAJ joined channel: lastest-crypto
+[9:32:56 AM] - xkflIIWyLnl5foXbAAAJ left channel: lastest-crypto (transport close)
+[9:47:46 AM] - 7p3vUPm6USfnrHd5AAAU joined channel: lastest-crypto
+[9:48:28 AM] - 7p3vUPm6USfnrHd5AAAU left channel: lastest-crypto (transport close)
+[9:48:30 AM] - PsvHfbcKbIJwY-2xAAAV joined channel: lastest-crypto
+[9:48:42 AM] - PsvHfbcKbIJwY-2xAAAV left channel: lastest-crypto (transport close)
+[9:48:44 AM] - kc71qzA52DD8DRCiAAAW joined channel: lastest-crypto
+[9:51:32 AM] - kc71qzA52DD8DRCiAAAW left channel: lastest-crypto (transport close)
+[9:51:35 AM] - pa9ObMaIDVlQ6v00AAAX joined channel: lastest-crypto
+[9:52:06 AM] - w3zC8sbobU8olcp2AAAZ joined channel: lastest-crypto
+[9:52:22 AM] - w3zC8sbobU8olcp2AAAZ left channel: lastest-crypto (transport close)
+[9:52:22 AM] - 4d0jYG0lFFQreQ-UAAAa joined channel: lastest-crypto
+[9:53:53 AM] - pa9ObMaIDVlQ6v00AAAX left channel: lastest-crypto (transport close)
+[9:53:55 AM] - t_T05PkB82u9bDX3AAAb joined channel: lastest-crypto
+[9:54:03 AM] - 4d0jYG0lFFQreQ-UAAAa left channel: lastest-crypto (transport close)
+[9:54:04 AM] - 1icMCAwZyH2sc7y0AAAc joined channel: lastest-crypto
+[9:56:41 AM] - t_T05PkB82u9bDX3AAAb left channel: lastest-crypto (transport close)
+[9:56:43 AM] - OqTCrtJ9kV-gOPV-AAAd joined channel: lastest-crypto
+[9:56:51 AM] - 1icMCAwZyH2sc7y0AAAc left channel: lastest-crypto (transport close)
+[9:56:52 AM] - L7AZrTBrANUxPuuRAAAe joined channel: lastest-crypto
+[9:57:22 AM] - OqTCrtJ9kV-gOPV-AAAd left channel: lastest-crypto (transport close)
+[9:57:23 AM] - seMbpBX_ACK9TczFAAAf joined channel: lastest-crypto
+[9:57:29 AM] - L7AZrTBrANUxPuuRAAAe left channel: lastest-crypto (transport close)
+[9:57:29 AM] - fWWqQcyWmY8WBgEFAAAg joined channel: lastest-crypto
+[10:02:29 AM] - seMbpBX_ACK9TczFAAAf left channel: lastest-crypto (transport close)
+[10:02:49 AM] - c7O6xdln8WDIznppAAAh joined channel: lastest-crypto
+[10:04:37 AM] - c7O6xdln8WDIznppAAAh left channel: lastest-crypto (transport close)
+[10:04:45 AM] - vK-Df11Drk9_9CAUAAAi joined channel: lastest-crypto
+[10:15:39 AM] - vK-Df11Drk9_9CAUAAAi left channel: lastest-crypto (transport close)
+[10:15:44 AM] - jeBfK8WSCAtK3FL5AAAj joined channel: lastest-crypto
+[10:16:14 AM] - jeBfK8WSCAtK3FL5AAAj left channel: lastest-crypto (transport close)
+[10:16:17 AM] - XWIszKMfWrcnDuioAAAk joined channel: lastest-crypto
+[10:17:21 AM] - XWIszKMfWrcnDuioAAAk left channel: lastest-crypto (transport close)
+[10:17:23 AM] - MrQJqoEc9q23LcoaAAAl joined channel: lastest-crypto
+[10:18:53 AM] - MrQJqoEc9q23LcoaAAAl left channel: lastest-crypto (transport close)
+[10:18:55 AM] - le9DzwazhwDPeVnKAAAm joined channel: lastest-crypto
+[10:21:00 AM] - le9DzwazhwDPeVnKAAAm left channel: lastest-crypto (transport close)
+[10:21:02 AM] - ZMqNELRgJme_4im9AAAn joined channel: lastest-crypto
+[10:21:44 AM] - ZMqNELRgJme_4im9AAAn left channel: lastest-crypto (transport close)
+[10:21:47 AM] - TL6yQKPVEHiF_sFwAAAo joined channel: lastest-crypto
+[10:22:28 AM] - TL6yQKPVEHiF_sFwAAAo left channel: lastest-crypto (transport close)
+[10:22:29 AM] - g0U1KJZ2wpTyIqPVAAAp joined channel: lastest-crypto
+[10:23:24 AM] - g0U1KJZ2wpTyIqPVAAAp left channel: lastest-crypto (transport close)
+[10:23:29 AM] - eG4J76i2ljqQSg7nAAAq joined channel: lastest-crypto
+[10:24:14 AM] - eG4J76i2ljqQSg7nAAAq left channel: lastest-crypto (transport close)
+[10:24:16 AM] - 4NHhSlB_Q5Fs1Un-AAAr joined channel: lastest-crypto
+[10:25:27 AM] - 4NHhSlB_Q5Fs1Un-AAAr left channel: lastest-crypto (transport close)
+[10:25:59 AM] - JS8RfuvfVXVmRXKWAAAs joined channel: lastest-crypto
+[10:27:31 AM] - JS8RfuvfVXVmRXKWAAAs left channel: lastest-crypto (transport close)
+[10:27:48 AM] - RehJce5nA9Eq1wh6AAAt joined channel: lastest-crypto
+[10:28:44 AM] - RehJce5nA9Eq1wh6AAAt left channel: lastest-crypto (transport close)
+[10:28:46 AM] - 0JLrO2FjvL1jk4DeAAAu joined channel: lastest-crypto
+[10:37:47 AM] - 0JLrO2FjvL1jk4DeAAAu left channel: lastest-crypto (transport close)
+[10:37:48 AM] - yb2-vcd5pbXqwCvxAAAv joined channel: lastest-crypto
+[10:41:55 AM] - yb2-vcd5pbXqwCvxAAAv left channel: lastest-crypto (transport close)
+[10:43:56 AM] - BZg6ZzOHdrlQiFaTAAAw joined channel: lastest-crypto
+[10:44:27 AM] - BZg6ZzOHdrlQiFaTAAAw left channel: lastest-crypto (transport close)
+[10:44:29 AM] - vfZErJapQslsA21dAAAx joined channel: lastest-crypto
+[10:44:51 AM] - vfZErJapQslsA21dAAAx left channel: lastest-crypto (transport close)
+[10:45:11 AM] - 91P47wjzd8djxKNCAAAy joined channel: lastest-crypto
+[10:54:52 AM] - 91P47wjzd8djxKNCAAAy left channel: lastest-crypto (transport close)
+[10:55:23 AM] - yKAcxL7k_UL8HDAJAAAz joined channel: lastest-crypto
+[10:59:46 AM] - yKAcxL7k_UL8HDAJAAAz left channel: lastest-crypto (transport close)
+[10:59:48 AM] - wbQYIUaWv6XdXxBlAAA0 joined channel: lastest-crypto
+[10:59:52 AM] - wbQYIUaWv6XdXxBlAAA0 left channel: lastest-crypto (transport close)
+[10:59:54 AM] - 57CDNXLtitFIV_qwAAA1 joined channel: lastest-crypto
+[10:59:54 AM] - 57CDNXLtitFIV_qwAAA1 left channel: lastest-crypto (transport error)
+[10:59:58 AM] - qWzuEadjRX1cOTQEAAA2 joined channel: lastest-crypto
+[11:00:19 AM] - qWzuEadjRX1cOTQEAAA2 left channel: lastest-crypto (transport close)
+[11:00:21 AM] - nB1PYUi5CTY8__PQAAA3 joined channel: lastest-crypto
+[11:06:48 AM] - nB1PYUi5CTY8__PQAAA3 left channel: lastest-crypto (transport close)
+[11:06:50 AM] - BnOntTjSFG7WAcfuAAA4 joined channel: lastest-crypto
+[11:07:32 AM] - BnOntTjSFG7WAcfuAAA4 left channel: lastest-crypto (transport close)
+[11:07:54 AM] - 0rU7PEH8vQuw7qCsAAA5 joined channel: lastest-crypto
+[11:08:44 AM] - 0rU7PEH8vQuw7qCsAAA5 left channel: lastest-crypto (transport close)
+[11:08:46 AM] - aSDS2OO6IYylDjUnAAA6 joined channel: lastest-crypto
+[11:10:30 AM] - aSDS2OO6IYylDjUnAAA6 left channel: lastest-crypto (transport close)
+[11:10:32 AM] - dbMcZLeGiKpjAqaiAAA7 joined channel: lastest-crypto
+[11:10:43 AM] - dbMcZLeGiKpjAqaiAAA7 left channel: lastest-crypto (transport close)
+[11:10:45 AM] - gm3ar8PWnCwWuuigAAA8 joined channel: lastest-crypto
+[11:10:50 AM] - gm3ar8PWnCwWuuigAAA8 left channel: lastest-crypto (transport close)
+[11:10:57 AM] - fUQ8EFkapjWoT-d5AAA9 joined channel: lastest-crypto
+[11:11:02 AM] - fUQ8EFkapjWoT-d5AAA9 left channel: lastest-crypto (transport close)
+[11:11:04 AM] - Co8q6yRmx-K-VB0SAAA- joined channel: lastest-crypto
+[11:11:06 AM] - Co8q6yRmx-K-VB0SAAA- left channel: lastest-crypto (transport close)
+[11:11:08 AM] - WtnfnT-_7f89eU-aAAA_ joined channel: lastest-crypto
+[11:11:43 AM] - WtnfnT-_7f89eU-aAAA_ left channel: lastest-crypto (transport close)
+[11:11:45 AM] - FodrPd9sRUEYXvgtAABA joined channel: lastest-crypto
+[11:12:27 AM] - FodrPd9sRUEYXvgtAABA left channel: lastest-crypto (transport close)
+[11:12:29 AM] - 4L6oG3XJosijC3jCAABB joined channel: lastest-crypto
+[11:13:56 AM] - 4L6oG3XJosijC3jCAABB left channel: lastest-crypto (transport close)
+[11:13:58 AM] - 3UXDu3iFGXJr66-hAABC joined channel: lastest-crypto
+[11:14:04 AM] - 3UXDu3iFGXJr66-hAABC left channel: lastest-crypto (transport close)
+[11:14:06 AM] - 1jlPpnQ2gOkb1iOrAABD joined channel: lastest-crypto
+[11:14:13 AM] - 1jlPpnQ2gOkb1iOrAABD left channel: lastest-crypto (transport close)
+[11:14:15 AM] - PAkdNjy6am4hTn7bAABE joined channel: lastest-crypto
+[11:15:34 AM] - PAkdNjy6am4hTn7bAABE left channel: lastest-crypto (transport close)
+[11:15:35 AM] - _lf9BgSPsvFhYb7_AABF joined channel: lastest-crypto
+[11:15:44 AM] - _lf9BgSPsvFhYb7_AABF left channel: lastest-crypto (transport close)
+[11:15:49 AM] - rr1X_h1QJ3NJ0I9pAABG joined channel: lastest-crypto
+[11:18:29 AM] - rr1X_h1QJ3NJ0I9pAABG left channel: lastest-crypto (transport close)
+[11:18:31 AM] - iE-KWxk5K2HiPzykAABH joined channel: lastest-crypto
+[11:18:35 AM] - iE-KWxk5K2HiPzykAABH left channel: lastest-crypto (transport close)
+[11:18:37 AM] - 4iBB_M6vuCOXUuEUAABI joined channel: lastest-crypto
+[11:18:42 AM] - 4iBB_M6vuCOXUuEUAABI left channel: lastest-crypto (transport close)
+[11:18:44 AM] - PHRQK7q-T7q-WGPEAABJ joined channel: lastest-crypto
+[11:19:11 AM] - PHRQK7q-T7q-WGPEAABJ left channel: lastest-crypto (transport close)
+[11:19:34 AM] - pUss_mrICd7__t_zAABK joined channel: lastest-crypto
+[11:19:37 AM] - pUss_mrICd7__t_zAABK left channel: lastest-crypto (transport close)
+[11:19:38 AM] - qlKGDtBOw09twLetAABL joined channel: lastest-crypto
+[11:19:45 AM] - qlKGDtBOw09twLetAABL left channel: lastest-crypto (transport close)
+[11:19:47 AM] - 5NoEmS_JtJxlrxnmAABM joined channel: lastest-crypto
+[11:29:09 AM] - 5NoEmS_JtJxlrxnmAABM left channel: lastest-crypto (transport close)
+[11:30:59 AM] - w4EydQA5LQx6uksGAABO joined channel: lastest-crypto
+[11:32:03 AM] - w4EydQA5LQx6uksGAABO left channel: lastest-crypto (transport close)
+[11:32:06 AM] - q3NHScYsi2L0nmeWAABP joined channel: lastest-crypto
+[11:35:35 AM] - q3NHScYsi2L0nmeWAABP left channel: lastest-crypto (transport close)
+[11:35:38 AM] - p_UtXWC5Ehd_sGu3AABQ joined channel: lastest-crypto
+[11:36:09 AM] - p_UtXWC5Ehd_sGu3AABQ left channel: lastest-crypto (transport close)
+[11:48:59 AM] - fWWqQcyWmY8WBgEFAAAg left channel: lastest-crypto (transport close)
+[11:49:00 AM] - FvFq4Ztg5HBGj6ljAABb joined channel: latest-transactions
+[11:51:10 AM] - FvFq4Ztg5HBGj6ljAABb left channel: latest-transactions (transport close)
+[11:51:11 AM] - h-eVbVtBo9i_bzDrAABc joined channel: latest-transactions
+[11:54:47 AM] - h-eVbVtBo9i_bzDrAABc left channel: latest-transactions (transport close)
+[11:54:48 AM] - eaqI1vIiVgzWx2LNAABd joined channel: latest-transactions
+[11:55:07 AM] - eaqI1vIiVgzWx2LNAABd left channel: latest-transactions (transport close)
+[11:55:08 AM] - tpnWdahIp1aPzzGaAABe joined channel: latest-transactions
+[11:57:33 AM] - BejUihWPxP_vG1XGAABf joined channel: latest-transactions
+[11:57:59 AM] - BejUihWPxP_vG1XGAABf left channel: latest-transactions (transport close)
+[11:58:01 AM] - Orzc7fnbJR1D0T0SAABg joined channel: latest-transactions
+[11:58:07 AM] - Orzc7fnbJR1D0T0SAABg left channel: latest-transactions (transport close)
+[11:58:09 AM] - 812a5JIDBuYup0opAABh joined channel: latest-transactions
+[11:59:42 AM] - 812a5JIDBuYup0opAABh left channel: latest-transactions (transport close)
+[11:59:44 AM] - _dPjBz096b1-Jgk-AABi joined channel: latest-transactions
+[12:00:12 PM] - _dPjBz096b1-Jgk-AABi left channel: latest-transactions (transport close)
+[12:00:15 PM] - eJsTlbFvR6AiTP7iAABj joined channel: latest-transactions
+[12:01:06 PM] - eJsTlbFvR6AiTP7iAABj left channel: latest-transactions (transport close)
+[12:01:09 PM] - wmb0wRh6cj-uuEUKAABk joined channel: latest-transactions
+[12:01:17 PM] - wmb0wRh6cj-uuEUKAABk left channel: latest-transactions (transport close)
+[12:01:45 PM] - mqSGoANyl-ws7QR3AABl joined channel: latest-transactions
+[12:05:44 PM] - tpnWdahIp1aPzzGaAABe left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:09:27 PM] - mqSGoANyl-ws7QR3AABl left channel: latest-transactions (transport close)
+[12:09:30 PM] - VmrxQ04euVt68BD7AABn joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:11:43 PM] - VmrxQ04euVt68BD7AABn left channel: latest-transactions (transport close)
+[12:11:45 PM] - 33_pnp1qkBszny7vAABo joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:12:54 PM] - 33_pnp1qkBszny7vAABo left channel: latest-transactions (transport close)
+[12:12:56 PM] - PsOmKIfIKC-j0J2uAABp joined channel: latest-transactions
+[12:13:28 PM] - PsOmKIfIKC-j0J2uAABp left channel: latest-transactions (transport close)
+[12:13:48 PM] - 8yLADLphHcMcDsakAABq joined channel: latest-transactions
+[12:16:18 PM] - 8yLADLphHcMcDsakAABq left channel: latest-transactions (transport close)
+[12:16:20 PM] - bN7a1yTXGDdcYF31AABr joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:18:19 PM] - bN7a1yTXGDdcYF31AABr left channel: latest-transactions (transport close)
+[12:18:21 PM] - sH5I65gGv99ZPQJaAABs joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:38:14 PM] - yD_UWBX0KqfJKB5ZAABt joined channel: lastest-crypto
+[12:38:50 PM] - yD_UWBX0KqfJKB5ZAABt left channel: lastest-crypto (transport close)
+[12:38:51 PM] - 1MvLs6Yv1HiV87E3AABu joined channel: lastest-crypto
+[12:39:01 PM] - 1MvLs6Yv1HiV87E3AABu left channel: lastest-crypto (transport close)
+[12:39:01 PM] - Rx0rh541Bfp0shvJAABv joined channel: lastest-crypto
+[12:39:32 PM] - Rx0rh541Bfp0shvJAABv left channel: lastest-crypto (transport close)
+[12:39:33 PM] - 6W4RVMsyuH0GW70RAABw joined channel: lastest-crypto
+[12:39:34 PM] - 6W4RVMsyuH0GW70RAABw left channel: lastest-crypto (transport close)
+[12:39:35 PM] - -GuFJZn3JiLRd2jBAABx joined channel: lastest-crypto
+[12:40:17 PM] - -GuFJZn3JiLRd2jBAABx left channel: lastest-crypto (transport close)
+[12:40:19 PM] - zuwqFLgGSMYQ5OK2AABy joined channel: latest-transactions
+[12:40:31 PM] - zuwqFLgGSMYQ5OK2AABy left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:40:32 PM] - Y6frtSN38EnW1ijQAABz joined channel: latest-transactions
+[12:40:33 PM] - Y6frtSN38EnW1ijQAABz left channel: latest-transactions (transport close)
+[12:40:58 PM] - sH5I65gGv99ZPQJaAABs left channel: latest-transactions (transport close)
+[12:41:00 PM] - UZaRL1kzT8OjFibpAAB0 joined channel: latest-transactions
+[12:41:23 PM] - vfcC9E9dNHJ8q5wSAAB1 joined channel: latest-transactions
+[12:41:26 PM] - vfcC9E9dNHJ8q5wSAAB1 left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:41:27 PM] - EcP2aYaoVlHJtZo0AAB2 joined channel: latest-transactions
+[12:41:28 PM] - EcP2aYaoVlHJtZo0AAB2 left channel: latest-transactions (transport close)
+[12:41:32 PM] - Kfc_la_wSwr9-P68AAB3 joined channel: latest-transactions
+[12:41:35 PM] - Kfc_la_wSwr9-P68AAB3 left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:41:36 PM] - Vlwbw7Pb3hnyjyRzAAB4 joined channel: latest-transactions
+[12:41:37 PM] - Vlwbw7Pb3hnyjyRzAAB4 left channel: latest-transactions (transport close)
+[12:43:58 PM] - UZaRL1kzT8OjFibpAAB0 left channel: latest-transactions (transport close)
+[12:44:00 PM] - MCeMJxcG1vt1vtTPAAB5 joined channel: latest-transactions
+[12:45:38 PM] - MCeMJxcG1vt1vtTPAAB5 left channel: latest-transactions (transport close)
+[12:45:40 PM] - -1JklphbCjW-5iSjAAB6 joined channel: latest-transactions
+[12:45:47 PM] - V2GlQ55dTbItNHOLAAB7 joined channel: latest-transactions
+[12:45:54 PM] - V2GlQ55dTbItNHOLAAB7 left channel: latest-transactions (transport close)
+[12:45:55 PM] - cvpF7XUnq6zPnfPoAAB8 joined channel: latest-transactions
+[12:45:58 PM] - cvpF7XUnq6zPnfPoAAB8 left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:46:00 PM] - Cp0pcm-NGsCtgDeDAAB9 joined channel: latest-transactions
+[12:46:00 PM] - Cp0pcm-NGsCtgDeDAAB9 left channel: latest-transactions (transport close)
+[12:46:12 PM] - Z7dMuA4_J8g-ruRiAAB- joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:46:28 PM] - -1JklphbCjW-5iSjAAB6 left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:51:03 PM] - _APWomMfu1UF74B0AAB_ joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:51:09 PM] - _APWomMfu1UF74B0AAB_ left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:52:24 PM] - dNVdokf8ytkKVpgiAACA joined channel: latest-transactions
+[12:53:03 PM] - dNVdokf8ytkKVpgiAACA left channel: latest-transactions (transport close)
+[12:53:05 PM] - aR4lzJEgRXEamAc9AACB joined channel: lastest-crypto
+[12:53:08 PM] - Z7bfqCt9YHMY3h8FAACC joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:53:12 PM] - Z7bfqCt9YHMY3h8FAACC left channel: latest-transactions (transport close)
+[12:53:22 PM] - bPt79i1xAH5HbXMEAACD joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:54:04 PM] - bPt79i1xAH5HbXMEAACD left channel: latest-transactions (transport close)
+[12:54:16 PM] - r7x0-IpctSflzIc1AACE joined channel: latest-transactions
+[12:54:30 PM] - aR4lzJEgRXEamAc9AACB left channel: lastest-crypto (ping timeout)
+[12:56:22 PM] - r7x0-IpctSflzIc1AACE left channel: latest-transactions (transport close)
+[12:56:48 PM] - IMN4iIJJoR78JD86AACF joined channel: latest-transactions
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[12:57:10 PM] - IMN4iIJJoR78JD86AACF left channel: latest-transactions (transport close)
+[1:01:20 PM] - Z7dMuA4_J8g-ruRiAAB- left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[1:01:22 PM] - snqhC9LwP1IYaOLhAACG joined channel: latest-transactions
+[1:01:23 PM] - snqhC9LwP1IYaOLhAACG left channel: latest-transactions (transport close)
+[1:01:27 PM] - Sl7G1uCrFrp_Xi8rAACH joined channel: latest-transactions
+[1:01:29 PM] - Sl7G1uCrFrp_Xi8rAACH left channel: latest-transactions (transport close)
+Channel: latest-transactions
+Event: App\Events\LatestTransactions
+CHANNEL latest-transactions
+[1:01:37 PM] - ceIPA9w9s1enjP6KAACI joined channel: latest-transactions
+[1:01:47 PM] - ceIPA9w9s1enjP6KAACI left channel: latest-transactions (transport close)
+[1:01:48 PM] - HMNMP0G_J7yG-Y6oAACJ joined channel: latest-transactions
+[1:01:50 PM] - HMNMP0G_J7yG-Y6oAACJ left channel: latest-transactions (transport close)
+[1:01:51 PM] - -5-kg_nIEMp5qN0vAACK joined channel: latest-transactions
+[1:03:51 PM] - -5-kg_nIEMp5qN0vAACK left channel: latest-transactions (transport close)

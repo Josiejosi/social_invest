@@ -179,18 +179,22 @@
 
 @section('js')
 
-    <script src="{{ asset('js/jquery-qrcode-0.14.0.min.js') }}"></script>
     <script>
 
-        var text = '{{ $qrcode_string }}'
-        
-        $("#QRCode").qrcode({
-
-            render: 'image',
-            text: text
-
-        });
+        var transaction_id = {{ $data->id }} ;
 
     </script>
+
+    <script src="{{ asset('js/confirmation.js') }}"></script>
+    <script src="{{ asset('js/jquery-qrcode-0.14.0.min.js') }}"></script>
+
+    <script>
+
+        var text = '{{ $qrcode_string }}' ;
+       
+        $("#QRCode").qrcode( { render: 'image', text: text } );
+
+    </script>
+
 
 @endsection

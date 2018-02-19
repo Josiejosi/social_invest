@@ -20,11 +20,8 @@ class HomeController extends Controller
     public function index() {
 
     	$user_id 							= auth()->user()->id ;
-    	
-        $user_dreams                        = Dream::whereUserId( $user_id )->get() ;
-    	$transactions 						= Transaction::all() ;
+    	return view( "backend.index", Helper::PageBuilder( "Home" ) ) ;
 
-    	return view( "backend.index", Helper::PageBuilder( "Home", $transactions ) ) ;
     }
 
     public function create_a_dream( Request $request ) {

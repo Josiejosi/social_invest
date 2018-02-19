@@ -13,6 +13,8 @@ use App\Jobs\CompleteTransactionJob ;
 
 use Carbon\Carbon ;
 
+use App\Events\LatestTransactions ;
+
 class ContributeController extends Controller
 {
 
@@ -22,7 +24,37 @@ class ContributeController extends Controller
 
     	$transaction 						= Transaction::find( $transaction_id ) ;
 
+        $transaction->update([
+
+            "status"                        => 1,
+            
+        ]) ;
+
+        event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
+
     	return view( "backend.contribute", Helper::PageBuilder( "Contribution", $transaction ) ) ;
+    }
+
+    public function just_view_contribution( $transaction_id ) {
+
+        $transaction                        = Transaction::find( $transaction_id ) ;
+
+        if ( count( $transaction ) > 0 ) {
+
+            if ( $transaction->status == 1 ) {
+
+                $transaction->update([
+
+                    "status"                        => 0,
+
+                ]) ;
+
+                event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
+
+            }
+
+        }
+
     }
 
     public function confirm_contribution( $transaction_id ) {
@@ -32,9 +64,11 @@ class ContributeController extends Controller
         $transaction_url                    = url('/complete_contribution/') . "/" . $transaction->id ;
 
     	$transaction->update([
-    		"status" 						=> 1,
+    		"status" 						=> 2,
     		"donar_id" 						=> auth()->user()->id,
     	]) ;
+
+        event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
 
         CompleteTransactionJob::dispatch( User::find($transaction->donee_id), $transaction_url )->onQueue('CompleteTransaction');
 
@@ -47,7 +81,7 @@ class ContributeController extends Controller
     	$transaction 						= Transaction::find( $transaction_id ) ;
 
     	$transaction->update([
-    		"status" 						=> 2,
+    		"status" 						=> 3,
     	]) ;
 
     	$donee_id 							= $transaction->donar_id ;

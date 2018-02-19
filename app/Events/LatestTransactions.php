@@ -10,7 +10,9 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class LatestTransactions
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow ;
+
+class LatestTransactions implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -29,6 +31,6 @@ class LatestTransactions
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('latest-transactions');
+        return new Channel('latest-transactions');
     }
 }

@@ -32,4 +32,5 @@ mix.styles([
 	.js('resources/assets/js/frontend.js', 'public/js')
 	.js('resources/assets/js/backend.js', 'public/js')
 	.js('resources/assets/js/home.js', 'public/js')
+	.js('resources/assets/js/confirmation.js', 'public/js')
 	.js('resources/assets/js/calculator.js', 'public/js');

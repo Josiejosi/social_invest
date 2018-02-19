@@ -12,6 +12,8 @@ use App\Models\Transaction ;
 
 use App\Jobs\CompleteTransactionJob ;
 
+use App\Events\LatestTransactions ;
+
 
 use Carbon\Carbon ;
 
@@ -74,7 +76,7 @@ class AdminController extends Controller
 
     	$level 								= Helper::getUserLevel( $donee_id ) ;
 
-    	$transaction 						= Transaction::create([
+    	Transaction::create([
 
 	        'transaction_reference_code'	=> $transaction_reference_code, 
 	        'amount'						=> $amount, 
@@ -87,6 +89,36 @@ class AdminController extends Controller
 	        'donee_id'						=> $donee_id, 
 
     	]) ;
+
+        $transactions                       = Transaction::where( 'status', '<>', 3 )->get() ;
+
+
+        $now                                = Carbon::now() ;
+
+        $build_transactions             = [] ;
+
+        if ( count( $transactions ) > 0 ) {
+
+            foreach ( $transactions as $transaction ) {
+
+                if ( ( $transaction->payday )->diffInDays( $now ) >= 7 ) {
+
+                    $build_transactions[]   =  [
+
+                        'name'              => $transaction->donee->name . " " . $transaction->donee->surname ,
+                        'status'            => $transaction->status,
+                        'deposit_type'      => $transaction->deposit_type,
+                        'growth_amount'     => $transaction->growth_amount,
+                        'url'               => url( "/" . "contribute" . "/" . $transaction->id ),
+
+                    ] ;
+
+                }
+
+            }
+        }
+
+        event( new LatestTransactions( $build_transactions ) ) ;
 
     	flash( "Donation successfully created." )->success() ;
     	return redirect()->back() ;

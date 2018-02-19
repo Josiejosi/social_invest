@@ -19,9 +19,16 @@ class Transaction extends Model
         'donee_id', 
     ];
 
-    public function dream()
+    protected $dates = [ 'payday' ];
+
+    public function donar()
     {
-        return $this->hasOne( Dream::class ) ;
+        return $this->hasOne( User::class, 'id', 'donar_id' ) ;
+    }
+
+    public function donee()
+    {
+        return $this->hasOne( User::class, 'id', 'donee_id' ) ;
     }
 
 }

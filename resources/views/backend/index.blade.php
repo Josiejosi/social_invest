@@ -45,69 +45,8 @@
 			    <h6 class="element-header">Contribution List</h6>
 			    <div class="element-box-tp">
 
-			        <div class="table-responsive">
-			            <table class="table table-bordered table-lg table-v2 table-striped">
-			                <thead>
-			                    <tr>
-			                        <th>Name</th>
-			                        <th>Amount</th>
-			                        <th>Contribution Type</th>
-			                        <th>Actions</th>
-			                    </tr>
-			                </thead>
-			                <tbody>
-			                	@if ( count( $data ) > 0 )
+					<donations></donations>
 
-				                	@foreach( $data as $transaction )
-
-				                		@if ( $transaction->status === 0 )
-
-					                    <tr>
-					                        <td class="text-left">
-												<?php 
-
-													$user = \App\Models\User::find( $transaction->donee_id )
-
-												?>
-												{{ $user->name }} {{ $user->surname }}
-					                        </td>
-					                        <td class="text-right">$ {{ $transaction->growth_amount }} USD</td>
-					                        <td  class="text-center">
-												
-												@if ( $transaction->deposit_type === "Both" )
-
-													<i class="fab fa-ethereum"></i> OR <i class="fab fa-btc"></i>
-
-												@elseif ( $transaction->deposit_type === "BTC" )
-
-													<i class="fab fa-btc"></i>
-
-												@elseif ( $transaction->deposit_type === "ETH" )
-
-													<i class="fab fa-ethereum"></i>
-
-												@endif
-					                        </td>
-					                        <td class="row-actions">
-					                        	<a href="{{ url( '/contribute' ) }}/{{ $transaction->id }}" 
-					                        	   class="btn btn-success btn-sm">
-					                        		<i class="os-icon os-icon-ui-49"></i> Contribute
-					                        	</a>
-					                        </td>
-					                    </tr>
-
-					                    @endif
-
-				                    @endforeach
-
-								@else
-				                    <tr>
-				                        <td class="text-center" colspan="4">No Contribution found..</td>
-				                    </tr>
-								@endif
-			                </tbody>
-			            </table>
-			        </div>
 			    </div>
 
 			    </div>

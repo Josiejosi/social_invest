@@ -8,7 +8,9 @@ use App\Helpers\Helper ;
 
 use App\Models\Transaction ;
 
-use App\Models\Dream ;
+use App\Models\User ;
+
+use Carbon\Carbon ;
 
 class TransactionController extends Controller
 {
@@ -17,11 +19,13 @@ class TransactionController extends Controller
 
     public function index() {
 
-    	$transactions 						= Transaction::whereDonarId( auth()->user()->id )
-    													 ->whereDoneeId( auth()->user()->id )
-    													 ->get() ;
+    	return view( "backend.transactions", Helper::PageBuilder( "Transactions" ) ) ;
 
-    	return view( "backend.transactions", Helper::PageBuilder( "Transactions", $transactions ) ) ;
+    }
+
+    public function list_transactions() {
+
+    	return Helper::getLatestDonations() ;
 
     }
 
