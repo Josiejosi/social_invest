@@ -27,7 +27,7 @@ class ContributeController extends Controller
         $transaction->update([
 
             "status"                        => 1,
-            
+
         ]) ;
 
         event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
@@ -116,6 +116,8 @@ class ContributeController extends Controller
 	        'donee_id'						=> $donee_id, 
 
     	]) ;
+
+        event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
 
 		flash('You have successfully completed this transaction.')->info() ;
 		return redirect('/home') ;	
