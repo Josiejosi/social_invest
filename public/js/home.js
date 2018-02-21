@@ -47943,6 +47943,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48037,6 +48044,22 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     transaction.status == 0
+                      ? _c("td", { staticClass: "row-actions" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-success btn-sm",
+                              attrs: { href: transaction.url }
+                            },
+                            [
+                              _c("i", { staticClass: "far fa-money-bill-alt" }),
+                              _vm._v(" Contribute\n                    ")
+                            ]
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    transaction.status == 5
                       ? _c("td", { staticClass: "row-actions" }, [
                           _c(
                             "a",

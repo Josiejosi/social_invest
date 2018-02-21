@@ -29,7 +29,7 @@ $( "#move_forward").on( 'click', function( e ) {
 	if ( select_option === 0 ) {
 
 		$( "#alert-messages" ).show() ;
-		$( "#alert_body" ).html( "Please select how you would like to contribute." ) ;
+		$( "#alert_body" ).html( "Sorry, something is wrong, please fill in the form properly." ) ;
 
 	} else {
 
@@ -90,6 +90,7 @@ $( "#FullAmount").on( 'click', function( e ) {
 
 	select_option = 2 ;
 
+	$( "#split_amount" ).hide() ;
 	$( "#move_forward" ).removeAttr("disabled").button('refresh');
 
 }) ;

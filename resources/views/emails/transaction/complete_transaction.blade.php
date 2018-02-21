@@ -1,10 +1,11 @@
 @component('mail::message')
 # Confirm Transaction
 
-Member has made a donation, please confirm if you have received it.
+### {{ $sender->name }} {{ $sender->surname }}  has made a contribution of {{ $amount }} USD, please confirm if you have received it.
 
-@component( 'mail::button', [ 'url' => $transaction ])
-Confirm
+
+@component( 'mail::button', [ 'url' => $url ])
+	Confirm
 @endcomponent
 
 Thanks,<br>

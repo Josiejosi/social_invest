@@ -34,6 +34,13 @@
                         </a>
                     </td>
 
+                    <td class="row-actions" v-if="transaction.status == 5">
+                        <a :href="transaction.url" 
+                           class="btn btn-success btn-sm">
+                            <i class="far fa-money-bill-alt"></i> Contribute
+                        </a>
+                    </td>
+
                     <td class="row-actions" v-if="transaction.status == 1">
 
                         <a href="#" class="btn btn-warning btn-sm">

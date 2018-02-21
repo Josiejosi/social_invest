@@ -3,16 +3,15 @@
 
 ## Registered Details.
 
-** Name: ** {{ $user->name }} {{ $user->surname }}.
-** Cell: ** {{ $user->cell_phone_number }}.
-** Email: ** {{ $user->email }}.
-** Password: **  *********.
+#### ** Name: ** {{ $user->name }} {{ $user->surname }}.
+#### ** Email: ** {{ $user->email }}.
+#### ** Password: **  *********.
 
-** VERIFICATION CODE: **  {{ $user->verification_code }}
+#### ** VERIFICATION CODE: **  {{ $user->verification_code }}
 
-### You will need this code to send to your friends.
+### You will need this link to send to your friends.
 
-** REFFERAL CODE: **  {{ $user->referral_code }}
+#### ** REFFERAL LINK: **  <a href="{{ url('/join') }}/{{ $user->referral_code }}">{{ url('/join') }}/{{ $user->referral_code }}</a>
 
 @component('mail::button', ['url' => url('/') ])
 Get Started

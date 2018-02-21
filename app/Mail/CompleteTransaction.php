@@ -14,13 +14,17 @@ class CompleteTransaction extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $transaction ;
-    public $user ;
+    public $sender;
+    public $receiver;
+    public $url;
+    public $amount;
 
-    public function __construct( User $user, $transaction )
+    public function __construct( User $sender, User $receiver, $url, $amount )
     {
-        $this->transaction         = $transaction ;
-        $this->user                = $user ;
+        $this->sender       = $sender ;
+        $this->receiver     = $receiver ;
+        $this->url          = $url ;
+        $this->amount       = $amount ;
     }
 
     public function build()

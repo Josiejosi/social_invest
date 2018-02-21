@@ -186,7 +186,12 @@ class ContributeController extends Controller
 
         event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
 
-        CompleteTransactionJob::dispatch( User::find($transaction->donee_id), $transaction_url )->onQueue('CompleteTransaction');
+        CompleteTransactionJob::dispatch( 
+            User::find($transaction->donar_id), //name is this dude. sender
+            User::find($transaction->donee_id), //message to reeiver
+            $transaction_url, 
+            $transaction->growth_amount
+        )->onQueue('CompleteTransaction');
 
         flash('Your have successfully confirmed to have made a transaction, once a the party confirms you will be schedule for a donation in the next 7 days, if the party fails to confirm in the next 24 hours the entry will return to the list.')->info() ;
         return redirect('/home') ;
@@ -217,7 +222,12 @@ class ContributeController extends Controller
 
         event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
 
-        CompleteTransactionJob::dispatch( User::find($transaction->donee_id), $transaction_url )->onQueue('CompleteTransaction');
+        CompleteTransactionJob::dispatch( 
+            User::find($transaction->donar_id), //name is this dude. sender
+            User::find($transaction->donee_id), //message to reeiver
+            $transaction_url, 
+            $amount 
+        )->onQueue('CompleteTransaction');
 
 		flash('Your have successfully confirmed to have made a transaction, once a the party confirms you will be schedule for a donation in the next 7 days, if the party fails to confirm in the next 24 hours the entry will return to the list.')->info() ;
 		return redirect('/home') ;
@@ -227,9 +237,28 @@ class ContributeController extends Controller
 
     	$transaction 						= Transaction::find( $transaction_id ) ;
 
-    	$transaction->update([
-    		"status" 						=> 3,
-    	]) ;
+        $count_splites                      = TransactionSplit::where( 'transaction_id', $transaction_id )->count() ;
+
+        if ( $count_splites > 0 ) {
+            
+            $splites                        = $transaction->growth_amount ;
+
+            if ( $splites <= 0 ) {
+                $transaction->update([
+                    "status"                => 3,
+                ]) ;                
+            } else {
+                $transaction->update([
+                    "status"                => 5,
+                ]) ;                
+            }
+
+        } else {
+            $transaction->update([
+                "status"                    => 3,
+            ]) ;
+        }
+
 
     	$donee_id 							= $transaction->donar_id ;
     	$amount 							= $transaction->growth_amount ;
@@ -244,7 +273,7 @@ class ContributeController extends Controller
 
     	$growth_percentage 					= Helper::getGrowthPercentage() ;
 
-    	$percentage 						= ( $maturity_months * $growth_percentage ) / 100 ;
+    	$percentage 						= $growth_percentage / 100 ;
 
     	$growth_amount 						= round( ( $amount * $percentage ) + $amount, 2 ) ;
 
@@ -255,7 +284,7 @@ class ContributeController extends Controller
 	        'transaction_reference_code'	=> $transaction_reference_code, 
 	        'amount'						=> $amount, 
 	        'growth_amount'					=> $growth_amount, 
-	        'payday'						=> Carbon::now()->addDays($maturity_months), 
+	        'payday'						=> Carbon::now()->subDays($maturity_months),//->addDays($maturity_months), 
 	        'deposit_type'					=> $deposit_type, 
 	        'level'							=> $level, 
 	        'status'						=> $status,  

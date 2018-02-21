@@ -18,17 +18,21 @@ class CompleteTransactionJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
-    protected $transaction;
+    protected $sender;
+    protected $receiver;
+    protected $url;
+    protected $amount;
 
-    public function __construct( User $user, $transaction )
+    public function __construct( User $sender, User $receiver, $url, $amount )
     {
-        $this->user = $user ;
-        $this->transaction = $transaction ;
+        $this->sender       = $sender ;
+        $this->receiver     = $receiver ;
+        $this->url          = $url ;
+        $this->amount       = $amount ;
     }
 
     public function handle()
     {
-        Mail::to( $this->user )->send(new CompleteTransaction( $this->user, $this->transaction ) );
+        Mail::to( $this->receiver )->send(new CompleteTransaction( $this->sender, $this->receiver, $this->url, $this->amount ) );
     }
 }
