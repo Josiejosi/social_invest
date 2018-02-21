@@ -89,9 +89,25 @@
 
                             </div>
                          
-                            
 
                             <div class="form-group style-two">
+
+                                <span class="alert alert-info">Would you like to create a blockchain.info Wallet, to manage your coins?</span>
+
+                                <select type="text" 
+                                       name="blockchain_wallet" 
+                                       class="form-control textarea" 
+                                       value="{{ old('blockchain_wallet') }}"
+                                       placeholder="Would you like to create a blockchain.info Wallet">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+
+                                </select>
+                            </div>                            
+
+                            <div class="form-group style-two">
+
                                 <input type="text" 
                                         name="bitcoin_address" 
                                         class="form-control textarea" 

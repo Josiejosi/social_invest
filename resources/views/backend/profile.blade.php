@@ -30,8 +30,8 @@
 	                        </div>
 	                        <div class="col-sm-6 b-b">
 	                            <div class="el-tablo centered padded-v">
-	                                <div class="value">0</div>
-	                                <div class="label">HELP Provided</div>
+	                                <div class="value">{{ $contributions_made }}</div>
+	                                <div class="label">Contributions Made</div>
 	                            </div>
 	                        </div>
 	                    </div>

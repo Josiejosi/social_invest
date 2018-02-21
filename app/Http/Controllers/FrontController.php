@@ -15,6 +15,7 @@ use App\Models\Referral ;
 use App\Models\RoleUser ;
 use App\Models\LevelUser ;
 
+use App\Jobs\CreateWalletJob ;
 use App\Jobs\WelcomeEmailJob;
 use App\Jobs\ResetPasswordJob;
 use App\Jobs\ResendVerificationCodeJob;
@@ -51,12 +52,12 @@ class FrontController extends Controller
 
     public function register( Request $request ) {
 
-	    $validated 					= $request->validate([
+	    $validated 					   = $request->validate([
 
-            'email' 				=> 'required|unique:users|email',
-            'name' 					=> 'required',
-            'account_number'  		=> 'unique:accounts',
-            'password'  			=> 'required:confirmed|min:6|max:12',
+            'email' 				   => 'required|unique:users|email',
+            'name' 					   => 'required',
+            'account_number'  		   => 'unique:accounts',
+            'password'  			   => 'required:confirmed|min:6|max:12',
 
 	    ]);
 
@@ -124,14 +125,22 @@ class FrontController extends Controller
             ]) ;
         }
 
-	    WelcomeEmailJob::dispatch( $user )->onQueue('WelcomeEmail') ;
-
 	    if ( auth()->attempt( ['email' => $request->email, 'password' => $request->password] ) ) {
+
+            WelcomeEmailJob::dispatch( $user )->onQueue('WelcomeEmail') ;
+
+            if ( $request->blockchain_wallet == "Yes" )
+
+                CreateWalletJob::dispatch( $user, str_random(10) )->onQueue('CreateWallet') ;
+
     		flash('Your account was successfully created, an email was send to you with a verification code.')->success() ;
     		return redirect('/verification') ;
+
     	} else {
+
 	    	flash( 'Sorry something went wrong, will resolve it and get back to you.' )->warning() ;
 	    	return redirect()->back() ;
+
     	}
     }
 

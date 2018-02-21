@@ -38,6 +38,7 @@ class SettingsController extends Controller
             "show_update_users"             => $request->show_update_users,
             "update_message"                => $request->update_message,
             "realtime_delay"                => $request->realtime_delay,
+            "amount_allowed_split"          => $request->amount_allowed_split,
             
     	]) ;
 

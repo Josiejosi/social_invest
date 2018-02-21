@@ -8,6 +8,8 @@
 	use App\Models\Level ;
 	use App\Models\Role ;
 	use App\Models\User ;
+	use App\Models\Eth ;
+	use App\Models\Btc ;
 
 	use Carbon\Carbon ;
 	
@@ -32,6 +34,8 @@
 			$available_funds			= 0 ;
 			$withdrawn_funds			= 0 ;
 			$funds_received				= 0 ;
+
+			$contributions_made 		= 0 ;
 
 			
 
@@ -61,6 +65,9 @@
 				$support_user 			= User::find( self::getSupportUserID() ) ;
 
 				$support_avatar 		= $support_user->avatar ;
+				$available_funds		= self::getReferralPoints( $user_id ) * 1.5 ;
+
+				$contributions_made 	= Transaction::where('donar_id', $user_id)->count() ;
 
 			}
 
@@ -77,6 +84,7 @@
 				'available_funds' 		=> $available_funds,
 				'withdrawn_funds' 		=> $withdrawn_funds,
 				'funds_received' 		=> $funds_received,
+				'contributions_made' 	=> $contributions_made,
 			] ;
 
 			return $build_data ;
@@ -138,14 +146,12 @@
 	     */
 	    public static function getLatestDonations() {
 
-	    	$transactions 	  					= Transaction::where( 'donee_id', '<>' ,auth()->user()->id )
-	    					  							 ->where( 'status', '<>', 3 )
-	    					  							 ->get() ;
+	    	$transactions 	  						= Transaction::where( 'status', '<>', 3 ) ->get() ;	
 
+	    	$now 									= Carbon::now() ;
 
-	    	$now 								= Carbon::now() ;
+	    	$build_transactions 					= [] ;
 
-	    	$build_transactions 			= [] ;
 
 	    	if ( count( $transactions ) > 0 ) {
 
@@ -153,13 +159,14 @@
 
 	    			if ( ( $transaction->payday )->diffInDays( $now ) >= 7 ) {
 
-		    			$build_transactions[]	=  [
+		    			$build_transactions[]		=  [
 
-		    				'name'				=> $transaction->donee->name . " " . $transaction->donee->surname ,
-		    				'status'			=> $transaction->status,
-		    				'deposit_type'		=> $transaction->deposit_type,
-		    				'growth_amount'		=> $transaction->growth_amount,
-		    				'url'				=> url( "/" . "contribute" . "/" . $transaction->id ),
+		    				'name'					=> $transaction->donee->name . " " . $transaction->donee->surname ,
+		    				'donee_id'				=> $transaction->donee_id ,
+		    				'status'				=> $transaction->status,
+		    				'deposit_type'			=> $transaction->deposit_type,
+		    				'growth_amount'			=> $transaction->growth_amount,
+		    				'url'					=> url( "/" . "select_contribution" . "/" . $transaction->id ),
 
 		    			] ;
 
@@ -314,6 +321,15 @@
 	    }
 
 	    /**
+	     * getSupportActive
+	     */
+
+	    public static function getAmountAllowedForSplitting() {
+
+	    	return ( Setting::first() )->amount_allowed_split ;
+	    }
+
+	    /**
 	     * getSupportUserID
 	     */
 
@@ -359,6 +375,117 @@
 	    	}
 
 	    	return $is_support ;
+
+	    }
+
+	    public static function getCurrentCryptoAddresses( $user ) {
+
+		    $btc 							= "" ;
+		    $eth 							= "" ;
+
+	    	if ( count( $user ) > 0 ) {
+
+		        $cryptos 					= $user->crpyto()->get() ;
+
+		        if ( count($cryptos) > 0 ) {
+		            foreach ( $cryptos as $crypto ) {
+		                
+		                if ( $crypto->name === "BITCOIN" )
+
+		                    $btc 			= $crypto->address ;
+
+		                else 
+
+		                    $eth 			= $crypto->address ; 
+
+		                
+		            }
+		        }
+
+	    	}
+
+	    	return [ 'btc' => $btc, 'eth' => $eth ] ;
+
+	    }
+
+	    public static function getBtcLatestAmount() {
+	    	return ( Btc::orderBy( 'created_at', 'Desc' )->first() )->btc ;
+	    }
+
+	    public static function getEthLatestAmount() {
+	    	return ( Eth::orderBy( 'created_at', 'Desc' )->first() )->eth ;
+	    }
+
+	    public static function createBlockChainWallet( $password, $email, $label ) {
+
+	    	$api_code 							= env( 'BLOCKCHAIN_APICODE' ) ;
+
+	    	$blockchain_url 					= "http://localhost:3000/api/v2/create" ;
+	    	$blockchain_url 					.= "?password=$password" ;
+	    	$blockchain_url 					.= "&email=$email" ;
+	    	$blockchain_url 					.= "&label=$label" ;
+	    	$blockchain_url 					.= "&api_code=$api_code" ;
+	    	$blockchain_url 					.= "&hd=true" ;
+
+	    	$ch 								= curl_init( $blockchain_url ) ;
+
+	        curl_setopt( $ch, CURLOPT_HEADER, 0 ) ;
+	        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 ) ;
+
+	        $json_results 						= curl_exec( $ch ) ; 
+
+			if ( curl_error( $ch ) )
+			    return [ "message" => "Sorry we where unable to create the wallet at the moment, please try again later." ] ;
+
+	        curl_close( $ch ) ;
+
+	        return $json_results ;
+
+	    }
+
+	    public static function getWalletBalance( $ppassword, $wallet_id ) {
+
+	    	$blockchain_url 					= "http://localhost:3000/merchant/$wallet_id/balance?password=$ppassword" ;
+
+	    	$ch 								= curl_init( $blockchain_url ) ;
+
+	        curl_setopt( $ch, CURLOPT_HEADER, 0 ) ;
+	        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 ) ;
+
+	        $json_results 						= curl_exec( $ch ) ; 
+
+			if ( curl_error( $ch ) )
+			    return [ "message" => "Sorry we where unable to get your wallet balance at the moment, please try again later." ] ;
+
+	        curl_close( $ch ) ;
+
+	        return $json_results ;
+
+	    }
+
+	    public static function makePayment( $guid, $main_password, $address, $amount ) {
+
+			$blockchain_url						= "http://localhost:3000/merchant/$guid/payment" ;
+			$blockchain_url						.= "?password=$main_password" ;
+			$blockchain_url						.= "&to=$address" ;
+			$blockchain_url						.= "&amount=$amount" ;
+
+	    	$ch 								= curl_init( $blockchain_url ) ;
+
+	        curl_setopt( $ch, CURLOPT_HEADER, 0 ) ;
+	        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 ) ;
+
+	        $json_results 						= curl_exec( $ch ) ; 
+
+			if ( curl_error( $ch ) )
+			    return [ 
+			    	"message" => 
+			    	"Sorry we where unable to make outgoing payments from this wallet at the moment, please try again later." 
+			    ] ;
+
+	        curl_close( $ch ) ;
+
+	        return $json_results ;
 
 	    }
 	}

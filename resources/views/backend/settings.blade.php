@@ -289,6 +289,29 @@
 					                </div>
 					            </div>
 
+
+					            <div class="row">
+					            	<div class="col-sm-12">
+					                    <div class="form-group">
+
+					                        <label class="lighter" for="amount_allowed_split">Amount allowed for splitting</label>
+					                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+					                            <input 
+					                            	class="form-control"
+					                            	type="text" 
+					                            	name="amount_allowed_split"
+					                            	value="{{ $data->amount_allowed_split }}">
+					                        </div>
+					                        @if ( $errors->has('amount_allowed_split') )
+						                        <div class="help-block form-text text-muted text-danger form-control-feedback">
+						                        	{{ $errors->first('amount_allowed_split') }}
+						                        </div>
+					                        @endif
+
+					                    </div>
+					                </div>
+					            </div>
+
 					            <div class="form-buttons-w text-right compact">
 					            	<button class="btn btn-success">Update</button>
 					            </div>

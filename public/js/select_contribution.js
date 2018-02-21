@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -12821,27 +12821,99 @@ if (typeof jQuery === 'undefined') {
 
 /***/ }),
 
-/***/ 52:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(55);
 
 
 /***/ }),
 
-/***/ 53:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 try {
-    window.$ = window.jQuery = __webpack_require__(1);
+	window.$ = window.jQuery = __webpack_require__(1);
 
-    __webpack_require__(4);
+	__webpack_require__(4);
 } catch (e) {}
 
 window.onbeforeunload = function () {
 
-    $.get('/just_view_contribution/' + transaction_id, function (data) {});
+	$.get('/just_view_contribution/' + transaction_id, function (data) {});
 };
+
+var alert_body = $("#alert-body");
+
+$(function () {
+	$("#alert-messages").hide();
+	$("#split_amount").hide();
+	$("#move_forward").attr("disabled", "disabled").button('refresh');
+});
+
+var select_option = 0;
+
+$("#move_forward").on('click', function (e) {
+
+	$("#alert-messages").hide();
+
+	e.preventDefault();
+
+	if (select_option === 0) {
+
+		$("#alert-messages").show();
+		$("#alert_body").html("Please select how you would like to contribute.");
+	} else {
+
+		if (select_option === 1) {
+
+			// The amount is split.
+			//
+			// We send the transaction id with amount
+			//
+
+			var amount_splite = $("#amount_splite").val();
+
+			if (parseInt(amount_splite) < parseInt(allowed_for_split)) {
+
+				$("#alert-messages").show();
+				$("#alert_body").html("Sorry you can't contribute more than the amount specified.");
+			} else {
+
+				if (parseInt(amount_splite) > parseInt(transaction_amount)) {
+
+					$("#alert-messages").show();
+					$("#alert_body").html("Sorry you can't contribute more than the amount specified.");
+				} else {
+					location.href = "/contribute/" + transaction_id + "/" + amount_splite;
+				}
+			}
+		} else if (select_option === 2) {
+
+			// We contribute
+			// 
+			// We send the transaction id and the user contributes.
+			//
+
+			location.href = "/contribute/" + transaction_id;
+		}
+	}
+});
+
+$("#SplitAmount").on('click', function (e) {
+
+	select_option = 1;
+
+	$("#split_amount").show();
+	$("#move_forward").removeAttr("disabled").button('refresh');
+});
+
+$("#FullAmount").on('click', function (e) {
+
+	select_option = 2;
+
+	$("#move_forward").removeAttr("disabled").button('refresh');
+});
 
 //REMEMBER to provide a timer for incase a user remains in this page for a long time.
 

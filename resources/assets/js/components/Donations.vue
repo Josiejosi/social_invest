@@ -11,7 +11,7 @@
             </thead>
             <tbody>
 
-                <tr v-for="transaction in transactions">
+                <tr v-for="transaction in transactions" v-if="should_show( transaction.donee_id )">
                     <td class="text-left"> {{ transaction.name }} </td>
                     <td class="text-right"> $ {{ transaction.growth_amount }} USD</td>
 
@@ -66,13 +66,24 @@
         data() {
             return {
                 transactions: {},
+                user_id: "",
             };
         },
 
         methods: {
+
+            should_show( donee_id ) {
+
+                if ( this.user_id == donee_id ) 
+                    return false ;
+                else 
+                    return true ;
+
+            },
+
             load_donation_list() {
 
-                axios.get( 'list_transactions' ).then( response => this.transactions = response.data ) ;
+                axios.get( '/list_transactions' ).then( response => this.transactions = response.data ) ;
 
             },
 
@@ -83,7 +94,6 @@
                     .listen('LatestTransactions', (e) => {
 
                         this.transactions = e.latest_transaction ;
-                        console.log( e ) ;
 
                     });
             },
@@ -94,10 +104,11 @@
             this.load_donation_list() ;
             this.latest_transaction() ;
 
-            $('#flash-overlay-modal').modal();
-            $('div.alert').not('.alert-important').delay(6000).fadeOut(350);
+            $('#flash-overlay-modal').modal() ;
+            $('div.alert').not('.alert-important').delay(6000).fadeOut(350) ;
 
-            console.log('Ready or not here i cum...Donate mother fuckers...')
+            this.user_id = document.head.querySelector( "[name=active]" ).content ;
+            
         }
     }
 </script>

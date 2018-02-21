@@ -21,7 +21,7 @@ class CreateReferralsTable extends Migration
             $table->timestamps();
 
             $table->foreign('referral_by')->references('id')->on('users');
-            $table->foreign('referral_to')->references('id')->on('roles');
+            $table->foreign('referral_to')->references('id')->on('users');
         });
     }
 

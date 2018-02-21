@@ -40,9 +40,9 @@ class UsersTableSeeder extends Seeder
 	        $user 							= User::whereEmail("support@bitroseed.com")->first() ;
 
 
-	        if ( DB::table('role_user')->where('user_id',$user->id)->where('level_id',$level->id)->count() == 0 ) {
+	        if ( DB::table('level_user')->where('user_id',$user->id)->where('level_id',$level->id)->count() == 0 ) {
 
-		        DB::table('role_user')->insert([
+		        DB::table('level_user')->insert([
 
 		            'user_id'                   => $user->id, 
 		            'level_id'                  => $level->id, 
@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
 
 	    	if ( DB::table('role_user')->where('user_id',$user->id)->where('role_id',$role->id)->count() == 0 ) {
 
-		        DB::table('level_user')->insert([
+		        DB::table('role_user')->insert([
 
 		            'user_id'                   => $user->id, 
 		            'role_id'                   => $role->id, 

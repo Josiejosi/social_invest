@@ -19,7 +19,6 @@ class HomeController extends Controller
 
     public function index() {
 
-    	$user_id 							= auth()->user()->id ;
     	return view( "backend.index", Helper::PageBuilder( "Home" ) ) ;
 
     }

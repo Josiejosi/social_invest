@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Helpers\Helper ;
 
+use App\Models\Btc ;
+use App\Models\Eth ;
 use App\Models\User ;
 use App\Models\Transaction ;
+use App\Models\TransactionSplit ;
 
 use App\Jobs\CompleteTransactionJob ;
 
@@ -22,7 +25,7 @@ class ContributeController extends Controller
 
     public function index( $transaction_id ) {
 
-    	$transaction 						= Transaction::find( $transaction_id ) ;
+        $transaction                        = Transaction::find( $transaction_id ) ;
 
         $transaction->update([
 
@@ -30,9 +33,119 @@ class ContributeController extends Controller
 
         ]) ;
 
+        $donee                              = User::find( $transaction->donee_id ) ;
+
+        $crypto                             = Helper::getCurrentCryptoAddresses( $donee ) ;
+
+        $qrcode_string                      = "" ;
+
+        if ( !isset( $crypto[ "btc" ] ) || !isset( $crypto[ "eth" ] ) ) {
+            $qrcode_string                  = false ;
+        }
+
+        if ( isset( $crypto[ "btc" ] ) ) {
+            $qrcode_string                  .= "BTC: " . $crypto[ "btc" ] . "," ;
+        }
+
+        if ( isset( $crypto[ "eth" ] ) ) {
+            $qrcode_string                  .= " ETH: " . $crypto[ "eth" ] . "," ;
+        }
+
+        $amount                             = $transaction->growth_amount ;
+
+        $data                               = [
+            'transaction'                   => $transaction,
+            'amount'                        => $amount,
+            'type'                          => 'Full',
+            'btc_address'                   => $crypto[ "btc" ],
+            'btc_amount'                    => $amount / Helper::getBtcLatestAmount(),
+            'eth_address'                   => $crypto[ "eth" ],
+            'eth_amount'                    => $amount / Helper::getEthLatestAmount(),
+            'donee'                         => $donee,
+            'qrcode_string'                 => $qrcode_string,
+        ] ;
+
         event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
 
-    	return view( "backend.contribute", Helper::PageBuilder( "Contribution", $transaction ) ) ;
+        return view( "backend.contribute", Helper::PageBuilder( "Contribution", $data ) ) ;
+    }
+
+    public function contribute_amount( $transaction_id, $amount ) {
+
+        $transaction                        = Transaction::find( $transaction_id ) ;
+
+        $transaction->update([
+
+            "status"                        => 1,
+
+        ]) ;
+
+        $donee                              = User::find( $transaction->donee_id ) ;
+
+        $crypto                             = Helper::getCurrentCryptoAddresses( $donee ) ;
+
+        $qrcode_string                      = "" ;
+
+        if ( !isset( $crypto[ "btc" ] ) || !isset( $crypto[ "eth" ] ) ) {
+            $qrcode_string                  = false ;
+        }
+
+        if ( isset( $crypto[ "btc" ] ) ) {
+            $qrcode_string                  .= "BTC: " . $crypto[ "btc" ] . "," ;
+        }
+
+        if ( isset( $crypto[ "eth" ] ) ) {
+            $qrcode_string                  .= " ETH: " . $crypto[ "eth" ] . "," ;
+        }
+
+        $data                               = [
+            'transaction'                   => $transaction,
+            'amount'                        => $amount,
+            'type'                          => 'split',
+            'btc_address'                   => $crypto[ "btc" ],
+            'btc_amount'                    => $amount / Helper::getBtcLatestAmount(),
+            'eth_address'                   => $crypto[ "eth" ],
+            'eth_amount'                    => $amount / Helper::getBtcLatestAmount(),
+            'donee'                         => $donee,
+            'qrcode_string'                 => $qrcode_string,
+        ] ;
+
+        event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
+
+        return view( "backend.contribute", Helper::PageBuilder( "Contribution", $data ) ) ;
+    }
+
+    public function select_contribution( $transaction_id ) {
+
+    	$transaction 						= Transaction::find( $transaction_id ) ;
+
+        $transaction_split                  = TransactionSplit::where( 'transaction_id', $transaction_id )->get() ;
+
+        $data                               = [
+            'transaction'                   => $transaction,
+            'transaction_split'             => $transaction_split,
+            'allowed_for_split'             => Helper::getAmountAllowedForSplitting(),
+        ] ;
+
+        if ( $transaction->growth_amount <= Helper::getAmountAllowedForSplitting() ) {
+
+            return redirect( "/contribute/" . $transaction->id ) ;
+
+        } else {
+
+            return view( 
+
+                        "backend.select_contribution", 
+                        
+                        Helper::PageBuilder( 
+                            "How would you like to make a contribution", 
+                            $data 
+                        ) 
+
+                    ) ;
+
+        }
+
     }
 
     public function just_view_contribution( $transaction_id ) {
@@ -63,10 +176,40 @@ class ContributeController extends Controller
 
         $transaction_url                    = url('/complete_contribution/') . "/" . $transaction->id ;
 
+        $transaction->update([
+            "status"                        => 2,
+            "donar_id"                      => auth()->user()->id,
+        ]) ;
+
+
+        event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
+
+        CompleteTransactionJob::dispatch( User::find($transaction->donee_id), $transaction_url )->onQueue('CompleteTransaction');
+
+        flash('Your have successfully confirmed to have made a transaction, once a the party confirms you will be schedule for a donation in the next 7 days, if the party fails to confirm in the next 24 hours the entry will return to the list.')->info() ;
+        return redirect('/home') ;
+    }
+
+    public function confirm_split( $transaction_id, $amount ) {
+
+        $transaction                        = Transaction::find( $transaction_id ) ;
+
+        $transaction_url                    = url('/complete_contribution/') . "/" . $transaction->id ;
+
     	$transaction->update([
-    		"status" 						=> 2,
-    		"donar_id" 						=> auth()->user()->id,
+    		"status" 						=> 0,
+            "donar_id"                      => auth()->user()->id,
+    		"growth_amount" 				=> $transaction->growth_amount - $amount, //minus the provided amount.
     	]) ;
+
+        TransactionSplit::create([
+
+            'donation_amount'               => $amount, 
+            'outstanding_amount'            => $transaction->growth_amount - $amount, 
+            'user_id'                       => auth()->user()->id, 
+            'transaction_id'                => $transaction_id,
+
+        ]) ;
 
         event( new LatestTransactions( Helper::getLatestDonations() ) ) ;
 

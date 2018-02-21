@@ -15,13 +15,17 @@ class Setting extends Model
         'max_payment_days', 
         'max_confirmed_donations',
         'growth_percentage',
-        //New settings
+        //was new settings
         //
         'donation_list_active',
         'support_active',
         'show_update_users',
         'update_message',
         'realtime_delay',
+
+        //new setting.
+        //
+        'amount_allowed_split',
          
     ];
 

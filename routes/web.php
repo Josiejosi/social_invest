@@ -36,8 +36,13 @@
 	
 	Route::get('transactions', 					"TransactionController@index")->name('transactions') ;
 	Route::get('list_transactions', 			"TransactionController@list_transactions")->name('list_transactions') ;
+
 	Route::get('contribute/{id}', 				"ContributeController@index")->name('contribute') ;
+	Route::get('contribute/{id}/{amount}', 		"ContributeController@contribute_amount")->name('contribute_amount') ;
+	Route::get('select_contribution/{id}', 		"ContributeController@select_contribution")->name('select_contribution') ;
+
 	Route::get('confirm_contribution/{id}', 	"ContributeController@confirm_contribution")->name('confirm_contribution') ;
+	Route::get('confirm_contribution/{id}/{amount}', 	"ContributeController@confirm_split")->name('confirm_split') ;
 	Route::get('complete_contribution/{id}', 	"ContributeController@complete_contribution")->name('complete_contribution') ;
 	Route::get('just_view_contribution/{id}', 	"ContributeController@just_view_contribution")->name('just_view_contribution') ;
 
@@ -59,3 +64,8 @@
 	Route::get('send_message/{msg}/{receiver}', "MessageController@send_message")->name('send_message') ;
 	Route::get('get_message/{receiver}', 		"MessageController@get_message")->name('get_message') ;
 	Route::get('load_chat_users', 				"MessageController@load_chat_users")->name('load_chat_users') ;
+
+
+	Route::get('wallet', 						"WalletController@index")->name('wallet') ;
+	Route::post('wallet', 						"WalletController@create_wallet") ;
+	Route::post('make_payment', 				"WalletController@make_payment") ;

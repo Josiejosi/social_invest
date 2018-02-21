@@ -3,41 +3,6 @@
 
 @section('content')
 
-    <?php 
-
-        $user  = \App\Models\User::find( $data->donee_id ) ;
-
-        $qrcode_string = "" ;
-
-        $b = \App\Helpers\Helper::getCryptoData() ;
-        $c = \App\Helpers\Helper::getCryptoData() ;
-
-        $btc_val              = $data->growth_amount / $b ;
-        $eth_val              = $data->growth_amount  / $c ;
-
-        $cryptos = $user->crpyto()->get() ;
-
-        $bitcoin = "" ;
-        $eth = "" ;
-
-        if ( count($cryptos) > 0 ) {
-            foreach ( $cryptos as $crypto ) {
-                
-                if ( $crypto->name === "BITCOIN" ) {
-                    $bitcoin = $crypto->address ;
-
-                    $qrcode_string .= "BTC Address: $bitcoin" ;
-                } else {
-                    $eth = $crypto->address ; 
-
-                    $qrcode_string .= ", ETH Address: $eth" ;
-                }
-            }
-        }
-
-    ?>
-
-
     <div class="element-wrapper">
         <div class="invoice-w">
             <div class="infos">
@@ -47,17 +12,17 @@
                 </div>
                 <div class="info-2">
                     <div class="invoice-logo-w" id="QRCode"></div>
-                    <div class="company-name">{{ $user->name }} {{ $user->surname }}</div>
+                    <div class="company-name">{{ $data[ "donee" ]->name }} {{ $data[ "donee" ]->surname }}</div>
                 </div>
             </div>
             <div class="invoice-heading">
                 <h3>Transaction</h3>
-                <div class="invoice-date">{{ $data->payday }}</div>
+                <div class="invoice-date">{{ $data[ "transaction" ]->payday->format('l jS \\of F Y') }}</div>
             </div>
             <div class="invoice-body">
                 <div class="invoice-desc">
                     <div class="desc-label">Transaction Ref #</div>
-                    <div class="desc-value">{{ $data->transaction_reference_code }}</div>
+                    <div class="desc-value">{{ $data[ "transaction" ]->transaction_reference_code }}</div>
                 </div>
                     <div class="terms">
                         <div class="terms-content">
@@ -69,95 +34,145 @@
                 <div class="invoice-table">
                     <table class="table">
                         <tbody>
-                            @if ( $data->deposit_type === "Both" )
+                            @if ( $data[ "transaction" ]->deposit_type === "Both" )
                             <tr>
                                 <td><strong><i class="fab fa-btc"></i> BTC</strong></td>
                             </tr>
                             <tr>
-                                <td>{{ $bitcoin }}</td>
+                                <td>{{ $data[ "btc_address" ] }}</td>
                             </tr>
                             <tr>
-                                <td class="text-right">$ {{ $data->growth_amount }} USD</td>
+                                <td class="text-right">$ {{ $data[ "amount" ] }} USD</td>
                             </tr>
                             <tr>
-                                <td class="text-right">{{ $btc_val }}</td>
+                                <td class="text-right">{{ $data[ "btc_amount" ] }}</td>
                             </tr>
                             <tr>
                                 <td class="text-center">
-    	                        	<a href="{{ url( '/confirm_contribution' ) }}/{{ $data->id }}" 
+                                    @if ( isset( request()->route()->parameters['amount'] ) )
+                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data[ 'transaction' ]->id }}/{{request()->route()->parameters['amount']}}" 
+                                       class="btn btn-success btn-sm" 
+                                       data-toggle="modal">
+                                        <i class="os-icon os-icon-ui-49"></i> Send ( BTC ) & Confirm
+                                    </a>
+                                    @else
+    	                        	<a href="{{ url( '/confirm_contribution' ) }}/{{ $data[ 'transaction' ]->id }}" 
     	                        	   class="btn btn-success btn-sm" 
     	                        	   data-toggle="modal">
     	                        		<i class="os-icon os-icon-ui-49"></i> Send ( BTC ) & Confirm
     	                        	</a>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td><strong><i class="fab fa-ethereum"></i> ETH</strong></td>
                             </tr>
                             <tr>
-                                <td>{{ $bitcoin }}</td>
+                                <td>{{ $data[ "eth_address" ] }}</td>
                             </tr>
                             <tr>
-                                <td class="text-right">$ {{ $data->growth_amount }} USD</td>
+                                <td class="text-right">$ {{ $data[ "amount" ] }} USD</td>
                             </tr>
                             <tr>
-                                <td class="text-right">{{ $eth_val }}</td>
+                                <td class="text-right">{{ $data[ "eth_amount" ] }}</td>
                             </tr>
                             <tr>
                                 <td class="text-center">
+
+                                    @if ( isset( request()->route()->parameters['amount'] ) )
+
+                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data[ 'transaction' ]->id }}/{{request()->route()->parameters['amount']}}" 
+                                       class="btn btn-success btn-sm" 
+                                       data-toggle="modal">
+                                        <i class="os-icon os-icon-ui-49"></i> Send ( ETH ) & Confirm
+                                    </a>
+
+                                    @else
+
     	                        	<a href="{{ url( '/confirm_contribution' ) }}/{{ $data->id }}" 
     	                        	   class="btn btn-success btn-sm" 
     	                        	   data-toggle="modal">
     	                        		<i class="os-icon os-icon-ui-49"></i> Send ( ETH ) & Confirm
     	                        	</a>
+
+                                    @endif
                                 </td>
                             </tr>
-                            @elseif ( $data->deposit_type === "BTC" )
+                            @elseif ( $data[ "transaction" ]->deposit_type === "BTC" )
                             <tr>
                                 <td><strong><i class="fab fa-btc"></i> BTC</strong></td>
                             </tr>
                             <tr>
-                                <td>{{ $bitcoin }}</td>
+                                <td>{{ $data[ "btc_address" ] }}</td>
                             </tr>
 
                             <tr>
-                                <td class="text-right">$ {{ $data->growth_amount }} USD</td>
+                                <td class="text-right">$ {{ $data[ "amount" ] }} USD</td>
                             </tr>
                             <tr>
-                                <td class="text-right">{{ $btc_val }}</td>
+                                <td class="text-right">{{ $data[ "btc_amount" ] }}</td>
                             </tr>
                             <tr>
                                 <td class="text-center">
-                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data->id }}" 
+
+                                    @if ( isset( request()->route()->parameters['amount'] ) )
+                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data[ 'transaction' ]->id }}/{{request()->route()->parameters['amount']}}" 
                                        class="btn btn-success btn-sm" 
                                        data-toggle="modal">
                                         <i class="os-icon os-icon-ui-49"></i> Send ( BTC ) & Confirm
                                     </a>
+
+                                    @else
+
+                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data[ 'transaction' ]->id }}" 
+                                       class="btn btn-success btn-sm" 
+                                       data-toggle="modal">
+                                        <i class="os-icon os-icon-ui-49"></i> Send ( BTC ) & Confirm
+                                    </a>
+
+                                    @endif
+
                                 </td>
                             </tr>
-                            @elseif ( $data->deposit_type === "ETH" )
+                            @elseif ( $data[ "transaction" ]->deposit_type === "ETH" )
                             <tr>
                                 <td><strong><i class="fab fa-ethereum"></i> ETH</strong></td>
                             </tr>
                             <tr>
-                                <td>{{ $eth }}</td>
+                                <td>{{ $data[ "eth_address" ] }}</td>
                             </tr>
 
                             <tr>
-                                <td class="text-right">$ {{ $data->growth_amount }} USD</td>
+                                <td class="text-right">$ {{ $data[ "amount" ] }} USD</td>
                             </tr>
 
                             <tr>
-                                <td class="text-right">{{ $eth_val }}</td>
+                                <td class="text-right">{{ $data[ "eth_amount" ] }}</td>
                             </tr>
                             <tr>
+
                                 <td class="text-center">
-                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data->id }}" 
+                                    
+                                    @if ( isset( request()->route()->parameters['amount'] ) )
+
+                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data[ 'transaction' ]->id }}/{{request()->route()->parameters['amount']}}" 
                                        class="btn btn-success btn-sm" 
                                        data-toggle="modal">
                                         <i class="os-icon os-icon-ui-49"></i> Send ( ETH ) & Confirm
                                     </a>
+
+                                    @else
+
+                                    <a href="{{ url( '/confirm_contribution' ) }}/{{ $data[ 'transaction' ]->id }}" 
+                                       class="btn btn-success btn-sm" 
+                                       data-toggle="modal">
+                                        <i class="os-icon os-icon-ui-49"></i> Send ( ETH ) & Confirm
+                                    </a>
+
+                                    @endif
+
                                 </td>
+
                             </tr>
                             @endif
                         </tbody>
@@ -181,7 +196,7 @@
 
     <script>
 
-        var transaction_id = {{ $data->id }} ;
+        var transaction_id = {{ $data[ 'transaction' ]->id }} ;
 
     </script>
 
@@ -190,7 +205,7 @@
 
     <script>
 
-        var text = '{{ $qrcode_string }}' ;
+        var text = "{{ $data[ 'qrcode_string' ]}}" ;
        
         $("#QRCode").qrcode( { render: 'image', text: text } );
 
