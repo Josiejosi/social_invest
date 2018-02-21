@@ -488,4 +488,29 @@
 	        return $json_results ;
 
 	    }
+
+	    public static function setUserDailyDonationLimit( $user_id ) {
+
+	    	//Temporary move to DB.
+
+	        $session_name                       = 'contribution_' . $user_id ;
+
+	        if ( session()->has( $session_name ) ) {
+
+	            $value                          = session( $session_name ) ;
+
+	            $new_value 						= $value + 1 ;
+
+	            session( [ $session_name =>  $new_value ] );
+
+	            return $new_value ;
+
+	        } else {
+
+	            session( [ $session_name =>  1 ] );
+
+	            return 1 ;
+
+	        }
+	    }
 	}

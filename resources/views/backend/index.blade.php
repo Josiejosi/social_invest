@@ -45,7 +45,15 @@
 			    <h6 class="element-header">Contribution List</h6>
 			    <div class="element-box-tp">
 
-					<donations></donations>
+			    	@if ( \App\Helpers\Helper::getDonationListActive() == 1 )
+
+						<donations></donations>
+
+					@else
+
+					<h6>Contribution list is currently off-line, please check again in a few hours.</h6>
+
+					@endif
 
 			    </div>
 

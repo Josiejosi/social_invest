@@ -172,6 +172,8 @@ class ContributeController extends Controller
 
     public function confirm_contribution( $transaction_id ) {
 
+        Helper::setUserDailyDonationLimit( auth()->user()->id ) ;
+
         $transaction                        = Transaction::find( $transaction_id ) ;
 
         $transaction_url                    = url('/complete_contribution/') . "/" . $transaction->id ;
@@ -191,6 +193,8 @@ class ContributeController extends Controller
     }
 
     public function confirm_split( $transaction_id, $amount ) {
+
+        Helper::setUserDailyDonationLimit( auth()->user()->id ) ;
 
         $transaction                        = Transaction::find( $transaction_id ) ;
 

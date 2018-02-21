@@ -80,7 +80,7 @@ class AdminController extends Controller
 
 	        'transaction_reference_code'	=> $transaction_reference_code, 
 	        'amount'						=> $amount, 
-	        'growth_amount'					=> $growth_amount, 
+	        'growth_amount'					=> $amount, 
 	        'payday'						=> Carbon::now()->subDays($maturity_months), 
 	        'deposit_type'					=> $request->deposit_type, 
 	        'level'							=> $level, 

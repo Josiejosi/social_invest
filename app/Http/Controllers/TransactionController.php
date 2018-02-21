@@ -19,7 +19,9 @@ class TransactionController extends Controller
 
     public function index() {
 
-    	return view( "backend.transactions", Helper::PageBuilder( "Transactions" ) ) ;
+    	$transaction 						= Transaction::where('donee_id', auth()->user()->id )->get() ;
+
+    	return view( "backend.transactions", Helper::PageBuilder( "Transactions", $transaction ) ) ;
 
     }
 

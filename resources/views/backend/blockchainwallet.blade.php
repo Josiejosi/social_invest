@@ -74,7 +74,7 @@
 	                    </div>
 
 	                    @if ( count( $data["wallet"] ) == 0 )
-	                    	<h6>You currently have not linked any blockchain wallet.</h6>
+	                    	<h6>You currently have not setup a blockchain wallet.</h6>
 
 		                    <div class="form-buttons-w">
 		                    	<p class="text-center">
@@ -92,7 +92,7 @@
 
 							<h6><a href="https://blockchain.info/wallet/#/login/" target="_blank">BlockChain.info Details</a></h6>
 							<div class="alert alert-info alert-important">
-								You can <a href="https://blockchain.info/wallet/#/login/" target="_blank">click here</a>, to go to blockchain.info to manage your wallet.
+								You can <a href="https://blockchain.info/wallet/#/login/" target="_blank">click here</a>, to go to blockchain.info and manage your wallet.
 							</div>
 					        <div class="table-responsive">
 					            <table class="table table-bordered table-v2 table-striped">

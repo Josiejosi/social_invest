@@ -19,7 +19,9 @@ class HomeController extends Controller
 
     public function index() {
 
-    	return view( "backend.index", Helper::PageBuilder( "Home" ) ) ;
+    	$transaction 						= Transaction::where('donee_id', auth()->user()->id )->get() ;
+
+    	return view( "backend.index", Helper::PageBuilder( "Home", $transaction ) ) ;
 
     }
 
