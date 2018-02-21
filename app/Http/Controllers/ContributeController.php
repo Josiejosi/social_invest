@@ -239,9 +239,20 @@ class ContributeController extends Controller
 
         $count_splites                      = TransactionSplit::where( 'transaction_id', $transaction_id )->count() ;
 
+        $amount_found                       = false ;
+
         if ( $count_splites > 0 ) {
             
             $splites                        = $transaction->growth_amount ;
+
+            $split_amount                   = TransactionSplit::where( 'transaction_id', $transaction_id )
+                                                              ->where( 'user_id', $transaction->donar_id )
+                                                              ->orderBy( 'created_at', 'Desc' )
+                                                              ->first() ;
+
+            $amount_found                   = true ;
+
+            $amount                         = $split_amount->donation_amount ;
 
             if ( $splites <= 0 ) {
                 $transaction->update([
@@ -261,7 +272,8 @@ class ContributeController extends Controller
 
 
     	$donee_id 							= $transaction->donar_id ;
-    	$amount 							= $transaction->growth_amount ;
+        if ( $amount_found == false )
+    	   $amount 							= $transaction->growth_amount ;
     	$deposit_type 						= $transaction->deposit_type ;
 
 	    $transaction_reference_code 		= strtoupper( str_random(10) ) ;
