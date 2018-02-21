@@ -36,7 +36,7 @@
 					                        	{{ $transaction->transaction_reference_code }}
 					                        </td>
 					                        <td class="text-right">
-					                        	{{ $transaction->amount }} ZAR
+					                        	$ {{ $transaction->amount }} USD
 					                        </td>
 					                        <td class="text-right">
 					                        	{{ $transaction->created_at->diffForHumans() }}
