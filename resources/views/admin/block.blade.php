@@ -39,7 +39,7 @@
 					                        <td class="text-center">
 					                        	0
 					                        </td>
-					                        <td class="row-actions">
+					                        <td class="row-actions" style="color: #ccc !important;">
 					                        	<a href="{{ '/block_user' }}/{{ $user->id }}">
 					                        		<i class="os-icon os-icon-ui-49"></i> Block
 					                        	</a>
@@ -68,4 +68,7 @@
 	</div>
 
 
+@endsection
+@section( 'js' )
+	<script src="{{ asset( 'js/backend.js' ) }}"></script>
 @endsection

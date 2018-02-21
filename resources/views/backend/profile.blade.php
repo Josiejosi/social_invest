@@ -234,3 +234,7 @@
 
 
 @endsection
+
+@section( 'js' )
+	<script src="{{ asset( 'js/backend.js' ) }}"></script>
+@endsection
