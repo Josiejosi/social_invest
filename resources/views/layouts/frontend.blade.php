@@ -60,12 +60,6 @@
 				                    	<li><a href="{{ url( '/' ) }}">Home</a></li>
 									@endif
 
-									@if ( Route::currentRouteName() === "calculator" )
-				                    	<li class="current"><a href="{{ url( '/calculator' ) }}">Calculator</a></li> 
-				                    @else
-				                    	<li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
-									@endif
-
 									@if ( Route::currentRouteName() === "faq" )
 				                    	<li class="current"><a href="{{ url( '/faq' ) }}">FAQ</a></li> 
 				                    @else
@@ -86,12 +80,6 @@
 				                    	<li class="current"><a href="{{ url( '/' ) }}">Home</a></li> 
 				                    @else
 				                    	<li><a href="{{ url( '/' ) }}">Home</a></li>
-									@endif
-
-									@if ( Route::currentRouteName() === "calculator" )
-				                    	<li class="current"><a href="{{ url( '/calculator' ) }}">Calculator</a></li> 
-				                    @else
-				                    	<li><a href="{{ url( '/calculator' ) }}">Calculator</a></li>
 									@endif
 
 									@if ( Route::currentRouteName() === "faq" )
@@ -153,7 +141,7 @@
 
 	                            	<p>
 
-	                            		We are a peer-to-peer Exchange Platform, our system supports Bitcoin & Ethurium.
+	                            		We are a peer-to-peer Exchange Platform, our system supports Bitcoin & Ethereum.
 
 	                            	</p>
 
