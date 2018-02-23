@@ -72,12 +72,12 @@
 				    <div class="panel panel-default">
 				        <div class="panel-heading" role="tab" id="headingThree">
 				            <h4 class="panel-title">
-				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#split" aria-expanded="false" aria-controls="split">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#blockchain" href="#blockchain" aria-expanded="false" aria-controls="blockchain">
 				            Is BITROSEED linked to blockchain.info?
 				        </a>
 				      </h4>
 				        </div>
-				        <div id="split" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+				        <div id="blockchain" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 				            <div class="panel-body">
 				                No, when you create a wallet, you not creating a BITROSEED Crypto wallet, we call the blockchain wallet on your behalf to create a direct wallet to blockchain.info, and you can use the credentials to manage your coins in blockchain.info.
 				            </div>
