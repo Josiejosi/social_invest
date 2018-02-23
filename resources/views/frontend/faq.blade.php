@@ -2,6 +2,13 @@
 
 @section('content')
 
+    <section class="contact_us">
+        <div class="container">   
+            <div class="sec-title text-center">
+                <h3>FAQ's</h3>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
@@ -65,6 +72,10 @@
   </div>
 
 </div>
+
+			</div>
+		</div>
+	</section>
 
 
 

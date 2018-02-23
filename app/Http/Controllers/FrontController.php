@@ -66,7 +66,7 @@ class FrontController extends Controller
 	        'name'						=> $request->name, 
 	        'email'						=> $request->email, 
 	        'password'					=> bcrypt( $request->password ), 
-	        'surname'					=> $request->surname,  
+	        'surname'					=> isset( $request->surname ) ? $request->surname : "" ,  
 	        'country'					=> "RSA ( ZAR )", 
 	        'is_verified'				=> 0, 
 	        'verification_code'			=> rand( 111111, 999999 ), 

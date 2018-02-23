@@ -8,10 +8,10 @@
             <div class="sec-title text-center">
                 <h2>Join us</h2>
             </div>
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-6 col-md-offset-3">
 
-                <div class="default-form-area">
-                    <form action="{{ url( '/register' ) }}" class="col-md-10 col-md-offset-1 default-form" method="post">
+                <div class="">
+                    <form action="{{ url( '/register' ) }}" class="default-form" method="post">
 
                         {!! csrf_field() !!}
 
@@ -24,7 +24,7 @@
                                 </div>
                             @endif
                                          
-                            <div class="form-group style-two">
+                            <div class="form-group">
 
                                 <input type="text" 
                                        name="name" 
@@ -37,7 +37,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group style-two">
+                            <div class="form-group">
 
                                 <input type="text" 
                                        name="surname" 
@@ -48,20 +48,20 @@
                             </div>
 
                             
-                            <div class="form-group style-two">
+                            <div class="form-group">
 
                                 <input type="email" 
                                        name="email" 
                                        class="form-control textarea" 
                                        value="{{ old('email') }}" 
-                                       placeholder="Email">
+                                       placeholder="Email Address">
 
                                 @if ($errors->has('email'))
                                 <span class="help-block has-error">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
                         
-                            <div class="form-group style-two">
+                            <div class="form-group">
 
                                 <input type="password" 
                                        name="password" 
@@ -75,7 +75,7 @@
 
                             </div>
                         
-                            <div class="form-group style-two">
+                            <div class="form-group">
 
                                 <input type="password" 
                                        name="password_confirmation" 
@@ -88,48 +88,63 @@
                                 @endif
 
                             </div>
-                         
 
-                            <div class="form-group style-two">
-
-                                <span class="alert alert-info">Would you like to create a blockchain.info Wallet, to manage your coins?</span>
-
-                                <select type="text" 
-                                       name="blockchain_wallet" 
-                                       class="form-control textarea" 
-                                       value="{{ old('blockchain_wallet') }}"
-                                       placeholder="Would you like to create a blockchain.info Wallet">
-
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-
-                                </select>
-                            </div>                            
-
-                            <div class="form-group style-two">
-
-                                <input type="text" 
-                                        name="bitcoin_address" 
-                                        class="form-control textarea" 
-                                        value="{{ old('bitcoin_address') }}"
-                                        placeholder="BITCOIN Address">
-                                    @if ($errors->has('bitcoin_address'))
-                                    <span class="help-block has-error">{{ $errors->first('bitcoin_address') }}</span>
-                                    @endif
+                            <div class="form-group">
+                                <div class="alert alert-info alert-important">
+                                    Would you like to create a blockchain.info Wallet, to manage your coins?
+                                </div>
                             </div>
-                            <div class="form-group style-two">
-                                <input type="text" 
-                                       name="ethereum_address" 
-                                       class="form-control textarea" 
-                                       value="{{ old('ethereum_address') }}"
-                                       placeholder="ETHEREUM Address">
-                                    @if ($errors->has('ethereum_address'))
-                                    <span class="help-block has-error">{{ $errors->first('ethereum_address') }}</span>
-                                    @endif
+
+                            <div class="form-group">
+
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        name="blockchain_wallet" 
+                                        onclick="userRequireWallet('Yes')"
+                                        value="Yes">Yes
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" 
+                                        name="blockchain_wallet" 
+                                        onclick="userRequireWallet('No')"
+                                        value="No">No
+                                </label>
+
                             </div>
+       
+                            <div class="form-group">
+                                <span id="crypto_info"></span>
+                            </div>                         
+
+                            <div id="crypto_manual_provider">                         
+
+                                <div class="form-group">
+
+                                  <input type="text" 
+                                          name="bitcoin_address" 
+                                          class="form-control textarea" 
+                                          value="{{ old('bitcoin_address') }}"
+                                          placeholder="BITCOIN Address">
+                                      @if ($errors->has('bitcoin_address'))
+                                      <span class="help-block has-error">{{ $errors->first('bitcoin_address') }}</span>
+                                      @endif
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" 
+                                         name="ethereum_address" 
+                                         class="form-control textarea" 
+                                         value="{{ old('ethereum_address') }}"
+                                         placeholder="ETHEREUM Address">
+                                      @if ($errors->has('ethereum_address'))
+                                      <span class="help-block has-error">{{ $errors->first('ethereum_address') }}</span>
+                                      @endif
+                                </div>
+
+                            </div> 
 
                             @if ( isset( $data["referral_code"] ) ) 
-                            <div class="form-group style-two">
+                            <div class="form-group">
 
                                 <input type="text" 
                                         name="referral_code" 
@@ -140,7 +155,9 @@
 
 
                                 
-                                <span class="help-block has-info">Referral Code</span>
+                                <span class="help-block has-success" style="padding: 5px !important; color: #ccc !important ;">
+                                    Referral Code
+                                </span>
                                 
                             </div>
 
@@ -159,4 +176,29 @@
     </section>
 
 
+@endsection
+
+@section('js')
+    <script>
+            
+        $( function() {
+            $( "#crypto_manual_provider" ).hide() ;
+            $( "#crypto_info" ).html( "" ) ;
+        }) ;
+
+        function userRequireWallet( user_options ) {
+
+            if ( user_options == "No" ) {
+               $( "#crypto_manual_provider" ).show() ; 
+               $( "#crypto_info" ).html( 
+                    "<div class='alert alert-info'>Please provide BTC address and/or ETH Address, you need to provide only the one's you have. If you leave them blank you will be required to provide later.</div>" 
+                ) ; 
+            } else {
+                $( "#crypto_info" ).html( "" ) ;
+                $( "#crypto_manual_provider" ).hide() ;
+            }
+
+        }
+
+    </script>
 @endsection

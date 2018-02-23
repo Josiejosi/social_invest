@@ -56,7 +56,6 @@
 							                    	   id="FullAmount"
 							                    	   value="1">Pay the full amount</label>
 							            </div>
-
 							        </div>
 
 							        <div class="col-sm-12">
