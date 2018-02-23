@@ -25,6 +25,52 @@
 				            </div>
 				        </div>
 				    </div>
+				    
+				    <div class="panel panel-default">
+				        <div class="panel-heading" role="tab" id="headingTwo">
+				            <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#wallet" href="#wallet" aria-expanded="false" aria-controls="wallet">
+				          Do I need to create a blockchain.info wallet?
+				        </a>
+				      </h4>
+				        </div>
+				        <div id="wallet" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				            <div class="panel-body">
+				                No, if you have a wallet somewhere you trust, you can use your (btc or eth) address from the wallet you currently have.
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="panel panel-default">
+				        <div class="panel-heading" role="tab" id="headingTwo">
+				            <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#address" href="#address" aria-expanded="false" aria-controls="address">
+				          Do I need both ( btc and eth ) addresses to join?
+				        </a>
+				      </h4>
+				        </div>
+				        <div id="address" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				            <div class="panel-body">
+				                No, you can use either or both anyone's that you have will work.
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="panel panel-default">
+				        <div class="panel-heading" role="tab" id="headingTwo">
+				            <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#cash_contribution" href="#cash_contribution" aria-expanded="false" aria-controls="cash_contribution">
+				          Can I make cash contributions?
+				        </a>
+				      </h4>
+				        </div>
+				        <div id="cash_contribution" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				            <div class="panel-body">
+				                No, the whole purpose of this application is for member to invest and increase they crytpo profiles.
+				            </div>
+				        </div>
+				    </div>
+
 				    <div class="panel panel-default">
 				        <div class="panel-heading" role="tab" id="headingTwo">
 				            <h4 class="panel-title">
