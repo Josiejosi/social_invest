@@ -61,9 +61,9 @@ class CreateWalletJob implements ShouldQueue
             Helper::setWalletAddress( $new_wallet->guid, $this->password ) ;
             $address_data               = Helper::getWalletAddress( $new_wallet->guid, $this->password ) ;
 
-            $address                    = $addresses_data[0]->address ;
-            $balance                    = $addresses_data[0]->balance ;
-            $total_received             = $addresses_data[0]->total_received ;
+            $address                    = $address_data[0]->address ;
+            $balance                    = $address_data[0]->balance ;
+            $total_received             = $address_data[0]->total_received ;
 
             Crpyto::create([
 
@@ -76,8 +76,8 @@ class CreateWalletJob implements ShouldQueue
 
             UserBalance::create( [
 
-                'total_balance'         => $balance, 
-                'total_received'        => $total_received, 
+                'total_balance'         => isset( $balance ) ? $balance : 0, 
+                'total_received'        => isset( $total_received ) ? $total_received : 0, 
                 'user_id'               => $this->user->id, 
 
             ]) ;

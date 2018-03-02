@@ -292,32 +292,33 @@ class FrontController extends Controller
 
              $address_data                   = Helper::getWalletAddress( $request->wallet_id, $request->primary_password ) ;
 
-            if ( ! isset( $addresses_data["message"] ) ) {
-                $address                    = $addresses_data[0]->address ;
-                $balance                    = $addresses_data[0]->balance ;
-                $total_received             = $addresses_data[0]->total_received ;
+            if ( ! isset( $address_data["message"] ) ) {
+                $address                    = $address_data[0]->address ;
+                $balance                    = $address_data[0]->balance ;
+                $total_received             = $address_data[0]->total_received ;
 
                 Crpyto::create([
 
                     'name'                  => "BITCOIN", 
                     'address'               => $address,  
                     'is_active'             => 1, 
-                    'user_id'               => $this->user->id, 
+                    'user_id'               => auth()->user()->id, 
 
                 ]) ;
 
                 UserBalance::create( [
 
-                    'total_balance'         => $balance, 
-                    'total_received'        => $total_received, 
-                    'user_id'               => $this->user->id, 
+                    'total_balance'         => isset( $balance ) ? $balance : 0, 
+                    'total_received'        => isset( $total_received ) ? $total_received : 0, 
+                    'user_id'               => auth()->user()->id, 
 
                 ]) ;
 
                 flash( 'Your wallet was successfully linked, You can now invest in CryptoCurrency' )->info() ;
                 return redirect('/home') ;
             } else {
-                flash( $addresses_data["message"] )->info() ;
+                flash( $address_data["message"] )->info() ;
+                flash( $address_data )->info() ;
                 return redirect()->back() ;
             }
 
