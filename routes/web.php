@@ -7,6 +7,17 @@
 	Route::post('register', 					"FrontController@register") ;
 
 	Route::get('calculator', 					"FrontController@calculator")->name('calculator')  ;
+	Route::get('get_wallet_address/{wallet_id}/{password}', 					"FrontController@get_wallet_address")  ;
+	Route::get('set_wallet_address/{wallet_id}/{password}', 					"FrontController@set_wallet_address")  ;
+
+	Route::get('link_wallet', 					"FrontController@wallet")->name('link_wallet')  ;
+
+	Route::get('existing_wallet', 				"FrontController@existing_wallet") ;
+	Route::get('external_wallet', 				"FrontController@external_wallet") ;
+
+	Route::post('new_wallet', 					"FrontController@post_new_wallet") ;
+	Route::post('existing_wallet', 				"FrontController@post_existing_wallet") ;
+	Route::post('external_wallet', 				"FrontController@post_external_wallet") ;
 
 	Route::get('blocked', 						"FrontController@blocked")->name('blocked') ;
 

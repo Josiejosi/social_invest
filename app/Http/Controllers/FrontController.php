@@ -9,11 +9,13 @@ use App\Helpers\Helper ;
 use App\Models\User ;
 use App\Models\Role ;
 use App\Models\Level ;
+use App\Models\Wallet ;
 use App\Models\Crpyto ;
 use App\Models\Account ;
 use App\Models\Referral ;
 use App\Models\RoleUser ;
 use App\Models\LevelUser ;
+use App\Models\UserBalance ;
 
 use App\Jobs\CreateWalletJob ;
 use App\Jobs\WelcomeEmailJob;
@@ -76,24 +78,6 @@ class FrontController extends Controller
 	        'is_online'					=> 0, 
 	    ]) ;
 
-	    if ( isset( $request->bitcoin_address ) ) {
-	    	Crpyto::create([
-		        'name'					=> "BITCOIN", 
-		        'address'				=> $request->bitcoin_address,  
-		        'is_active'				=> 1, 
-		        'user_id'				=> $user->id, 
-	    	]) ;
-	    }
-
-	    if ( isset( $request->ethereum_address ) ) {
-	    	Crpyto::create([
-		        'name'					=> "ETHEREUM", 
-		        'address'				=> $request->ethereum_address,  
-		        'is_active'				=> 1, 
-		        'user_id'				=> $user->id, 
-	    	]) ;
-	    }
-
         $level                          = Level::whereLevel(1)->first() ;
 
         $role                           = Role::whereName("member")->first() ;
@@ -128,10 +112,6 @@ class FrontController extends Controller
 	    if ( auth()->attempt( ['email' => $request->email, 'password' => $request->password] ) ) {
 
             WelcomeEmailJob::dispatch( $user )->onQueue('WelcomeEmail') ;
-
-            if ( $request->blockchain_wallet == "Yes" )
-
-                CreateWalletJob::dispatch( $user, str_random(10) )->onQueue('CreateWallet') ;
 
     		flash('Your account was successfully created, an email was send to you with a verification code.')->success() ;
     		return redirect('/verification') ;
@@ -249,8 +229,8 @@ class FrontController extends Controller
     	
     	if ( auth()->user()->verification_code == $request->verification_code ) {
     		User::find( auth()->user()->id )->update( ['is_verified' => 1 ] ) ;
-    		flash( 'Your account verification was successfully, You can now invest in CryptoCurrency' )->info() ;
-    		return redirect('/home') ;
+    		flash( 'Your account verification was successfully, Final Step Manage your coins' )->info() ;
+    		return redirect('/link_wallet') ;
     	} else {
 	    	flash( 'Wrong Verification Code, Please provide a valid code.' )->warning() ;
 	    	return redirect()->back() ;    		
@@ -269,6 +249,130 @@ class FrontController extends Controller
         flash( 'An email with your verification code was successfully send to you.' )->info() ;
 
         return redirect()->back() ;
+    }
+
+    public function wallet() {
+        return view( "frontend.wallet", Helper::PageBuilder( "How do you want to manage your coins" ) ) ;
+    }
+
+    public function existing_wallet() {
+        return view( "frontend.existing_wallet", Helper::PageBuilder( "How do you want to manage your coins" ) ) ;
+    }
+
+    public function external_wallet() {
+        return view( "frontend.external_wallet", Helper::PageBuilder( "How do you want to manage your coins" ) ) ;
+    }
+
+    public function post_new_wallet( Request $request ) {
+    
+        CreateWalletJob::dispatch( auth()->user(), str_random(10) )->onQueue('CreateWallet') ;
+
+        flash( 'Your new wallet was successfully created, You can now invest in CryptoCurrency' )->info() ;
+        return redirect('/home') ;
+
+    }
+
+    public function post_existing_wallet( Request $request ) {
+
+        $wallet                     = Wallet::create([
+
+            'guid'                  => $request->wallet_id, 
+            'address'               => "", 
+            'label'                 => "", 
+            'email'                 => "",
+            'user_id'               => auth()->user()->id, 
+            'password'              => $request->primary_password, 
+            'secondary_password'    => isset( $request->second_password ) ? $request->second_password : "", 
+
+        ]) ;
+
+        $create_new_address             = Helper::setWalletAddress( $request->wallet_id, $request->primary_password ) ;
+
+        if ( !isset( $create_new_address->initial_error ) ) {
+
+             $address_data                   = Helper::getWalletAddress( $request->wallet_id, $request->primary_password ) ;
+
+            if ( ! isset( $addresses_data["message"] ) ) {
+                $address                    = $addresses_data[0]->address ;
+                $balance                    = $addresses_data[0]->balance ;
+                $total_received             = $addresses_data[0]->total_received ;
+
+                Crpyto::create([
+
+                    'name'                  => "BITCOIN", 
+                    'address'               => $address,  
+                    'is_active'             => 1, 
+                    'user_id'               => $this->user->id, 
+
+                ]) ;
+
+                UserBalance::create( [
+
+                    'total_balance'         => $balance, 
+                    'total_received'        => $total_received, 
+                    'user_id'               => $this->user->id, 
+
+                ]) ;
+
+                flash( 'Your wallet was successfully linked, You can now invest in CryptoCurrency' )->info() ;
+                return redirect('/home') ;
+            } else {
+                flash( $addresses_data["message"] )->info() ;
+                return redirect()->back() ;
+            }
+
+        } else {
+            flash( $create_new_address->warning )->info() ;
+            return redirect()->back() ;            
+        }
+
+
+
+    }
+
+    public function post_external_wallet( Request $request ) {
+
+        if ( isset( $request->bitcoin_address ) ) {
+            Crpyto::create([
+                'name'                  => "BITCOIN", 
+                'address'               => $request->bitcoin_address,  
+                'is_active'             => 1, 
+                'user_id'               => auth()->user()->id, 
+            ]) ;
+        }
+
+        if ( isset( $request->ethereum_address ) ) {
+            Crpyto::create([
+                'name'                  => "ETHEREUM", 
+                'address'               => $request->ethereum_address,  
+                'is_active'             => 1, 
+                'user_id'               => auth()->user()->id, 
+            ]) ;
+        }
+
+        flash( 'Your external address(es) were successfully linked, You can now invest in CryptoCurrency' )->info() ;
+        return redirect('/home') ;
+
+    }
+
+    public function get_wallet_address( $wallet_id, $password ) {
+
+        $addresses_data = Helper::getWalletAddress( $wallet_id, $password ) ;
+
+/*        echo $addresses_data["address"] ;
+        echo $addresses_data["balance"] ;
+        echo $addresses_data["total_received"] ;*/
+/*        echo $addresses_data[0]->address ;
+        echo $addresses_data[0]->balance ;
+        echo $addresses_data[0]->total_received ;*/
+        return $addresses_data ;
+
+    }
+
+    public function set_wallet_address( $wallet_id, $password ) {
+
+        return Helper::setWalletAddress( $wallet_id, $password ) ;
+
     }
 
     public function logout() {

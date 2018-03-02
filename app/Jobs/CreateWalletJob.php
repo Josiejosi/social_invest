@@ -14,6 +14,8 @@ use App\Mail\CreateBlockChainWallet ;
 
 use App\Models\Wallet ;
 use App\Models\User ;
+use App\Models\Crpyto ;
+use App\Models\UserBalance ;
 
 use App\Helpers\Helper ;
 
@@ -26,14 +28,14 @@ class CreateWalletJob implements ShouldQueue
 
     public function __construct( User $user, $password )
     {
-        $this->user         = $user ;
-        $this->password     = $password ;
+        $this->user                     = $user ;
+        $this->password                 = $password ;
     }
 
     public function handle()
     {
 
-        $create_wallet      = Helper::createBlockChainWallet( 
+        $create_wallet                  = Helper::createBlockChainWallet( 
             $this->password, 
             $this->user->email, 
             $this->user->email
@@ -41,17 +43,42 @@ class CreateWalletJob implements ShouldQueue
 
         if ( !isset( $create_wallet["message"] ) ) {
 
-            $new_wallet         = json_decode( $create_wallet ) ;
+            $new_wallet                 = json_decode( $create_wallet ) ;
 
-            $wallet             = Wallet::create([
+            $wallet                     = Wallet::create([
 
-                'guid'          => $new_wallet->guid, 
-                'address'       => $new_wallet->address, 
-                'label'         => $new_wallet->label, 
-                'email'         => $this->user->email,
+                'guid'                  => $new_wallet->guid, 
+                'address'               => $new_wallet->address, 
+                'label'                 => $new_wallet->label, 
+                'email'                 => "",
                  
-                'user_id'       => $this->user->id, 
-                'password'      => $this->password, 
+                'user_id'               => $this->user->id, 
+                'password'              => $this->password, 
+                'secondary_password'    => "", 
+
+            ]) ;
+
+            Helper::setWalletAddress( $new_wallet->guid, $this->password ) ;
+            $address_data               = Helper::getWalletAddress( $new_wallet->guid, $this->password ) ;
+
+            $address                    = $addresses_data[0]->address ;
+            $balance                    = $addresses_data[0]->balance ;
+            $total_received             = $addresses_data[0]->total_received ;
+
+            Crpyto::create([
+
+                'name'                  => "BITCOIN", 
+                'address'               => $address,  
+                'is_active'             => 1, 
+                'user_id'               => $this->user->id, 
+
+            ]) ;
+
+            UserBalance::create( [
+
+                'total_balance'         => $balance, 
+                'total_received'        => $total_received, 
+                'user_id'               => $this->user->id, 
 
             ]) ;
 

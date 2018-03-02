@@ -89,60 +89,6 @@
 
                             </div>
 
-                            <div class="form-group">
-                                <div class="alert alert-info alert-important">
-                                    Would you like to create a blockchain.info Wallet, to manage your coins?
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        name="blockchain_wallet" 
-                                        onclick="userRequireWallet('Yes')"
-                                        value="Yes">Yes
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" 
-                                        name="blockchain_wallet" 
-                                        onclick="userRequireWallet('No')"
-                                        value="No">No
-                                </label>
-
-                            </div>
-       
-                            <div class="form-group">
-                                <span id="crypto_info"></span>
-                            </div>                         
-
-                            <div id="crypto_manual_provider">                         
-
-                                <div class="form-group">
-
-                                  <input type="text" 
-                                          name="bitcoin_address" 
-                                          class="form-control textarea" 
-                                          value="{{ old('bitcoin_address') }}"
-                                          placeholder="BITCOIN Address">
-                                      @if ($errors->has('bitcoin_address'))
-                                      <span class="help-block has-error">{{ $errors->first('bitcoin_address') }}</span>
-                                      @endif
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" 
-                                         name="ethereum_address" 
-                                         class="form-control textarea" 
-                                         value="{{ old('ethereum_address') }}"
-                                         placeholder="ETHEREUM Address">
-                                      @if ($errors->has('ethereum_address'))
-                                      <span class="help-block has-error">{{ $errors->first('ethereum_address') }}</span>
-                                      @endif
-                                </div>
-
-                            </div> 
-
                             @if ( isset( $data["referral_code"] ) ) 
                             <div class="form-group">
 
@@ -176,29 +122,4 @@
     </section>
 
 
-@endsection
-
-@section('js')
-    <script>
-            
-        $( function() {
-            $( "#crypto_manual_provider" ).hide() ;
-            $( "#crypto_info" ).html( "" ) ;
-        }) ;
-
-        function userRequireWallet( user_options ) {
-
-            if ( user_options == "No" ) {
-               $( "#crypto_manual_provider" ).show() ; 
-               $( "#crypto_info" ).html( 
-                    "<div class='alert alert-info'>Please provide BTC address and/or ETH Address, you need to provide only the one's you have. If you leave them blank you will be required to provide later.</div>" 
-                ) ; 
-            } else {
-                $( "#crypto_info" ).html( "" ) ;
-                $( "#crypto_manual_provider" ).hide() ;
-            }
-
-        }
-
-    </script>
 @endsection

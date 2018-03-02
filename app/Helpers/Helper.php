@@ -422,7 +422,6 @@
 
 	    	$blockchain_url 					= "http://localhost:3000/api/v2/create" ;
 	    	$blockchain_url 					.= "?password=$password" ;
-	    	$blockchain_url 					.= "&email=$email" ;
 	    	$blockchain_url 					.= "&label=$label" ;
 	    	$blockchain_url 					.= "&api_code=$api_code" ;
 	    	$blockchain_url 					.= "&hd=true" ;
@@ -443,9 +442,9 @@
 
 	    }
 
-	    public static function getWalletBalance( $ppassword, $wallet_id ) {
+	    public static function getWalletBalance( $password, $wallet_id ) {
 
-	    	$blockchain_url 					= "http://localhost:3000/merchant/$wallet_id/balance?password=$ppassword" ;
+	    	$blockchain_url 					= "http://localhost:3000/merchant/$wallet_id/balance?password=$password" ;
 
 	    	$ch 								= curl_init( $blockchain_url ) ;
 
@@ -460,6 +459,55 @@
 	        curl_close( $ch ) ;
 
 	        return $json_results ;
+
+	    }
+
+	    public static function setWalletAddress( $wallet_id, $password ) {
+
+	    	$api_code 							= env( 'BLOCKCHAIN_APICODE' ) ;
+
+	    	$blockchain_url 					= "http://localhost:3000/merchant/$wallet_id/new_address?password=$password&api_code=$api_code" ;
+
+	    	$ch 								= curl_init( $blockchain_url ) ;
+
+	        curl_setopt( $ch, CURLOPT_HEADER, 0 ) ;
+	        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 ) ;
+
+	        $json_results 						= curl_exec( $ch ) ; 
+
+			if ( curl_error( $ch ) )
+			    return [ "message" => "Sorry we where unable to get your wallet address at the moment, please try again later." ] ;
+
+	        curl_close( $ch ) ;
+
+	        return json_decode( $json_results )  ;
+
+	    }
+
+	    public static function getWalletAddress( $wallet_id, $password ) {
+
+	    	$api_code 							= env( 'BLOCKCHAIN_APICODE' ) ;
+
+	    	$blockchain_url 					= "http://localhost:3000/merchant/$wallet_id/list?password=$password&api_code=$api_code" ;
+
+	    	$ch 								= curl_init( $blockchain_url ) ;
+
+	        curl_setopt( $ch, CURLOPT_HEADER, 0 ) ;
+	        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 ) ;
+
+	        $json_results 						= curl_exec( $ch ) ; 
+
+			if ( curl_error( $ch ) )
+			    return [ "message" => "Sorry we where unable to get your wallet address at the moment, please try again later." ] ;
+
+	        curl_close( $ch ) ;
+
+	        $btc_address_data 					= json_decode( $json_results ) ;
+
+	        if ( isset( $btc_address_data->addresses ) )
+	        	return  $btc_address_data->addresses ;
+
+	        return [ "message" => "Unable to get the wallet address." ] ;
 
 	    }
 
